@@ -9,38 +9,54 @@
     <!-- Lucide Icons -->
     <script src="https://unpkg.com/lucide@latest/dist/umd/lucide.js"></script>
     
+    <script>
+        // Customizing Tailwind to use a Deep Indigo theme with Cyan accents
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        'custom-bg': '#0f172a', // Slate 900 / Deep Navy
+                        'custom-card': '#1e293b', // Slate 800
+                        'custom-accent': '#06b6d4', // Cyan 500
+                        'custom-light': '#cbd5e1', // Slate 300
+                    },
+                    boxShadow: {
+                        '3xl': '0 35px 60px -15px rgba(0, 0, 0, 0.4)',
+                    }
+                }
+            }
+        }
+    </script>
+
     <style>
         body {
             font-family: 'Inter', sans-serif;
-            background-color: #f3f4f6;
+            background-color: #f1f5f9; /* Fallback for .page-bg */
         }
         
-        /* Custom Tailwind Configuration - Setting Blue as Primary */
-        .primary-color { color: #0ea5e9; }
-        .primary-bg { background-color: #0ea5e9; }
-        .primary-hover:hover { background-color: #0284c7; }
-        .border-primary { border-color: #0ea5e9; }
-        
-        /* Subtle Geometric Background Pattern */
+        /* The main background using the custom deep navy color */
         .page-bg {
-            background-image: radial-gradient(#dbeafe 0.8px, transparent 0.8px), radial-gradient(#dbeafe 0.8px, transparent 0.8px);
-            background-size: 20px 20px;
-            background-position: 0 0, 10px 10px;
+            background-color: #0f172a; 
         }
 
         /* Card Hover Effect */
         .card-lift {
-            transition: all 0.3s ease;
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
         }
         .card-lift:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+            transform: translateY(-8px);
+            box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.2), 0 8px 10px -6px rgba(0, 0, 0, 0.15);
         }
 
-        /* Timeline Styling */
+        /* Skills Pill Animation */
+        .skill-pill:hover {
+            transform: scale(1.05);
+            box-shadow: 0 4px 6px -1px rgba(6, 182, 212, 0.5), 0 2px 4px -2px rgba(6, 182, 212, 0.5);
+        }
+
+        /* Timeline Styling for contrast */
         .timeline-container {
             position: relative;
-            padding-bottom: 2rem;
         }
         .timeline-container::before {
             content: '';
@@ -48,22 +64,18 @@
             top: 0;
             left: 50%;
             bottom: 0;
-            width: 3px;
-            background-color: #d1d5db; /* gray-300 */
+            width: 2px;
+            background-color: #334155; /* Slate 700 */
             transform: translateX(-50%);
         }
         /* Mobile adjustment for timeline */
         @media (max-width: 767px) {
              .timeline-container::before {
-                left: 1.25rem; /* 5 */
+                left: 1.25rem;
                 transform: translateX(0);
             }
             .timeline-dot {
                 left: 1rem;
-            }
-            .timeline-content-right {
-                width: 100%;
-                text-align: left;
             }
         }
     </style>
@@ -145,52 +157,52 @@
         }
     </script>
     
-    <!-- Navigation Bar (Fixed for single-page app feel) -->
-    <nav class="sticky top-0 z-50 bg-white shadow-md">
+    <!-- Navigation Bar (Sticky for single-page app feel) -->
+    <nav class="sticky top-0 z-50 bg-custom-card shadow-lg border-b border-slate-700">
         <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="flex justify-between items-center h-14">
-                <a href="#" class="text-lg font-bold primary-color hover:text-blue-700 transition-colors">Roshan H.</a>
+                <a href="#" class="text-xl font-bold text-custom-accent hover:text-cyan-400 transition-colors">Roshan H.</a>
                 <div class="hidden md:flex space-x-6 text-sm font-medium">
-                    <button onclick="scrollToSection('skills-section')" class="text-gray-600 hover:primary-color transition-colors">Skills</button>
-                    <button onclick="scrollToSection('experience-section')" class="text-gray-600 hover:primary-color transition-colors">Experience</button>
-                    <button onclick="scrollToSection('projects-section')" class="text-gray-600 hover:primary-color transition-colors">Projects</button>
-                    <button onclick="scrollToSection('education-section')" class="text-gray-600 hover:primary-color transition-colors">Education</button>
+                    <button onclick="scrollToSection('skills-section')" class="text-custom-light hover:text-custom-accent transition-colors">Skills</button>
+                    <button onclick="scrollToSection('experience-section')" class="text-custom-light hover:text-custom-accent transition-colors">Experience</button>
+                    <button onclick="scrollToSection('projects-section')" class="text-custom-light hover:text-custom-accent transition-colors">Projects</button>
+                    <button onclick="scrollToSection('education-section')" class="text-custom-light hover:text-custom-accent transition-colors">Education</button>
                 </div>
             </div>
         </div>
     </nav>
 
     <!-- Header Section -->
-    <header class="bg-gradient-to-r from-blue-600 to-blue-800 text-white p-8 md:p-12 rounded-b-3xl shadow-2xl mb-8">
+    <header class="bg-custom-card text-white p-8 md:p-12 shadow-3xl mb-12">
         <div class="max-w-4xl mx-auto">
             <div class="mb-6">
                 <h1 class="text-4xl md:text-5xl font-extrabold tracking-tight mb-2">
                     Mohd Roshan Hussain
                 </h1>
-                <p class="text-xl md:text-2xl font-light text-blue-200">
+                <p class="text-xl md:text-2xl font-light text-custom-accent">
                     Frontend Engineer (Angular) | Full-Stack Exposure
                 </p>
             </div>
             
-            <p class="text-lg mt-6 bg-blue-700 p-4 rounded-xl italic border border-blue-600 shadow-inner">
+            <p class="text-lg mt-6 bg-slate-800/70 p-4 rounded-xl italic border border-slate-700 text-slate-300">
                 "Frontend Engineer with expertise in Angular and TypeScript, full-stack exposure in Node.js and MySQL, and hands-on experience building large ERP systems, cross-platform dashboards, improving performance, and delivering end-to-end features while mentoring developers."
             </p>
 
             <!-- Contact Links -->
             <div class="mt-8 grid grid-cols-2 lg:grid-cols-4 gap-4 text-sm md:text-base">
-                <a href="mailto:mdroshan.dev@gmail.com" class="flex items-center text-blue-100 hover:text-white transition-colors p-2 rounded-lg hover:bg-blue-700" aria-label="Email">
+                <a href="mailto:mdroshan.dev@gmail.com" class="flex items-center text-custom-light hover:text-custom-accent transition-colors p-2 rounded-lg hover:bg-slate-700/50" aria-label="Email">
                     <i data-lucide="mail" class="w-5 h-5 mr-2"></i>
                     <span class="truncate">mdroshan.dev@gmail.com</span>
                 </a>
-                <a href="tel:+917093992360" class="flex items-center text-blue-100 hover:text-white transition-colors p-2 rounded-lg hover:bg-blue-700" aria-label="Phone">
+                <a href="tel:+917093992360" class="flex items-center text-custom-light hover:text-custom-accent transition-colors p-2 rounded-lg hover:bg-slate-700/50" aria-label="Phone">
                     <i data-lucide="phone" class="w-5 h-5 mr-2"></i>
                     +917093992360
                 </a>
-                <a href="https://github.com/roshan2197" target="_blank" rel="noopener noreferrer" class="flex items-center text-blue-100 hover:text-white transition-colors p-2 rounded-lg hover:bg-blue-700" aria-label="GitHub">
+                <a href="https://github.com/roshan2197" target="_blank" rel="noopener noreferrer" class="flex items-center text-custom-light hover:text-custom-accent transition-colors p-2 rounded-lg hover:bg-slate-700/50" aria-label="GitHub">
                     <i data-lucide="github" class="w-5 h-5 mr-2"></i>
                     GitHub
                 </a>
-                <a href="https://in.linkedin.com/in/roshan2197" target="_blank" rel="noopener noreferrer" class="flex items-center text-blue-100 hover:text-white transition-colors p-2 rounded-lg hover:bg-blue-700" aria-label="LinkedIn">
+                <a href="https://in.linkedin.com/in/roshan2197" target="_blank" rel="noopener noreferrer" class="flex items-center text-custom-light hover:text-custom-accent transition-colors p-2 rounded-lg hover:bg-slate-700/50" aria-label="LinkedIn">
                     <i data-lucide="linkedin" class="w-5 h-5 mr-2"></i>
                     LinkedIn
                 </a>
@@ -199,16 +211,16 @@
     </header>
 
     <!-- Main Content Area -->
-    <main class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
+    <main class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 pb-12">
 
         <!-- 1. SKILLS SECTION -->
         <div id="skills-section" class="mb-12 pt-10 -mt-10">
-            <div class="bg-white p-6 md:p-8 rounded-xl shadow-lg card-lift">
-                <h2 class="text-2xl font-bold mb-6 flex items-center primary-color border-b-2 border-blue-100 pb-2">
-                    <i data-lucide="zap" class="w-6 h-6 mr-3 primary-color"></i>
+            <div class="bg-custom-card p-6 md:p-8 rounded-xl shadow-lg card-lift border border-slate-700">
+                <h2 class="text-2xl font-bold mb-6 flex items-center text-custom-accent border-b border-slate-700 pb-2">
+                    <i data-lucide="zap" class="w-6 h-6 mr-3 text-custom-accent"></i>
                     Technical Expertise
                 </h2>
-                <div id="skills-grid" class="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+                <div id="skills-grid" class="grid md:grid-cols-2 lg:grid-cols-3 gap-6 text-custom-light">
                     <!-- Content injected by JavaScript -->
                 </div>
             </div>
@@ -216,9 +228,9 @@
 
         <!-- 2. EXPERIENCE SECTION -->
         <div id="experience-section" class="mb-12 pt-10 -mt-10">
-            <div class="bg-white p-6 md:p-8 rounded-xl shadow-lg card-lift">
-                <h2 class="text-2xl font-bold mb-8 flex items-center primary-color border-b-2 border-blue-100 pb-2">
-                    <i data-lucide="briefcase" class="w-6 h-6 mr-3 primary-color"></i>
+            <div class="bg-custom-card p-6 md:p-8 rounded-xl shadow-lg card-lift border border-slate-700">
+                <h2 class="text-2xl font-bold mb-8 flex items-center text-custom-accent border-b border-slate-700 pb-2">
+                    <i data-lucide="briefcase" class="w-6 h-6 mr-3 text-custom-accent"></i>
                     Work Experience
                 </h2>
                 <div id="experience-timeline" class="timeline-container">
@@ -229,9 +241,9 @@
 
         <!-- 3. PROJECTS SECTION -->
         <div id="projects-section" class="mb-12 pt-10 -mt-10">
-            <div class="bg-white p-6 md:p-8 rounded-xl shadow-lg card-lift">
-                <h2 class="text-2xl font-bold mb-6 flex items-center primary-color border-b-2 border-blue-100 pb-2">
-                    <i data-lucide="terminal" class="w-6 h-6 mr-3 primary-color"></i>
+            <div class="bg-custom-card p-6 md:p-8 rounded-xl shadow-lg card-lift border border-slate-700">
+                <h2 class="text-2xl font-bold mb-6 flex items-center text-custom-accent border-b border-slate-700 pb-2">
+                    <i data-lucide="terminal" class="w-6 h-6 mr-3 text-custom-accent"></i>
                     Key Projects
                 </h2>
                 <div id="projects-list">
@@ -242,14 +254,14 @@
 
         <!-- 4. EDUCATION SECTION -->
         <div id="education-section" class="pt-10 -mt-10">
-            <div class="bg-white p-6 md:p-8 rounded-xl shadow-lg card-lift">
-                <h2 class="text-2xl font-bold mb-6 flex items-center primary-color border-b-2 border-blue-100 pb-2">
-                    <i data-lucide="graduation-cap" class="w-6 h-6 mr-3 primary-color"></i>
+            <div class="bg-custom-card p-6 md:p-8 rounded-xl shadow-lg card-lift border border-slate-700">
+                <h2 class="text-2xl font-bold mb-6 flex items-center text-custom-accent border-b border-slate-700 pb-2">
+                    <i data-lucide="graduation-cap" class="w-6 h-6 mr-3 text-custom-accent"></i>
                     Education
                 </h2>
-                <div id="education-card" class="flex flex-col sm:flex-row justify-between items-start sm:items-center bg-blue-50 p-4 rounded-lg border-l-4 border-blue-500 shadow-inner">
-                    <p class="text-lg font-medium text-gray-800 mb-2 sm:mb-0">Malla Reddy Engineering College, B.Tech | Computer Science Engineering</p>
-                    <span class="text-sm text-gray-700 bg-white px-3 py-1 rounded-full border border-blue-200">2019-2023 | GPA: 8.1</span>
+                <div id="education-card" class="flex flex-col sm:flex-row justify-between items-start sm:items-center bg-slate-800 p-4 rounded-lg border-l-4 border-custom-accent shadow-inner text-custom-light">
+                    <p class="text-lg font-medium mb-2 sm:mb-0">Malla Reddy Engineering College, B.Tech | Computer Science Engineering</p>
+                    <span class="text-sm text-slate-400 bg-slate-900 px-3 py-1 rounded-full border border-slate-700">2019-2023 | GPA: 8.1</span>
                 </div>
             </div>
         </div>
@@ -257,9 +269,9 @@
     </main>
 
     <!-- Footer -->
-    <footer class="bg-gray-800 text-center py-6 mt-12 text-gray-400">
+    <footer class="bg-custom-card text-center py-6 mt-12 text-slate-500 border-t border-slate-700">
         <p class="text-sm">
-            Crafted with Angular & Tailwind CSS | <a href="mailto:mdroshan.dev@gmail.com" class="hover:text-blue-400 transition-colors">mdroshan.dev@gmail.com</a>
+            Crafted with Angular & Tailwind CSS | <a href="mailto:mdroshan.dev@gmail.com" class="hover:text-custom-accent transition-colors">mdroshan.dev@gmail.com</a>
         </p>
     </footer>
 
@@ -280,14 +292,14 @@
             ];
 
             skillsGrid.innerHTML = skillsCategories.map(cat => `
-                <div class="p-4 border border-gray-100 rounded-lg bg-gray-50 shadow-inner hover:bg-white transition-colors">
-                    <h3 class="text-lg font-semibold mb-3 flex items-center text-gray-800">
-                        <i data-lucide="${cat.icon}" class="w-5 h-5 mr-2 primary-color"></i>
+                <div class="p-4 border border-slate-700 rounded-lg bg-slate-800 shadow-inner hover:bg-slate-700/50 transition-colors">
+                    <h3 class="text-lg font-semibold mb-3 flex items-center text-slate-200">
+                        <i data-lucide="${cat.icon}" class="w-5 h-5 mr-2 text-custom-accent"></i>
                         ${cat.name}
                     </h3>
                     <div class="flex flex-wrap">
                         ${cat.skills.map(skill => `
-                            <span class="inline-block primary-bg text-white text-sm font-medium px-4 py-1 rounded-full m-1 shadow-md transition-all primary-hover cursor-default">
+                            <span class="skill-pill inline-block bg-custom-accent text-slate-900 text-sm font-medium px-4 py-1 rounded-full m-1 shadow-md transition-all cursor-default hover:bg-cyan-400">
                                 ${skill}
                             </span>
                         `).join('')}
@@ -304,7 +316,7 @@
                 const isOdd = index % 2 !== 0;
                 const flexDirection = isOdd ? 'md:flex-row-reverse' : 'md:flex-row';
                 const contentAlignment = isOdd ? 'md:text-left' : 'md:text-right';
-                const contentPadding = isOdd ? 'md:pl-12 md:border-l md:border-gray-200' : 'md:pr-12';
+                const contentPadding = isOdd ? 'md:pl-12 md:border-l md:border-slate-700' : 'md:pr-12';
                 const dotPosition = isOdd ? 'md:left-[calc(50%+4px)]' : 'md:left-[calc(50%-4px)]';
 
                 return `
@@ -312,14 +324,14 @@
                     <div class="relative flex group mb-8 ${flexDirection} timeline-item">
                         
                         <!-- Content -->
-                        <div class="w-full md:w-1/2 ${contentPadding} ${contentAlignment}">
-                            <h3 class="text-xl font-semibold text-gray-900">${job.role}</h3>
-                            <p class="text-blue-500 font-medium">${job.company}</p>
-                            <p class="text-sm text-gray-500 mb-3">${job.dates}</p>
-                            <ul class="list-none space-y-2 bg-blue-50 p-4 rounded-lg shadow-inner border border-blue-100">
+                        <div class="w-full md:w-1/2 ${contentPadding} ${contentAlignment} text-slate-300">
+                            <h3 class="text-xl font-semibold text-white">${job.role}</h3>
+                            <p class="text-custom-accent font-medium">${job.company}</p>
+                            <p class="text-sm text-slate-400 mb-3">${job.dates}</p>
+                            <ul class="list-none space-y-2 bg-slate-800/50 p-4 rounded-lg shadow-inner border border-slate-700">
                                 ${job.highlights.map(highlight => `
-                                    <li class="flex items-start text-gray-700">
-                                        <i data-lucide="check-circle" class="w-4 h-4 mt-1 mr-2 flex-shrink-0 text-green-600"></i>
+                                    <li class="flex items-start text-slate-300">
+                                        <i data-lucide="check-circle" class="w-4 h-4 mt-1 mr-2 flex-shrink-0 text-green-500"></i>
                                         <span>${highlight}</span>
                                     </li>
                                 `).join('')}
@@ -328,7 +340,7 @@
 
                         <!-- Dot (Center/Left for mobile) -->
                         <div class="timeline-dot absolute left-0 top-0 h-full w-10 flex justify-center items-start md:items-center ${dotPosition}">
-                            <div class="w-4 h-4 primary-bg rounded-full ring-4 ring-blue-200 shadow-lg transition-all duration-300 group-hover:scale-125"></div>
+                            <div class="w-4 h-4 bg-custom-accent rounded-full ring-4 ring-slate-700 shadow-lg transition-all duration-300 group-hover:scale-125"></div>
                         </div>
 
                         <!-- Spacer/Opposite side (Hidden on mobile) -->
@@ -342,20 +354,20 @@
             // --- 3. PROJECTS SECTION ---
             const projectsList = document.getElementById('projects-list');
             projectsList.innerHTML = resumeData.projects.map(project => `
-                <div class="mb-6 p-4 border border-blue-100 rounded-xl bg-blue-50 shadow-md transition-shadow duration-300 hover:shadow-lg">
+                <div class="mb-6 p-4 border border-slate-700 rounded-xl bg-slate-800 shadow-md transition-shadow duration-300 hover:shadow-lg">
                     <div class="flex justify-between items-center cursor-pointer project-header" data-target="${project.id}">
-                        <h3 class="text-xl font-bold text-blue-800">${project.name}</h3>
-                        <i data-lucide="chevron-down" class="w-5 h-5 text-blue-600 transition-transform project-icon"></i>
+                        <h3 class="text-xl font-bold text-custom-accent">${project.name}</h3>
+                        <i data-lucide="chevron-down" class="w-5 h-5 text-custom-accent transition-transform project-icon"></i>
                     </div>
-                    <p class="text-sm text-gray-500 mb-3">${project.dates}</p>
+                    <p class="text-sm text-slate-400 mb-3">${project.dates}</p>
                     
-                    <div id="${project.id}" class="project-content overflow-hidden max-h-0 opacity-0 transition-all duration-500">
-                        <p class="text-gray-700 mb-3 italic">${project.description}</p>
-                        <h4 class="font-semibold text-gray-800 mb-2">Impact & Technologies:</h4>
+                    <div id="${project.id}" class="project-content overflow-hidden max-h-0 opacity-0 transition-all duration-500 text-slate-300">
+                        <p class="mb-3 italic">${project.description}</p>
+                        <h4 class="font-semibold text-white mb-2">Impact & Technologies:</h4>
                         <ul class="list-none space-y-2 pl-2">
                             ${project.highlights.map(highlight => `
-                                <li class="flex items-start text-gray-700">
-                                    <i data-lucide="check-circle" class="w-4 h-4 mt-1 mr-2 flex-shrink-0 text-green-600"></i>
+                                <li class="flex items-start text-slate-300">
+                                    <i data-lucide="check-circle" class="w-4 h-4 mt-1 mr-2 flex-shrink-0 text-green-500"></i>
                                     <span>${highlight}</span>
                                 </li>
                             `).join('')}
@@ -375,7 +387,6 @@
                     
                     if (content.classList.contains('max-h-0')) {
                         content.classList.remove('max-h-0', 'opacity-0');
-                        // Use a class that guarantees content fits, even if long
                         content.classList.add('max-h-[1000px]', 'opacity-100'); 
                         icon.classList.add('rotate-180');
                     } else {
