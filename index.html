@@ -1,105 +1,372 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <title>Md Roshan — Portfolio</title>
-  <link rel="stylesheet" href="styles.css" />
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mohd Roshan Hussain | Frontend Engineer Portfolio</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@100..900&display=swap" rel="stylesheet">
+    <!-- Lucide Icons -->
+    <script src="https://unpkg.com/lucide@latest/dist/umd/lucide.js"></script>
+    
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #f3f4f6;
+        }
+        
+        /* Custom Tailwind Configuration - Setting Blue as Primary */
+        .primary-color { color: #0ea5e9; }
+        .primary-bg { background-color: #0ea5e9; }
+        .primary-hover:hover { background-color: #0284c7; }
+        .border-primary { border-color: #0ea5e9; }
+        
+        /* Subtle Geometric Background Pattern */
+        .page-bg {
+            background-image: radial-gradient(#dbeafe 0.8px, transparent 0.8px), radial-gradient(#dbeafe 0.8px, transparent 0.8px);
+            background-size: 20px 20px;
+            background-position: 0 0, 10px 10px;
+        }
+
+        /* Card Hover Effect */
+        .card-lift {
+            transition: all 0.3s ease;
+        }
+        .card-lift:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+        }
+
+        /* Timeline Styling */
+        .timeline-container {
+            position: relative;
+            padding-bottom: 2rem;
+        }
+        .timeline-container::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 50%;
+            bottom: 0;
+            width: 3px;
+            background-color: #d1d5db; /* gray-300 */
+            transform: translateX(-50%);
+        }
+        /* Mobile adjustment for timeline */
+        @media (max-width: 767px) {
+             .timeline-container::before {
+                left: 1.25rem; /* 5 */
+                transform: translateX(0);
+            }
+            .timeline-dot {
+                left: 1rem;
+            }
+            .timeline-content-right {
+                width: 100%;
+                text-align: left;
+            }
+        }
+    </style>
 </head>
-<body>
-  <header class="hero">
-    <div class="wrap">
-      <h1>Md Roshan</h1>
-      <p class="role">Software Engineer &amp; Full‑Stack Developer</p>
-      <p class="contact">
-        <a href="mailto:mdroshan.dev@gmail.com">mdroshan.dev@gmail.com</a>
-        <span class="dot">•</span>
-        <a href="https://github.com/roshan2197" target="_blank" rel="noopener">GitHub</a>
-        <span class="dot">•</span>
-        <a href="https://in.linkedin.com/in/roshan2197" target="_blank" rel="noopener">LinkedIn</a>
-      </p>
-    </div>
-  </header>
+<body class="antialiased page-bg">
 
-  <main class="wrap main">
-    <section id="about">
-      <h2>About</h2>
-      <p>I build reliable, maintainable web applications and tools. I enjoy moving ideas from prototype to production and working across the stack — front end, back end and deployment. This portfolio is based on my resume; phone number intentionally omitted.</p>
-    </section>
+    <!-- DATA -->
+    <script>
+        const resumeData = {
+            name: "Mohd Roshan Hussain",
+            title: "Frontend Engineer (Angular) | Full-Stack Exposure",
+            summary: "Frontend Engineer with expertise in Angular and TypeScript, full-stack exposure in Node.js and MySQL, and hands-on experience building large ERP systems, cross-platform dashboards, improving performance, and delivering end-to-end features while mentoring developers.",
+            contact: {
+                email: "mdroshan.dev@gmail.com",
+                phone: "+917093992360",
+                github: "https://github.com/roshan2197",
+                linkedin: "https://in.linkedin.com/in/roshan2197",
+            },
+            skills: {
+                frontend: ['Angular 11-18', 'TypeScript', 'HTML5', 'CSS3', 'Tailwind CSS', 'React'],
+                backend: ['Node.js', 'PHP', 'RESTful API'],
+                databases: ['MySQL', 'PostgreSQL'],
+                tools: ['VS Code', 'Cursor', 'Postman', 'Git', 'GitHub'],
+                practices: ['Team Management', 'Code Reviews', 'Agile', 'CI/CD', 'Microservices', 'Performance Optimization'],
+            },
+            experience: [
+                {
+                    role: "FrontEnd Engineer",
+                    company: "SaferTek",
+                    dates: "Jul 2023 - Present | Hyderabad",
+                    highlights: [
+                        "Led the migration of a large-scale ERP from Angular 11 to Angular 18, supporting 1000+ business functions and 1 lakh+ users.",
+                        "Rebuilt the entire ERP from scratch using Angular 18 and Tailwind, delivering a modernized architecture, faster performance, and a clean, modern UI.",
+                        "Led a team of 4 and mentored 9+ developers through code reviews, technical guidance, and best practices across Angular and React Native stacks.",
+                        "Improved application performance and reduced network usage by optimising APIs, caching, and data-fetching patterns.",
+                    ]
+                },
+                {
+                    role: "Front End Developer Intern",
+                    company: "SaferTek",
+                    dates: "Aug 2022 - Jun 2023 | Hyderabad",
+                    highlights: [
+                        "Contributed to the ERP project by fixing bugs, adding improvements, and refactoring code.",
+                        "Guided the development of the scheduler component and enhanced reusable modules.",
+                    ]
+                },
+                {
+                    role: "Full Stack Web Developer Intern",
+                    company: "Sahuliyat Kashmir | NGO",
+                    dates: "Dec 2021 - Apr 2022 | Remote",
+                    highlights: [
+                        "Developed and launched kashmirzakat.com, a live fundraising platform supporting large-scale online transactions.",
+                        "Integrated Razorpay for secure payment processing; built components using HTML, Bootstrap, JavaScript, jQuery, PHP, and MySQL.",
+                        "Took end-to-end ownership of development, testing, deployment, and maintenance.",
+                    ]
+                },
+            ],
+            projects: [
+                {
+                    name: "MDS School Management System",
+                    dates: "Jul 2025 - Present",
+                    description: "A full-stack School Management ERP built using Angular 18, Tailwind, Node.js, and MySQL. Migrated from a legacy PHP/HTML setup to a modern, scalable architecture.",
+                    highlights: [
+                        "Covers modules: student records, exams, scheduling, attendance, printable slips.",
+                        "Led the upgrade to a custom Angular component library and infrastructure modernization using AWS and Docker.",
+                        "Implementing key new features including student promotion workflows and role-based access control (RBAC).",
+                    ],
+                    id: "project-mds"
+                }
+            ],
+            education: {
+                institution: "Malla Reddy Engineering College, B.Tech | Computer Science Engineering",
+                dates: "2019-2023 | GPA: 8.1"
+            }
+        };
 
-    <section id="skills">
-      <h2>Skills</h2>
-      <ul class="skills">
-        <li>JavaScript (ES6+), TypeScript</li>
-        <li>React / Next.js</li>
-        <li>Node.js, Express</li>
-        <li>Python, Django / Flask</li>
-        <li>SQL &amp; NoSQL databases</li>
-        <li>HTML5, CSS3, responsive design</li>
-        <li>Git, CI/CD, Docker</li>
-      </ul>
-    </section>
+        function scrollToSection(id) {
+            document.getElementById(id).scrollIntoView({ behavior: 'smooth' });
+        }
+    </script>
+    
+    <!-- Navigation Bar (Fixed for single-page app feel) -->
+    <nav class="sticky top-0 z-50 bg-white shadow-md">
+        <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between items-center h-14">
+                <a href="#" class="text-lg font-bold primary-color hover:text-blue-700 transition-colors">Roshan H.</a>
+                <div class="hidden md:flex space-x-6 text-sm font-medium">
+                    <button onclick="scrollToSection('skills-section')" class="text-gray-600 hover:primary-color transition-colors">Skills</button>
+                    <button onclick="scrollToSection('experience-section')" class="text-gray-600 hover:primary-color transition-colors">Experience</button>
+                    <button onclick="scrollToSection('projects-section')" class="text-gray-600 hover:primary-color transition-colors">Projects</button>
+                    <button onclick="scrollToSection('education-section')" class="text-gray-600 hover:primary-color transition-colors">Education</button>
+                </div>
+            </div>
+        </div>
+    </nav>
 
-    <section id="experience">
-      <h2>Selected Experience</h2>
+    <!-- Header Section -->
+    <header class="bg-gradient-to-r from-blue-600 to-blue-800 text-white p-8 md:p-12 rounded-b-3xl shadow-2xl mb-8">
+        <div class="max-w-4xl mx-auto">
+            <div class="mb-6">
+                <h1 class="text-4xl md:text-5xl font-extrabold tracking-tight mb-2">
+                    Mohd Roshan Hussain
+                </h1>
+                <p class="text-xl md:text-2xl font-light text-blue-200">
+                    Frontend Engineer (Angular) | Full-Stack Exposure
+                </p>
+            </div>
+            
+            <p class="text-lg mt-6 bg-blue-700 p-4 rounded-xl italic border border-blue-600 shadow-inner">
+                "Frontend Engineer with expertise in Angular and TypeScript, full-stack exposure in Node.js and MySQL, and hands-on experience building large ERP systems, cross-platform dashboards, improving performance, and delivering end-to-end features while mentoring developers."
+            </p>
 
-      <article class="job">
-        <h3>Web Developer — Clinicure Healthcare</h3>
-        <p class="meta">Site: <a href="https://www.clinicurehealthcare.com/index-hospital-modern.html" target="_blank" rel="noopener">clinicurehealthcare.com</a></p>
-        <ul>
-          <li>Maintained and improved website performance and UX.</li>
-          <li>Worked on front-end components and responsive layouts.</li>
-        </ul>
-      </article>
+            <!-- Contact Links -->
+            <div class="mt-8 grid grid-cols-2 lg:grid-cols-4 gap-4 text-sm md:text-base">
+                <a href="mailto:mdroshan.dev@gmail.com" class="flex items-center text-blue-100 hover:text-white transition-colors p-2 rounded-lg hover:bg-blue-700" aria-label="Email">
+                    <i data-lucide="mail" class="w-5 h-5 mr-2"></i>
+                    <span class="truncate">mdroshan.dev@gmail.com</span>
+                </a>
+                <a href="tel:+917093992360" class="flex items-center text-blue-100 hover:text-white transition-colors p-2 rounded-lg hover:bg-blue-700" aria-label="Phone">
+                    <i data-lucide="phone" class="w-5 h-5 mr-2"></i>
+                    +917093992360
+                </a>
+                <a href="https://github.com/roshan2197" target="_blank" rel="noopener noreferrer" class="flex items-center text-blue-100 hover:text-white transition-colors p-2 rounded-lg hover:bg-blue-700" aria-label="GitHub">
+                    <i data-lucide="github" class="w-5 h-5 mr-2"></i>
+                    GitHub
+                </a>
+                <a href="https://in.linkedin.com/in/roshan2197" target="_blank" rel="noopener noreferrer" class="flex items-center text-blue-100 hover:text-white transition-colors p-2 rounded-lg hover:bg-blue-700" aria-label="LinkedIn">
+                    <i data-lucide="linkedin" class="w-5 h-5 mr-2"></i>
+                    LinkedIn
+                </a>
+            </div>
+        </div>
+    </header>
 
-      <article class="job">
-        <h3>Website Developer — Sahuliyat Kashmir</h3>
-        <p class="meta">Site: <a href="https://www.sahuliyatkashmir.com/" target="_blank" rel="noopener">sahuliyatkashmir.com</a></p>
-        <ul>
-          <li>Built and deployed content-driven site with modern HTML/CSS and JavaScript.</li>
-          <li>Handled hosting, DNS and content updates.</li>
-        </ul>
-      </article>
-    </section>
+    <!-- Main Content Area -->
+    <main class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
 
-    <section id="projects">
-      <h2>Projects</h2>
-      <div class="grid">
-        <div class="card">
-          <h4>Clinicure — Hospital Website</h4>
-          <p>Modern responsive website for a healthcare provider focusing on accessibility and simple CMS workflows.</p>
-          <p><a href="https://www.clinicurehealthcare.com/index-hospital-modern.html" target="_blank" rel="noopener">View site</a></p>
+        <!-- 1. SKILLS SECTION -->
+        <div id="skills-section" class="mb-12 pt-10 -mt-10">
+            <div class="bg-white p-6 md:p-8 rounded-xl shadow-lg card-lift">
+                <h2 class="text-2xl font-bold mb-6 flex items-center primary-color border-b-2 border-blue-100 pb-2">
+                    <i data-lucide="zap" class="w-6 h-6 mr-3 primary-color"></i>
+                    Technical Expertise
+                </h2>
+                <div id="skills-grid" class="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+                    <!-- Content injected by JavaScript -->
+                </div>
+            </div>
         </div>
 
-        <div class="card">
-          <h4>Sahuliyat Kashmir — Tourism / Business</h4>
-          <p>Marketing site showcasing local services and packages. Improvements included SEO, image optimization and layout fixes.</p>
-          <p><a href="https://www.sahuliyatkashmir.com/" target="_blank" rel="noopener">View site</a></p>
+        <!-- 2. EXPERIENCE SECTION -->
+        <div id="experience-section" class="mb-12 pt-10 -mt-10">
+            <div class="bg-white p-6 md:p-8 rounded-xl shadow-lg card-lift">
+                <h2 class="text-2xl font-bold mb-8 flex items-center primary-color border-b-2 border-blue-100 pb-2">
+                    <i data-lucide="briefcase" class="w-6 h-6 mr-3 primary-color"></i>
+                    Work Experience
+                </h2>
+                <div id="experience-timeline" class="timeline-container">
+                    <!-- Content injected by JavaScript -->
+                </div>
+            </div>
         </div>
 
-        <div class="card">
-          <h4>Open-source &amp; training</h4>
-          <p>See more projects and code on my GitHub profile.</p>
-          <p><a href="https://github.com/roshan2197" target="_blank" rel="noopener">GitHub: roshan2197</a></p>
+        <!-- 3. PROJECTS SECTION -->
+        <div id="projects-section" class="mb-12 pt-10 -mt-10">
+            <div class="bg-white p-6 md:p-8 rounded-xl shadow-lg card-lift">
+                <h2 class="text-2xl font-bold mb-6 flex items-center primary-color border-b-2 border-blue-100 pb-2">
+                    <i data-lucide="terminal" class="w-6 h-6 mr-3 primary-color"></i>
+                    Key Projects
+                </h2>
+                <div id="projects-list">
+                    <!-- Content injected by JavaScript -->
+                </div>
+            </div>
         </div>
-      </div>
-    </section>
 
-    <section id="education">
-      <h2>Education</h2>
-      <p>Graduated in a computer-related discipline. Full resume and transcript details available on request.</p>
-    </section>
+        <!-- 4. EDUCATION SECTION -->
+        <div id="education-section" class="pt-10 -mt-10">
+            <div class="bg-white p-6 md:p-8 rounded-xl shadow-lg card-lift">
+                <h2 class="text-2xl font-bold mb-6 flex items-center primary-color border-b-2 border-blue-100 pb-2">
+                    <i data-lucide="graduation-cap" class="w-6 h-6 mr-3 primary-color"></i>
+                    Education
+                </h2>
+                <div id="education-card" class="flex flex-col sm:flex-row justify-between items-start sm:items-center bg-blue-50 p-4 rounded-lg border-l-4 border-blue-500 shadow-inner">
+                    <p class="text-lg font-medium text-gray-800 mb-2 sm:mb-0">Malla Reddy Engineering College, B.Tech | Computer Science Engineering</p>
+                    <span class="text-sm text-gray-700 bg-white px-3 py-1 rounded-full border border-blue-200">2019-2023 | GPA: 8.1</span>
+                </div>
+            </div>
+        </div>
 
-    <section id="contact">
-      <h2>Contact</h2>
-      <p>If you'd like to talk about a role, project or collaboration, email me at <a href="mailto:mdroshan.dev@gmail.com">mdroshan.dev@gmail.com</a>.</p>
-    </section>
-  </main>
+    </main>
 
-  <footer class="footer">
-    <div class="wrap">
-      <small>&copy; 2025 Md Roshan — built from resume. Phone number intentionally omitted.</small>
-    </div>
-  </footer>
-</body>
-</html>
+    <!-- Footer -->
+    <footer class="bg-gray-800 text-center py-6 mt-12 text-gray-400">
+        <p class="text-sm">
+            Crafted with Angular & Tailwind CSS | <a href="mailto:mdroshan.dev@gmail.com" class="hover:text-blue-400 transition-colors">mdroshan.dev@gmail.com</a>
+        </p>
+    </footer>
+
+    <!-- JavaScript for Dynamic Content Injection and Interactivity -->
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            // Initialize Lucide Icons
+            lucide.createIcons();
+
+            // --- 1. SKILLS SECTION ---
+            const skillsGrid = document.getElementById('skills-grid');
+            const skillsCategories = [
+                { name: 'Frontend', icon: 'code', skills: resumeData.skills.frontend },
+                { name: 'Backend', icon: 'server', skills: resumeData.skills.backend },
+                { name: 'Databases', icon: 'database', skills: resumeData.skills.databases },
+                { name: 'Practices & Concepts', icon: 'users', skills: resumeData.skills.practices },
+                { name: 'Tools & Platforms', icon: 'settings', skills: resumeData.skills.tools },
+            ];
+
+            skillsGrid.innerHTML = skillsCategories.map(cat => `
+                <div class="p-4 border border-gray-100 rounded-lg bg-gray-50 shadow-inner hover:bg-white transition-colors">
+                    <h3 class="text-lg font-semibold mb-3 flex items-center text-gray-800">
+                        <i data-lucide="${cat.icon}" class="w-5 h-5 mr-2 primary-color"></i>
+                        ${cat.name}
+                    </h3>
+                    <div class="flex flex-wrap">
+                        ${cat.skills.map(skill => `
+                            <span class="inline-block primary-bg text-white text-sm font-medium px-4 py-1 rounded-full m-1 shadow-md transition-all primary-hover cursor-default">
+                                ${skill}
+                            </span>
+                        `).join('')}
+                    </div>
+                </div>
+            `).join('');
+
+            // Re-create icons for newly injected content
+            lucide.createIcons();
+
+            // --- 2. EXPERIENCE SECTION ---
+            const experienceTimeline = document.getElementById('experience-timeline');
+            experienceTimeline.innerHTML = resumeData.experience.map((job, index) => {
+                const isOdd = index % 2 !== 0;
+                const flexDirection = isOdd ? 'md:flex-row-reverse' : 'md:flex-row';
+                const contentAlignment = isOdd ? 'md:text-left' : 'md:text-right';
+                const contentPadding = isOdd ? 'md:pl-12 md:border-l md:border-gray-200' : 'md:pr-12';
+                const dotPosition = isOdd ? 'md:left-[calc(50%+4px)]' : 'md:left-[calc(50%-4px)]';
+
+                return `
+                    <!-- Timeline Item ${index + 1} -->
+                    <div class="relative flex group mb-8 ${flexDirection} timeline-item">
+                        
+                        <!-- Content -->
+                        <div class="w-full md:w-1/2 ${contentPadding} ${contentAlignment}">
+                            <h3 class="text-xl font-semibold text-gray-900">${job.role}</h3>
+                            <p class="text-blue-500 font-medium">${job.company}</p>
+                            <p class="text-sm text-gray-500 mb-3">${job.dates}</p>
+                            <ul class="list-none space-y-2 bg-blue-50 p-4 rounded-lg shadow-inner border border-blue-100">
+                                ${job.highlights.map(highlight => `
+                                    <li class="flex items-start text-gray-700">
+                                        <i data-lucide="check-circle" class="w-4 h-4 mt-1 mr-2 flex-shrink-0 text-green-600"></i>
+                                        <span>${highlight}</span>
+                                    </li>
+                                `).join('')}
+                            </ul>
+                        </div>
+
+                        <!-- Dot (Center/Left for mobile) -->
+                        <div class="timeline-dot absolute left-0 top-0 h-full w-10 flex justify-center items-start md:items-center ${dotPosition}">
+                            <div class="w-4 h-4 primary-bg rounded-full ring-4 ring-blue-200 shadow-lg transition-all duration-300 group-hover:scale-125"></div>
+                        </div>
+
+                        <!-- Spacer/Opposite side (Hidden on mobile) -->
+                        <div class="hidden md:block md:w-1/2"></div>
+                    </div>
+                `;
+            }).join('');
+            
+            lucide.createIcons();
+
+            // --- 3. PROJECTS SECTION ---
+            const projectsList = document.getElementById('projects-list');
+            projectsList.innerHTML = resumeData.projects.map(project => `
+                <div class="mb-6 p-4 border border-blue-100 rounded-xl bg-blue-50 shadow-md transition-shadow duration-300 hover:shadow-lg">
+                    <div class="flex justify-between items-center cursor-pointer project-header" data-target="${project.id}">
+                        <h3 class="text-xl font-bold text-blue-800">${project.name}</h3>
+                        <i data-lucide="chevron-down" class="w-5 h-5 text-blue-600 transition-transform project-icon"></i>
+                    </div>
+                    <p class="text-sm text-gray-500 mb-3">${project.dates}</p>
+                    
+                    <div id="${project.id}" class="project-content overflow-hidden max-h-0 opacity-0 transition-all duration-500">
+                        <p class="text-gray-700 mb-3 italic">${project.description}</p>
+                        <h4 class="font-semibold text-gray-800 mb-2">Impact & Technologies:</h4>
+                        <ul class="list-none space-y-2 pl-2">
+                            ${project.highlights.map(highlight => `
+                                <li class="flex items-start text-gray-700">
+                                    <i data-lucide="check-circle" class="w-4 h-4 mt-1 mr-2 flex-shrink-0 text-green-600"></i>
+                                    <span>${highlight}</span>
+                                </li>
+                            `).join('')}
+                        </ul>
+                    </div>
+                </div>
+            `).join('');
+
+            lucide.createIcons();
+
+            // Project Accordion Logic
+            document.querySelectorAll('.project-header').forEach(header => {
+                header.addEventListener('click', function() {
+                    const targetId = this.datase
