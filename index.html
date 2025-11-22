@@ -34,7 +34,6 @@
             background-color: #f1f5f9; /* Fallback for .page-bg */
         }
         
-        /* The main background using the custom deep navy color */
         .page-bg {
             background-color: #0f172a; 
         }
@@ -49,33 +48,64 @@
         }
 
         /* Skills Pill Animation */
+        .skill-pill {
+            transition: all 0.2s ease-in-out;
+        }
         .skill-pill:hover {
             transform: scale(1.05);
             box-shadow: 0 4px 6px -1px rgba(6, 182, 212, 0.5), 0 2px 4px -2px rgba(6, 182, 212, 0.5);
         }
 
-        /* Timeline Styling for contrast */
+        /* --- Timeline Styling (Mobile First) --- */
         .timeline-container {
             position: relative;
         }
+
+        /* Timeline vertical line: Always on the left for mobile/default */
         .timeline-container::before {
             content: '';
             position: absolute;
             top: 0;
-            left: 50%;
+            left: 1.25rem; /* 5: Positioning the line 5 units from the left edge */
             bottom: 0;
             width: 2px;
             background-color: #334155; /* Slate 700 */
-            transform: translateX(-50%);
         }
-        /* Mobile adjustment for timeline */
-        @media (max-width: 767px) {
-             .timeline-container::before {
-                left: 1.25rem;
-                transform: translateX(0);
+        
+        /* Default mobile layout (single column) */
+        .timeline-item {
+            padding-left: 2.5rem; /* Space for the dot */
+            position: relative;
+        }
+
+        /* The dot marker */
+        .timeline-dot {
+            position: absolute;
+            left: 1rem; /* Aligned with the vertical line */
+            top: 0;
+            height: 100%;
+            width: 1rem;
+            display: flex;
+            justify-content: center;
+            align-items: flex-start; /* Start dot at the top of the item */
+        }
+
+        /* Desktop Layout (Two columns) */
+        @media (min-width: 768px) {
+            .timeline-container::before {
+                left: 50%; /* Center the line on desktop */
+                transform: translateX(-50%);
+            }
+            .timeline-item {
+                padding-left: 0; /* Reset padding for desktop */
             }
             .timeline-dot {
-                left: 1rem;
+                left: 50%;
+                transform: translateX(-50%);
+                top: 0.5rem; /* Center dots vertically on desktop */
+                width: auto;
+                height: auto;
+                align-items: center;
             }
         }
     </style>
@@ -157,18 +187,31 @@
         }
     </script>
     
-    <!-- Navigation Bar (Sticky for single-page app feel) -->
+    <!-- Navigation Bar (Sticky and collapsible for mobile) -->
     <nav class="sticky top-0 z-50 bg-custom-card shadow-lg border-b border-slate-700">
         <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="flex justify-between items-center h-14">
                 <a href="#" class="text-xl font-bold text-custom-accent hover:text-cyan-400 transition-colors">Roshan H.</a>
+                <!-- Desktop Navigation -->
                 <div class="hidden md:flex space-x-6 text-sm font-medium">
                     <button onclick="scrollToSection('skills-section')" class="text-custom-light hover:text-custom-accent transition-colors">Skills</button>
                     <button onclick="scrollToSection('experience-section')" class="text-custom-light hover:text-custom-accent transition-colors">Experience</button>
                     <button onclick="scrollToSection('projects-section')" class="text-custom-light hover:text-custom-accent transition-colors">Projects</button>
                     <button onclick="scrollToSection('education-section')" class="text-custom-light hover:text-custom-accent transition-colors">Education</button>
                 </div>
+                <!-- Mobile Menu Button -->
+                <button id="mobile-menu-button" class="md:hidden p-2 rounded-md text-custom-light hover:bg-slate-700" aria-label="Open menu">
+                    <i data-lucide="menu" class="w-6 h-6"></i>
+                </button>
             </div>
+        </div>
+
+        <!-- Mobile Menu Dropdown -->
+        <div id="mobile-menu" class="hidden md:hidden pb-2 border-t border-slate-700">
+            <button onclick="scrollToSection('skills-section'); toggleMenu();" class="block w-full text-left px-4 py-2 text-custom-light hover:bg-slate-700/50">Skills</button>
+            <button onclick="scrollToSection('experience-section'); toggleMenu();" class="block w-full text-left px-4 py-2 text-custom-light hover:bg-slate-700/50">Experience</button>
+            <button onclick="scrollToSection('projects-section'); toggleMenu();" class="block w-full text-left px-4 py-2 text-custom-light hover:bg-slate-700/50">Projects</button>
+            <button onclick="scrollToSection('education-section'); toggleMenu();" class="block w-full text-left px-4 py-2 text-custom-light hover:bg-slate-700/50">Education</button>
         </div>
     </nav>
 
@@ -184,26 +227,26 @@
                 </p>
             </div>
             
-            <p class="text-lg mt-6 bg-slate-800/70 p-4 rounded-xl italic border border-slate-700 text-slate-300">
+            <p class="text-base sm:text-lg mt-6 bg-slate-800/70 p-4 rounded-xl italic border border-slate-700 text-slate-300">
                 "Frontend Engineer with expertise in Angular and TypeScript, full-stack exposure in Node.js and MySQL, and hands-on experience building large ERP systems, cross-platform dashboards, improving performance, and delivering end-to-end features while mentoring developers."
             </p>
 
             <!-- Contact Links -->
-            <div class="mt-8 grid grid-cols-2 lg:grid-cols-4 gap-4 text-sm md:text-base">
+            <div class="mt-8 grid grid-cols-2 lg:grid-cols-4 gap-4 text-xs md:text-base">
                 <a href="mailto:mdroshan.dev@gmail.com" class="flex items-center text-custom-light hover:text-custom-accent transition-colors p-2 rounded-lg hover:bg-slate-700/50" aria-label="Email">
-                    <i data-lucide="mail" class="w-5 h-5 mr-2"></i>
+                    <i data-lucide="mail" class="w-4 h-4 mr-2"></i>
                     <span class="truncate">mdroshan.dev@gmail.com</span>
                 </a>
                 <a href="tel:+917093992360" class="flex items-center text-custom-light hover:text-custom-accent transition-colors p-2 rounded-lg hover:bg-slate-700/50" aria-label="Phone">
-                    <i data-lucide="phone" class="w-5 h-5 mr-2"></i>
+                    <i data-lucide="phone" class="w-4 h-4 mr-2"></i>
                     +917093992360
                 </a>
                 <a href="https://github.com/roshan2197" target="_blank" rel="noopener noreferrer" class="flex items-center text-custom-light hover:text-custom-accent transition-colors p-2 rounded-lg hover:bg-slate-700/50" aria-label="GitHub">
-                    <i data-lucide="github" class="w-5 h-5 mr-2"></i>
+                    <i data-lucide="github" class="w-4 h-4 mr-2"></i>
                     GitHub
                 </a>
                 <a href="https://in.linkedin.com/in/roshan2197" target="_blank" rel="noopener noreferrer" class="flex items-center text-custom-light hover:text-custom-accent transition-colors p-2 rounded-lg hover:bg-slate-700/50" aria-label="LinkedIn">
-                    <i data-lucide="linkedin" class="w-5 h-5 mr-2"></i>
+                    <i data-lucide="linkedin" class="w-4 h-4 mr-2"></i>
                     LinkedIn
                 </a>
             </div>
@@ -220,7 +263,7 @@
                     <i data-lucide="zap" class="w-6 h-6 mr-3 text-custom-accent"></i>
                     Technical Expertise
                 </h2>
-                <div id="skills-grid" class="grid md:grid-cols-2 lg:grid-cols-3 gap-6 text-custom-light">
+                <div id="skills-grid" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 text-custom-light">
                     <!-- Content injected by JavaScript -->
                 </div>
             </div>
@@ -277,9 +320,24 @@
 
     <!-- JavaScript for Dynamic Content Injection and Interactivity -->
     <script>
+        // Function to toggle mobile menu visibility
+        function toggleMenu() {
+            const menu = document.getElementById('mobile-menu');
+            menu.classList.toggle('hidden');
+            const icon = document.querySelector('#mobile-menu-button i');
+            const isMenuOpen = !menu.classList.contains('hidden');
+            
+            if (isMenuOpen) {
+                icon.setAttribute('data-lucide', 'x'); // Change icon to close (X)
+            } else {
+                icon.setAttribute('data-lucide', 'menu'); // Change icon back to menu
+            }
+            lucide.createIcons(); // Re-create icons after changing data-lucide attribute
+        }
+        
         document.addEventListener('DOMContentLoaded', () => {
-            // Initialize Lucide Icons
             lucide.createIcons();
+            document.getElementById('mobile-menu-button').addEventListener('click', toggleMenu);
 
             // --- 1. SKILLS SECTION ---
             const skillsGrid = document.getElementById('skills-grid');
@@ -307,24 +365,32 @@
                 </div>
             `).join('');
 
-            // Re-create icons for newly injected content
             lucide.createIcons();
 
             // --- 2. EXPERIENCE SECTION ---
             const experienceTimeline = document.getElementById('experience-timeline');
             experienceTimeline.innerHTML = resumeData.experience.map((job, index) => {
+                // Mobile: Always 100% width, left text align, no border on item, item is left of line
+                // Desktop: 50% width, alternating right/left text align, border on item, item is next to center line
+
                 const isOdd = index % 2 !== 0;
-                const flexDirection = isOdd ? 'md:flex-row-reverse' : 'md:flex-row';
-                const contentAlignment = isOdd ? 'md:text-left' : 'md:text-right';
-                const contentPadding = isOdd ? 'md:pl-12 md:border-l md:border-slate-700' : 'md:pr-12';
-                const dotPosition = isOdd ? 'md:left-[calc(50%+4px)]' : 'md:left-[calc(50%-4px)]';
+                
+                // Desktop styling classes
+                const desktopAlignment = isOdd ? 'md:text-left' : 'md:text-right';
+                const desktopPadding = isOdd ? 'md:pl-12 md:border-l md:border-slate-700' : 'md:pr-12';
+                const desktopWidth = 'md:w-1/2';
+                const desktopFlexDirection = isOdd ? 'md:flex-row-reverse' : 'md:flex-row';
+
+                // Mobile classes (default)
+                const mobileWidth = 'w-full';
+                const mobileAlignment = 'text-left';
 
                 return `
                     <!-- Timeline Item ${index + 1} -->
-                    <div class="relative flex group mb-8 ${flexDirection} timeline-item">
+                    <div class="flex mb-8 timeline-item ${desktopFlexDirection}">
                         
                         <!-- Content -->
-                        <div class="w-full md:w-1/2 ${contentPadding} ${contentAlignment} text-slate-300">
+                        <div class="${mobileWidth} ${desktopWidth} ${desktopPadding} ${mobileAlignment} ${desktopAlignment} text-slate-300">
                             <h3 class="text-xl font-semibold text-white">${job.role}</h3>
                             <p class="text-custom-accent font-medium">${job.company}</p>
                             <p class="text-sm text-slate-400 mb-3">${job.dates}</p>
@@ -338,12 +404,12 @@
                             </ul>
                         </div>
 
-                        <!-- Dot (Center/Left for mobile) -->
-                        <div class="timeline-dot absolute left-0 top-0 h-full w-10 flex justify-center items-start md:items-center ${dotPosition}">
+                        <!-- Dot (Aligned with the left line on mobile, center line on desktop) -->
+                        <div class="timeline-dot">
                             <div class="w-4 h-4 bg-custom-accent rounded-full ring-4 ring-slate-700 shadow-lg transition-all duration-300 group-hover:scale-125"></div>
                         </div>
 
-                        <!-- Spacer/Opposite side (Hidden on mobile) -->
+                        <!-- Spacer (Hidden on mobile) -->
                         <div class="hidden md:block md:w-1/2"></div>
                     </div>
                 `;
