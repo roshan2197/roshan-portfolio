@@ -369,4 +369,25 @@
             // Project Accordion Logic
             document.querySelectorAll('.project-header').forEach(header => {
                 header.addEventListener('click', function() {
-                    const targetId = this.datase
+                    const targetId = this.dataset.target;
+                    const content = document.getElementById(targetId);
+                    const icon = this.querySelector('.project-icon');
+                    
+                    if (content.classList.contains('max-h-0')) {
+                        content.classList.remove('max-h-0', 'opacity-0');
+                        // Use a class that guarantees content fits, even if long
+                        content.classList.add('max-h-[1000px]', 'opacity-100'); 
+                        icon.classList.add('rotate-180');
+                    } else {
+                        content.classList.add('max-h-0', 'opacity-0');
+                        content.classList.remove('max-h-[1000px]', 'opacity-100');
+                        icon.classList.remove('rotate-180');
+                    }
+                });
+            });
+
+        });
+    </script>
+</body>
+</html>
+
