@@ -4,143 +4,392 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Mohd Roshan Hussain | Frontend Engineer Portfolio</title>
+    <meta name="description" content="Modern portfolio for Mohd Roshan Hussain, Frontend Engineer focused on Angular, TypeScript, and scalable product engineering.">
     <script src="https://cdn.tailwindcss.com"></script>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@100..900&display=swap" rel="stylesheet">
-    <!-- Lucide Icons -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
     <script src="https://unpkg.com/lucide@latest/dist/umd/lucide.js"></script>
-    
     <script>
-        // Customizing Tailwind to use a Deep Indigo theme with Cyan accents
         tailwind.config = {
             theme: {
                 extend: {
                     colors: {
-                        'custom-bg': '#0f172a', // Slate 900 / Deep Navy
-                        'custom-card': '#1e293b', // Slate 800
-                        'custom-accent': '#06b6d4', // Cyan 500
-                        'custom-light': '#cbd5e1', // Slate 300
+                        canvas: '#ecf5f3',
+                        ink: '#122338',
+                        reef: '#0f766e',
+                        reefSoft: '#d6f0ec',
+                        ember: '#ea580c',
+                        emberSoft: '#ffeddc',
+                        line: '#d6e0ea'
+                    },
+                    fontFamily: {
+                        sans: ['Manrope', 'sans-serif'],
+                        display: ['Space Grotesk', 'sans-serif']
                     },
                     boxShadow: {
-                        '3xl': '0 35px 60px -15px rgba(0, 0, 0, 0.4)',
+                        glow: '0 20px 35px -18px rgba(15, 118, 110, 0.45)',
+                        card: '0 14px 32px -24px rgba(18, 35, 56, 0.38)'
                     }
                 }
             }
-        }
+        };
     </script>
-
     <style>
+        :root {
+            color-scheme: light;
+        }
         body {
-            font-family: 'Inter', sans-serif;
-            background-color: #f1f5f9; /* Fallback for .page-bg */
+            background: radial-gradient(circle at 12% -10%, rgba(15, 118, 110, 0.28), transparent 44%),
+                        radial-gradient(circle at 90% 0, rgba(234, 88, 12, 0.18), transparent 30%),
+                        linear-gradient(180deg, #f4faf8 0%, #ecf5f3 55%, #eef4fb 100%);
+            color: #122338;
         }
-        
-        .page-bg {
-            background-color: #0f172a; 
+        html {
+            scroll-behavior: smooth;
         }
-
-        /* Card Hover Effect */
-        .card-lift {
-            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        .grid-surface {
+            background-image: linear-gradient(to right, rgba(18, 35, 56, 0.03) 1px, transparent 1px),
+                              linear-gradient(to bottom, rgba(18, 35, 56, 0.03) 1px, transparent 1px);
+            background-size: 34px 34px;
         }
-        .card-lift:hover {
-            transform: translateY(-8px);
-            box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.2), 0 8px 10px -6px rgba(0, 0, 0, 0.15);
+        .orb {
+            animation: float 8s ease-in-out infinite;
         }
-
-        /* Skills Pill Animation */
-        .skill-pill {
-            transition: all 0.2s ease-in-out;
+        .orb-delay {
+            animation-delay: 1.3s;
         }
-        .skill-pill:hover {
-            transform: scale(1.05);
-            box-shadow: 0 4px 6px -1px rgba(6, 182, 212, 0.5), 0 2px 4px -2px rgba(6, 182, 212, 0.5);
+        @keyframes float {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-10px); }
         }
-
-        /* --- Timeline Styling (Mobile First) --- */
-        .timeline-container {
+        .reveal {
+            opacity: 0;
+            transform: translateY(24px);
+            transition: opacity .65s ease, transform .65s ease;
+        }
+        .reveal.in {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        .chip {
+            transition: transform .2s ease, box-shadow .2s ease, background-color .2s ease;
+        }
+        .chip:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 20px -16px rgba(15, 118, 110, 0.95);
+            background-color: #0f766e;
+            color: white;
+        }
+        .pulse-ring {
             position: relative;
         }
-
-        /* Timeline vertical line: Always on the left for mobile/default */
-        .timeline-container::before {
-            content: '';
+        .pulse-ring::after {
+            content: "";
             position: absolute;
-            top: 0;
-            left: 1.25rem; /* 5: Positioning the line 5 units from the left edge */
-            bottom: 0;
-            width: 2px;
-            background-color: #334155; /* Slate 700 */
+            inset: -6px;
+            border-radius: 9999px;
+            border: 1px solid rgba(15, 118, 110, 0.34);
+            animation: pulse 1.9s ease-out infinite;
         }
-        
-        /* Default mobile layout (single column) */
-        .timeline-item {
-            padding-left: 2.5rem; /* Space for the dot */
+        @keyframes pulse {
+            0% { opacity: 0.7; transform: scale(0.9); }
+            100% { opacity: 0; transform: scale(1.35); }
+        }
+        .filter-pill {
+            border: 1px solid #d6e0ea;
+            background: #ffffff;
+            color: #122338;
+            padding: 0.5rem 0.9rem;
+            border-radius: 9999px;
+            font-size: 0.75rem;
+            font-weight: 700;
+            letter-spacing: 0.02em;
+            transition: all .2s ease;
+        }
+        .filter-pill:hover {
+            border-color: #0f766e;
+            color: #0f766e;
+            transform: translateY(-1px);
+        }
+        .filter-pill.active {
+            border-color: #122338;
+            background: #122338;
+            color: #ffffff;
+            box-shadow: 0 8px 20px -16px rgba(18, 35, 56, 0.9);
+        }
+        .project-shot {
             position: relative;
+            overflow: hidden;
+            background: linear-gradient(145deg, rgba(15, 118, 110, 0.18), rgba(18, 35, 56, 0.08));
         }
-
-        /* The dot marker */
-        .timeline-dot {
+        .project-shot::after {
+            content: "";
             position: absolute;
-            left: 1rem; /* Aligned with the vertical line */
-            top: 0;
-            height: 100%;
-            width: 1rem;
-            display: flex;
-            justify-content: center;
-            align-items: flex-start; /* Start dot at the top of the item */
+            inset: 0;
+            background: radial-gradient(circle at 78% 24%, rgba(234, 88, 12, 0.18), transparent 42%);
+            pointer-events: none;
         }
-
-        /* Desktop Layout (Two columns) */
-        @media (min-width: 768px) {
-            .timeline-container::before {
-                left: 50%; /* Center the line on desktop */
-                transform: translateX(-50%);
-            }
-            .timeline-item {
-                padding-left: 0; /* Reset padding for desktop */
-            }
-            .timeline-dot {
-                left: 50%;
-                transform: translateX(-50%);
-                top: 0.5rem; /* Center dots vertically on desktop */
-                width: auto;
-                height: auto;
-                align-items: center;
-            }
+        .project-list-card {
+            width: 100%;
+            text-align: left;
+            border: 1px solid #d6e0ea;
+            background: rgba(255, 255, 255, 0.88);
+            border-radius: 1rem;
+            padding: 1rem;
+            transition: all .25s ease;
+        }
+        .project-list-card:hover {
+            transform: translateY(-2px);
+            border-color: rgba(15, 118, 110, 0.42);
+            box-shadow: 0 18px 30px -24px rgba(18, 35, 56, 0.48);
+        }
+        .project-list-card.active {
+            border-color: rgba(15, 118, 110, 0.45);
+            background: linear-gradient(160deg, rgba(214, 240, 236, 0.65), rgba(255, 255, 255, 0.95));
+            box-shadow: 0 22px 32px -26px rgba(15, 118, 110, 0.7);
         }
     </style>
 </head>
-<body class="antialiased page-bg">
+<body class="font-sans antialiased">
+    <div class="fixed inset-0 -z-10 grid-surface"></div>
+    <div class="fixed top-16 left-[8%] -z-10 orb h-40 w-40 rounded-full bg-reef/15 blur-2xl"></div>
+    <div class="fixed right-[10%] top-24 -z-10 orb orb-delay h-36 w-36 rounded-full bg-ember/20 blur-2xl"></div>
+    <div class="fixed inset-x-0 top-0 z-[60] h-1 bg-transparent">
+        <div id="scroll-progress" class="h-full w-0 bg-gradient-to-r from-reef via-ink to-ember transition-[width] duration-150"></div>
+    </div>
 
-    <!-- DATA -->
+    <header class="sticky top-0 z-50 border-b border-white/70 bg-white/80 backdrop-blur-xl">
+        <nav class="mx-auto flex w-full max-w-6xl items-center justify-between px-4 py-3 sm:px-6">
+            <a href="#home" class="font-display text-xl font-bold tracking-tight text-ink">Roshan<span class="text-reef">.dev</span></a>
+            <div class="hidden items-center gap-6 text-sm font-semibold text-ink/80 md:flex">
+                <a href="#skills" class="transition hover:text-reef">Skills</a>
+                <a href="#experience" class="transition hover:text-reef">Experience</a>
+                <a href="#projects" class="transition hover:text-reef">Projects</a>
+                <a href="#contact" class="transition hover:text-reef">Contact</a>
+            </div>
+            <button id="mobile-menu-button" class="rounded-xl border border-line bg-white p-2 text-ink md:hidden" aria-label="Open menu">
+                <i data-lucide="menu" class="h-5 w-5"></i>
+            </button>
+        </nav>
+        <div id="mobile-menu" class="mx-4 mb-3 hidden rounded-xl border border-line bg-white p-3 md:hidden">
+            <a href="#skills" class="mobile-link block rounded-lg px-3 py-2 text-sm font-semibold text-ink/85 hover:bg-reefSoft">Skills</a>
+            <a href="#experience" class="mobile-link block rounded-lg px-3 py-2 text-sm font-semibold text-ink/85 hover:bg-reefSoft">Experience</a>
+            <a href="#projects" class="mobile-link block rounded-lg px-3 py-2 text-sm font-semibold text-ink/85 hover:bg-reefSoft">Projects</a>
+            <a href="#contact" class="mobile-link block rounded-lg px-3 py-2 text-sm font-semibold text-ink/85 hover:bg-reefSoft">Contact</a>
+        </div>
+    </header>
+
+    <main class="mx-auto w-full max-w-6xl px-4 pb-16 pt-8 sm:px-6">
+        <section id="home" class="scroll-mt-24 reveal">
+            <div class="grid gap-8 rounded-3xl border border-white/70 bg-white/85 p-6 shadow-card backdrop-blur sm:p-10 lg:grid-cols-5">
+                <div class="lg:col-span-3">
+                    <p class="inline-flex items-center rounded-full border border-reef/20 bg-reefSoft px-3 py-1 text-xs font-bold uppercase tracking-[0.12em] text-reef">
+                        Frontend Engineer | Angular Specialist
+                    </p>
+                    <h1 class="mt-4 bg-gradient-to-r from-ink via-ink to-reef bg-clip-text font-display text-4xl font-bold leading-tight text-transparent sm:text-5xl">
+                        Mohd Roshan Hussain
+                    </h1>
+                    <p class="mt-4 text-base leading-relaxed text-ink/80 sm:text-lg">
+                        I design and ship complex business platforms with clean architecture, fast frontends, and measurable performance gains.
+                        My core stack is Angular + TypeScript with full-stack delivery across Node.js and MySQL.
+                    </p>
+                    <div class="mt-6 flex flex-wrap gap-3">
+                        <a data-resume-link href="#" class="inline-flex items-center gap-2 rounded-xl bg-ink px-5 py-3 text-sm font-bold text-white transition hover:bg-reef">
+                            <i data-lucide="file-text" class="h-4 w-4"></i>
+                            View Resume
+                        </a>
+                        <a href="mailto:mdroshan.dev@gmail.com" class="inline-flex items-center gap-2 rounded-xl border border-line bg-white px-5 py-3 text-sm font-bold text-ink transition hover:border-reef hover:text-reef">
+                            <i data-lucide="mail" class="h-4 w-4"></i>
+                            Hire Me
+                        </a>
+                        <a data-resume-link href="#" download class="inline-flex items-center gap-2 rounded-xl border border-ember/30 bg-emberSoft px-5 py-3 text-sm font-bold text-ember transition hover:bg-ember hover:text-white">
+                            <i data-lucide="download" class="h-4 w-4"></i>
+                            Download Resume
+                        </a>
+                    </div>
+                    <div id="resume-status" class="mt-4 inline-flex rounded-full border border-amber-300 bg-amber-50 px-3 py-1 text-xs font-semibold text-amber-700">
+                        Resume check pending...
+                    </div>
+                </div>
+
+                <div class="rounded-2xl border border-line bg-canvas/90 p-6 lg:col-span-2">
+                    <h2 class="font-display text-lg font-semibold text-ink">Impact Snapshot</h2>
+                    <div id="stats-grid" class="mt-5 grid grid-cols-2 gap-3 text-sm">
+                        <!-- Injected -->
+                    </div>
+                    <div class="mt-6 rounded-xl border border-line bg-white p-4">
+                        <p class="text-xs font-bold uppercase tracking-[0.1em] text-ink/55">Location</p>
+                        <p class="mt-1 text-sm font-semibold text-ink">Hyderabad, India</p>
+                        <p class="mt-3 text-xs font-bold uppercase tracking-[0.1em] text-ink/55">Current Role</p>
+                        <p class="mt-1 text-sm font-semibold text-ink">Frontend Engineer at SaferTek</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="skills" class="scroll-mt-24 pt-12 reveal">
+            <div class="mb-6 flex items-end justify-between">
+                <h2 class="font-display text-3xl font-bold text-ink">Core Stack</h2>
+                <p class="text-sm font-semibold text-ink/55">Modern frontend + product engineering</p>
+            </div>
+            <div id="skills-grid" class="grid gap-4 md:grid-cols-2 lg:grid-cols-3">
+                <!-- Injected -->
+            </div>
+        </section>
+
+        <section id="experience" class="scroll-mt-24 pt-12 reveal">
+            <div class="mb-6 flex items-end justify-between">
+                <h2 class="font-display text-3xl font-bold text-ink">Experience Journey</h2>
+                <p class="text-sm font-semibold text-ink/55">Built for scale, led for velocity</p>
+            </div>
+            <div id="experience-list" class="space-y-5">
+                <!-- Injected -->
+            </div>
+        </section>
+
+        <section id="projects" class="scroll-mt-24 pt-12 reveal">
+            <div class="rounded-3xl border border-line bg-white/70 p-5 shadow-card backdrop-blur sm:p-7">
+                <div class="mb-6 flex flex-wrap items-end justify-between gap-3">
+                    <h2 class="font-display text-3xl font-bold text-ink">Project Showcase</h2>
+                    <p class="text-sm font-semibold text-ink/55">Filter and inspect delivery highlights</p>
+                </div>
+                <div id="project-filters" class="mb-5 flex flex-wrap gap-2">
+                    <!-- Injected -->
+                </div>
+                <div class="grid gap-5 lg:grid-cols-5">
+                    <article id="project-spotlight" class="rounded-2xl border border-line bg-white/92 p-6 shadow-card lg:col-span-3">
+                        <!-- Injected -->
+                    </article>
+                    <aside id="projects-list" class="space-y-3 lg:col-span-2">
+                        <!-- Injected -->
+                    </aside>
+                </div>
+            </div>
+        </section>
+
+        <section id="education" class="scroll-mt-24 pt-12 reveal">
+            <div class="grid gap-5 lg:grid-cols-3">
+                <article class="rounded-2xl border border-line bg-white/85 p-6 shadow-card lg:col-span-2">
+                    <p class="text-xs font-bold uppercase tracking-[0.12em] text-ink/55">Education</p>
+                    <h3 class="mt-2 font-display text-xl font-bold text-ink">Malla Reddy Engineering College</h3>
+                    <p class="mt-1 text-sm font-semibold text-ink/75">B.Tech | Computer Science Engineering</p>
+                    <p class="mt-3 inline-flex rounded-full border border-reef/30 bg-reefSoft px-3 py-1 text-sm font-semibold text-reef">
+                        2019 - 2023 | GPA: 8.1
+                    </p>
+                </article>
+                <article class="rounded-2xl border border-line bg-white/85 p-6 shadow-card">
+                    <p class="text-xs font-bold uppercase tracking-[0.12em] text-ink/55">Currently Building</p>
+                    <ul class="mt-3 space-y-2 text-sm font-medium text-ink/80">
+                        <li class="flex items-start gap-2">
+                            <span class="mt-1 h-2 w-2 rounded-full bg-reef"></span>
+                            Angular 18 architecture with reusable UI system
+                        </li>
+                        <li class="flex items-start gap-2">
+                            <span class="mt-1 h-2 w-2 rounded-full bg-ember"></span>
+                            ERP modules with role-based controls
+                        </li>
+                        <li class="flex items-start gap-2">
+                            <span class="mt-1 h-2 w-2 rounded-full bg-reef"></span>
+                            Performance-focused data loading patterns
+                        </li>
+                    </ul>
+                </article>
+            </div>
+        </section>
+
+        <section id="contact" class="scroll-mt-24 pt-12 reveal">
+            <div class="rounded-3xl border border-line bg-white/90 p-6 shadow-card sm:p-8">
+                <div class="grid gap-6 lg:grid-cols-3">
+                    <div class="lg:col-span-2">
+                        <p class="text-xs font-bold uppercase tracking-[0.12em] text-ink/55">Let's Build</p>
+                        <h2 class="mt-2 font-display text-3xl font-bold text-ink">Open to high-impact frontend roles</h2>
+                        <p class="mt-4 text-sm leading-relaxed text-ink/80">
+                            If you are building a complex product and need a frontend engineer who can own architecture,
+                            performance, and delivery quality, I am available for conversations.
+                        </p>
+                        <div class="mt-6 flex flex-wrap gap-3">
+                            <a href="mailto:mdroshan.dev@gmail.com" class="inline-flex items-center gap-2 rounded-xl bg-reef px-5 py-3 text-sm font-bold text-white shadow-glow transition hover:bg-ink">
+                                <i data-lucide="send" class="h-4 w-4"></i>
+                                Email Me
+                            </a>
+                            <a href="https://in.linkedin.com/in/roshan2197" target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-2 rounded-xl border border-line bg-white px-5 py-3 text-sm font-bold text-ink transition hover:border-reef hover:text-reef">
+                                <i data-lucide="linkedin" class="h-4 w-4"></i>
+                                LinkedIn
+                            </a>
+                            <a href="https://github.com/roshan2197" target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-2 rounded-xl border border-line bg-white px-5 py-3 text-sm font-bold text-ink transition hover:border-reef hover:text-reef">
+                                <i data-lucide="github" class="h-4 w-4"></i>
+                                GitHub
+                            </a>
+                        </div>
+                    </div>
+                    <div class="rounded-2xl border border-reef/25 bg-reefSoft p-5">
+                        <p class="text-xs font-bold uppercase tracking-[0.12em] text-reef">Quick Contact</p>
+                        <ul class="mt-3 space-y-3 text-sm font-semibold text-ink">
+                            <li class="flex items-center gap-2">
+                                <span class="pulse-ring inline-flex h-6 w-6 items-center justify-center rounded-full bg-white text-reef">
+                                    <i data-lucide="mail" class="h-3.5 w-3.5"></i>
+                                </span>
+                                mdroshan.dev@gmail.com
+                            </li>
+                            <li class="flex items-center gap-2">
+                                <span class="inline-flex h-6 w-6 items-center justify-center rounded-full bg-white text-reef">
+                                    <i data-lucide="phone" class="h-3.5 w-3.5"></i>
+                                </span>
+                                +91 7093992360
+                            </li>
+                            <li class="flex items-center gap-2">
+                                <span class="inline-flex h-6 w-6 items-center justify-center rounded-full bg-white text-reef">
+                                    <i data-lucide="map-pin" class="h-3.5 w-3.5"></i>
+                                </span>
+                                Hyderabad, India
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer class="border-t border-white/70 py-6 text-center text-xs font-semibold text-ink/55">
+        Crafted with Tailwind CSS and JavaScript by Mohd Roshan Hussain
+    </footer>
+
     <script>
         const resumeData = {
             name: "Mohd Roshan Hussain",
             title: "Frontend Engineer (Angular) | Full-Stack Exposure",
-            summary: "Frontend Engineer with expertise in Angular and TypeScript, full-stack exposure in Node.js and MySQL, and hands-on experience building large ERP systems, cross-platform dashboards, improving performance, and delivering end-to-end features while mentoring developers.",
+            summary: "Frontend Engineer with expertise in Angular and TypeScript, full-stack exposure in Node.js and MySQL, and hands-on experience building large ERP systems and dashboards while mentoring developers.",
+            resumeUrl: "./resume.pdf",
             contact: {
                 email: "mdroshan.dev@gmail.com",
                 phone: "+917093992360",
                 github: "https://github.com/roshan2197",
-                linkedin: "https://in.linkedin.com/in/roshan2197",
+                linkedin: "https://in.linkedin.com/in/roshan2197"
             },
+            stats: [
+                { label: "ERP Functions", value: "1000+" },
+                { label: "Active Users", value: "1L+" },
+                { label: "Team Led", value: "4 Engineers" },
+                { label: "Mentored", value: "9+ Devs" }
+            ],
             skills: {
-                frontend: ['Angular 11-18', 'TypeScript', 'HTML5', 'CSS3', 'Tailwind CSS', 'React'],
-                backend: ['Node.js', 'PHP', 'RESTful API'],
-                databases: ['MySQL', 'PostgreSQL'],
-                tools: ['VS Code', 'Cursor', 'Postman', 'Git', 'GitHub'],
-                practices: ['Team Management', 'Code Reviews', 'Agile', 'CI/CD', 'Microservices', 'Performance Optimization'],
+                frontend: ["Angular 11-18", "TypeScript", "Tailwind CSS", "React", "Responsive Design", "Component Architecture"],
+                backend: ["Node.js", "PHP", "REST APIs", "Microservices"],
+                databases: ["MySQL", "PostgreSQL", "Data Modeling"],
+                tools: ["Git", "GitHub", "Postman", "VS Code", "Cursor"],
+                engineering: ["Code Reviews", "CI/CD", "Agile Delivery", "Performance Optimization", "Mentorship"]
             },
             experience: [
                 {
-                    role: "FrontEnd Engineer",
+                    role: "Frontend Engineer",
                     company: "SaferTek",
                     dates: "Jul 2023 - Present | Hyderabad",
                     highlights: [
-                        "Led the migration of a large-scale ERP from Angular 11 to Angular 18, supporting 1000+ business functions and 1 lakh+ users.",
-                        "Rebuilt the entire ERP from scratch using Angular 18 and Tailwind, delivering a modernized architecture, faster performance, and a clean, modern UI.",
-                        "Led a team of 4 and mentored 9+ developers through code reviews, technical guidance, and best practices across Angular and React Native stacks.",
-                        "Improved application performance and reduced network usage by optimising APIs, caching, and data-fetching patterns.",
+                        "Led migration from Angular 11 to Angular 18 for a large ERP serving over 1 lakh users.",
+                        "Rebuilt UI architecture with Tailwind and component standards to improve delivery speed.",
+                        "Improved app performance with API and caching optimizations that reduced unnecessary network calls.",
+                        "Led a team of 4 and mentored more than 9 developers through reviews and architecture guidance."
                     ]
                 },
                 {
@@ -148,323 +397,381 @@
                     company: "SaferTek",
                     dates: "Aug 2022 - Jun 2023 | Hyderabad",
                     highlights: [
-                        "Contributed to the ERP project by fixing bugs, adding improvements, and refactoring code.",
-                        "Guided the development of the scheduler component and enhanced reusable modules.",
+                        "Delivered bug fixes and feature improvements across critical ERP modules.",
+                        "Contributed reusable scheduler components that lowered repetitive implementation effort."
                     ]
                 },
                 {
                     role: "Full Stack Web Developer Intern",
-                    company: "Sahuliyat Kashmir | NGO",
+                    company: "Sahuliyat Kashmir (NGO)",
                     dates: "Dec 2021 - Apr 2022 | Remote",
                     highlights: [
-                        "Developed and launched kashmirzakat.com, a live fundraising platform supporting large-scale online transactions.",
-                        "Integrated Razorpay for secure payment processing; built components using HTML, Bootstrap, JavaScript, jQuery, PHP, and MySQL.",
-                        "Took end-to-end ownership of development, testing, deployment, and maintenance.",
+                        "Built and launched kashmirzakat.com with secure donation workflow integration.",
+                        "Owned end-to-end delivery from development and testing to deployment and maintenance."
                     ]
-                },
+                }
             ],
             projects: [
                 {
-                    name: "MDS School Management System",
-                    dates: "Jul 2025 - Present",
-                    description: "A full-stack School Management ERP built using Angular 18, Tailwind, Node.js, and MySQL. Migrated from a legacy PHP/HTML setup to a modern, scalable architecture.",
-                    highlights: [
-                        "Covers modules: student records, exams, scheduling, attendance, printable slips.",
-                        "Led the upgrade to a custom Angular component library and infrastructure modernization using AWS and Docker.",
-                        "Implementing key new features including student promotion workflows and role-based access control (RBAC).",
+                    id: "mds-erp",
+                    name: "MDS School Management ERP",
+                    category: "Full Stack",
+                    status: "In Progress",
+                    period: "Jul 2025 - Present",
+                    stack: ["Angular 18", "Tailwind CSS", "Node.js", "MySQL", "AWS", "Docker"],
+                    summary: "Modernized a legacy PHP/HTML school platform into a scalable full-stack ERP with modular architecture.",
+                    points: [
+                        "Modules include student records, exams, scheduling, attendance, and printable workflows.",
+                        "Introduced reusable component system and stronger deployment foundation.",
+                        "Building promotion and role-based access control features."
                     ],
-                    id: "project-mds"
+                    outcomes: ["Modular architecture", "Reusable UI system", "Role-based workflows"],
+                    link: ""
+                },
+                {
+                    id: "kashmir-zakat",
+                    name: "Kashmir Zakat Platform",
+                    category: "Web Platform",
+                    status: "Live",
+                    period: "2022",
+                    stack: ["JavaScript", "PHP", "MySQL", "Bootstrap", "Razorpay"],
+                    summary: "Donation platform for an NGO with secure online payment flow and live transaction handling.",
+                    points: [
+                        "Implemented payment integration and reliable transaction lifecycle handling.",
+                        "Delivered a lightweight responsive UX for mobile-first donor journeys."
+                    ],
+                    outcomes: ["Payment reliability", "Mobile-first UX", "End-to-end ownership"],
+                    link: "https://kashmirzakat.com"
+                },
+                {
+                    id: "angular-erp-upgrade",
+                    name: "Enterprise Angular ERP Upgrade",
+                    category: "Frontend Platform",
+                    status: "Delivered at Scale",
+                    period: "2023 - Present",
+                    stack: ["Angular 11-18", "TypeScript", "Tailwind CSS", "REST APIs"],
+                    summary: "Led modernization of a large ERP front-end with updated architecture, improved rendering flow, and maintainable design standards.",
+                    points: [
+                        "Restructured shared modules and patterns to support faster feature delivery.",
+                        "Reduced rework by introducing a cleaner component strategy and review process.",
+                        "Supported high-usage workflows with better data-fetching and caching choices."
+                    ],
+                    outcomes: ["Scale-ready frontend", "Faster release cycles", "Higher engineering quality"],
+                    link: "https://github.com/roshan2197"
                 }
-            ],
-            education: {
-                institution: "Malla Reddy Engineering College, B.Tech | Computer Science Engineering",
-                dates: "2019-2023 | GPA: 8.1"
-            }
+            ]
+        };
+        const projectState = {
+            filter: "All",
+            activeProjectId: null
         };
 
-        function scrollToSection(id) {
-            document.getElementById(id).scrollIntoView({ behavior: 'smooth' });
-        }
-    </script>
-    
-    <!-- Navigation Bar (Sticky and collapsible for mobile) -->
-    <nav class="sticky top-0 z-50 bg-custom-card shadow-lg border-b border-slate-700">
-        <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="flex justify-between items-center h-14">
-                <a href="#" class="text-xl font-bold text-custom-accent hover:text-cyan-400 transition-colors">Roshan H.</a>
-                <!-- Desktop Navigation -->
-                <div class="hidden md:flex space-x-6 text-sm font-medium">
-                    <button onclick="scrollToSection('skills-section')" class="text-custom-light hover:text-custom-accent transition-colors">Skills</button>
-                    <button onclick="scrollToSection('experience-section')" class="text-custom-light hover:text-custom-accent transition-colors">Experience</button>
-                    <button onclick="scrollToSection('projects-section')" class="text-custom-light hover:text-custom-accent transition-colors">Projects</button>
-                    <button onclick="scrollToSection('education-section')" class="text-custom-light hover:text-custom-accent transition-colors">Education</button>
-                </div>
-                <!-- Mobile Menu Button -->
-                <button id="mobile-menu-button" class="md:hidden p-2 rounded-md text-custom-light hover:bg-slate-700" aria-label="Open menu">
-                    <i data-lucide="menu" class="w-6 h-6"></i>
-                </button>
-            </div>
-        </div>
-
-        <!-- Mobile Menu Dropdown -->
-        <div id="mobile-menu" class="hidden md:hidden pb-2 border-t border-slate-700">
-            <button onclick="scrollToSection('skills-section'); toggleMenu();" class="block w-full text-left px-4 py-2 text-custom-light hover:bg-slate-700/50">Skills</button>
-            <button onclick="scrollToSection('experience-section'); toggleMenu();" class="block w-full text-left px-4 py-2 text-custom-light hover:bg-slate-700/50">Experience</button>
-            <button onclick="scrollToSection('projects-section'); toggleMenu();" class="block w-full text-left px-4 py-2 text-custom-light hover:bg-slate-700/50">Projects</button>
-            <button onclick="scrollToSection('education-section'); toggleMenu();" class="block w-full text-left px-4 py-2 text-custom-light hover:bg-slate-700/50">Education</button>
-        </div>
-    </nav>
-
-    <!-- Header Section -->
-    <header class="bg-custom-card text-white p-8 md:p-12 shadow-3xl mb-12">
-        <div class="max-w-4xl mx-auto">
-            <div class="mb-6">
-                <h1 class="text-4xl md:text-5xl font-extrabold tracking-tight mb-2">
-                    Mohd Roshan Hussain
-                </h1>
-                <p class="text-xl md:text-2xl font-light text-custom-accent">
-                    Frontend Engineer (Angular) | Full-Stack Exposure
-                </p>
-            </div>
-            
-            <p class="text-base sm:text-lg mt-6 bg-slate-800/70 p-4 rounded-xl italic border border-slate-700 text-slate-300">
-                "Frontend Engineer with expertise in Angular and TypeScript, full-stack exposure in Node.js and MySQL, and hands-on experience building large ERP systems, cross-platform dashboards, improving performance, and delivering end-to-end features while mentoring developers."
-            </p>
-
-            <!-- Contact Links -->
-            <div class="mt-8 grid grid-cols-2 lg:grid-cols-4 gap-4 text-xs md:text-base">
-                <a href="mailto:mdroshan.dev@gmail.com" class="flex items-center text-custom-light hover:text-custom-accent transition-colors p-2 rounded-lg hover:bg-slate-700/50" aria-label="Email">
-                    <i data-lucide="mail" class="w-4 h-4 mr-2"></i>
-                    <span class="truncate">mdroshan.dev@gmail.com</span>
-                </a>
-                <a href="tel:+917093992360" class="flex items-center text-custom-light hover:text-custom-accent transition-colors p-2 rounded-lg hover:bg-slate-700/50" aria-label="Phone">
-                    <i data-lucide="phone" class="w-4 h-4 mr-2"></i>
-                    +917093992360
-                </a>
-                <a href="https://github.com/roshan2197" target="_blank" rel="noopener noreferrer" class="flex items-center text-custom-light hover:text-custom-accent transition-colors p-2 rounded-lg hover:bg-slate-700/50" aria-label="GitHub">
-                    <i data-lucide="github" class="w-4 h-4 mr-2"></i>
-                    GitHub
-                </a>
-                <a href="https://in.linkedin.com/in/roshan2197" target="_blank" rel="noopener noreferrer" class="flex items-center text-custom-light hover:text-custom-accent transition-colors p-2 rounded-lg hover:bg-slate-700/50" aria-label="LinkedIn">
-                    <i data-lucide="linkedin" class="w-4 h-4 mr-2"></i>
-                    LinkedIn
-                </a>
-            </div>
-        </div>
-    </header>
-
-    <!-- Main Content Area -->
-    <main class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 pb-12">
-
-        <!-- 1. SKILLS SECTION -->
-        <div id="skills-section" class="mb-12 pt-10 -mt-10">
-            <div class="bg-custom-card p-6 md:p-8 rounded-xl shadow-lg card-lift border border-slate-700">
-                <h2 class="text-2xl font-bold mb-6 flex items-center text-custom-accent border-b border-slate-700 pb-2">
-                    <i data-lucide="zap" class="w-6 h-6 mr-3 text-custom-accent"></i>
-                    Technical Expertise
-                </h2>
-                <div id="skills-grid" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 text-custom-light">
-                    <!-- Content injected by JavaScript -->
-                </div>
-            </div>
-        </div>
-
-        <!-- 2. EXPERIENCE SECTION -->
-        <div id="experience-section" class="mb-12 pt-10 -mt-10">
-            <div class="bg-custom-card p-6 md:p-8 rounded-xl shadow-lg card-lift border border-slate-700">
-                <h2 class="text-2xl font-bold mb-8 flex items-center text-custom-accent border-b border-slate-700 pb-2">
-                    <i data-lucide="briefcase" class="w-6 h-6 mr-3 text-custom-accent"></i>
-                    Work Experience
-                </h2>
-                <div id="experience-timeline" class="timeline-container">
-                    <!-- Content injected by JavaScript -->
-                </div>
-            </div>
-        </div>
-
-        <!-- 3. PROJECTS SECTION -->
-        <div id="projects-section" class="mb-12 pt-10 -mt-10">
-            <div class="bg-custom-card p-6 md:p-8 rounded-xl shadow-lg card-lift border border-slate-700">
-                <h2 class="text-2xl font-bold mb-6 flex items-center text-custom-accent border-b border-slate-700 pb-2">
-                    <i data-lucide="terminal" class="w-6 h-6 mr-3 text-custom-accent"></i>
-                    Key Projects
-                </h2>
-                <div id="projects-list">
-                    <!-- Content injected by JavaScript -->
-                </div>
-            </div>
-        </div>
-
-        <!-- 4. EDUCATION SECTION -->
-        <div id="education-section" class="pt-10 -mt-10">
-            <div class="bg-custom-card p-6 md:p-8 rounded-xl shadow-lg card-lift border border-slate-700">
-                <h2 class="text-2xl font-bold mb-6 flex items-center text-custom-accent border-b border-slate-700 pb-2">
-                    <i data-lucide="graduation-cap" class="w-6 h-6 mr-3 text-custom-accent"></i>
-                    Education
-                </h2>
-                <div id="education-card" class="flex flex-col sm:flex-row justify-between items-start sm:items-center bg-slate-800 p-4 rounded-lg border-l-4 border-custom-accent shadow-inner text-custom-light">
-                    <p class="text-lg font-medium mb-2 sm:mb-0">Malla Reddy Engineering College, B.Tech | Computer Science Engineering</p>
-                    <span class="text-sm text-slate-400 bg-slate-900 px-3 py-1 rounded-full border border-slate-700">2019-2023 | GPA: 8.1</span>
-                </div>
-            </div>
-        </div>
-
-    </main>
-
-    <!-- Footer -->
-    <footer class="bg-custom-card text-center py-6 mt-12 text-slate-500 border-t border-slate-700">
-        <p class="text-sm">
-            Crafted with Angular & Tailwind CSS | <a href="mailto:mdroshan.dev@gmail.com" class="hover:text-custom-accent transition-colors">mdroshan.dev@gmail.com</a>
-        </p>
-    </footer>
-
-    <!-- JavaScript for Dynamic Content Injection and Interactivity -->
-    <script>
-        // Function to toggle mobile menu visibility
-        function toggleMenu() {
-            const menu = document.getElementById('mobile-menu');
-            menu.classList.toggle('hidden');
-            const icon = document.querySelector('#mobile-menu-button i');
-            const isMenuOpen = !menu.classList.contains('hidden');
-            
-            if (isMenuOpen) {
-                icon.setAttribute('data-lucide', 'x'); // Change icon to close (X)
-            } else {
-                icon.setAttribute('data-lucide', 'menu'); // Change icon back to menu
-            }
-            lucide.createIcons(); // Re-create icons after changing data-lucide attribute
-        }
-        
-        document.addEventListener('DOMContentLoaded', () => {
-            lucide.createIcons();
-            document.getElementById('mobile-menu-button').addEventListener('click', toggleMenu);
-
-            // --- 1. SKILLS SECTION ---
-            const skillsGrid = document.getElementById('skills-grid');
-            const skillsCategories = [
-                { name: 'Frontend', icon: 'code', skills: resumeData.skills.frontend },
-                { name: 'Backend', icon: 'server', skills: resumeData.skills.backend },
-                { name: 'Databases', icon: 'database', skills: resumeData.skills.databases },
-                { name: 'Practices & Concepts', icon: 'users', skills: resumeData.skills.practices },
-                { name: 'Tools & Platforms', icon: 'settings', skills: resumeData.skills.tools },
-            ];
-
-            skillsGrid.innerHTML = skillsCategories.map(cat => `
-                <div class="p-4 border border-slate-700 rounded-lg bg-slate-800 shadow-inner hover:bg-slate-700/50 transition-colors">
-                    <h3 class="text-lg font-semibold mb-3 flex items-center text-slate-200">
-                        <i data-lucide="${cat.icon}" class="w-5 h-5 mr-2 text-custom-accent"></i>
-                        ${cat.name}
-                    </h3>
-                    <div class="flex flex-wrap">
-                        ${cat.skills.map(skill => `
-                            <span class="skill-pill inline-block bg-custom-accent text-slate-900 text-sm font-medium px-4 py-1 rounded-full m-1 shadow-md transition-all cursor-default hover:bg-cyan-400">
-                                ${skill}
-                            </span>
-                        `).join('')}
-                    </div>
+        function renderStats() {
+            const statsGrid = document.getElementById('stats-grid');
+            statsGrid.innerHTML = resumeData.stats.map(stat => `
+                <div class="rounded-xl border border-line bg-white p-3">
+                    <p class="text-[11px] font-bold uppercase tracking-[0.12em] text-ink/50">${stat.label}</p>
+                    <p class="mt-1 font-display text-lg font-bold text-ink">${stat.value}</p>
                 </div>
             `).join('');
+        }
 
-            lucide.createIcons();
+        function renderSkills() {
+            const skillsGrid = document.getElementById('skills-grid');
+            const categories = [
+                { title: 'Frontend', icon: 'layout-template', list: resumeData.skills.frontend },
+                { title: 'Backend', icon: 'server', list: resumeData.skills.backend },
+                { title: 'Databases', icon: 'database', list: resumeData.skills.databases },
+                { title: 'Tools', icon: 'wrench', list: resumeData.skills.tools },
+                { title: 'Engineering', icon: 'sparkles', list: resumeData.skills.engineering }
+            ];
 
-            // --- 2. EXPERIENCE SECTION ---
-            const experienceTimeline = document.getElementById('experience-timeline');
-            experienceTimeline.innerHTML = resumeData.experience.map((job, index) => {
-                // Mobile: Always 100% width, left text align, no border on item, item is left of line
-                // Desktop: 50% width, alternating right/left text align, border on item, item is next to center line
-
-                const isOdd = index % 2 !== 0;
-                
-                // Desktop styling classes
-                const desktopAlignment = isOdd ? 'md:text-left' : 'md:text-right';
-                const desktopPadding = isOdd ? 'md:pl-12 md:border-l md:border-slate-700' : 'md:pr-12';
-                const desktopWidth = 'md:w-1/2';
-                const desktopFlexDirection = isOdd ? 'md:flex-row-reverse' : 'md:flex-row';
-
-                // Mobile classes (default)
-                const mobileWidth = 'w-full';
-                const mobileAlignment = 'text-left';
-
-                return `
-                    <!-- Timeline Item ${index + 1} -->
-                    <div class="flex mb-8 timeline-item ${desktopFlexDirection}">
-                        
-                        <!-- Content -->
-                        <div class="${mobileWidth} ${desktopWidth} ${desktopPadding} ${mobileAlignment} ${desktopAlignment} text-slate-300">
-                            <h3 class="text-xl font-semibold text-white">${job.role}</h3>
-                            <p class="text-custom-accent font-medium">${job.company}</p>
-                            <p class="text-sm text-slate-400 mb-3">${job.dates}</p>
-                            <ul class="list-none space-y-2 bg-slate-800/50 p-4 rounded-lg shadow-inner border border-slate-700">
-                                ${job.highlights.map(highlight => `
-                                    <li class="flex items-start text-slate-300">
-                                        <i data-lucide="check-circle" class="w-4 h-4 mt-1 mr-2 flex-shrink-0 text-green-500"></i>
-                                        <span>${highlight}</span>
-                                    </li>
-                                `).join('')}
-                            </ul>
-                        </div>
-
-                        <!-- Dot (Aligned with the left line on mobile, center line on desktop) -->
-                        <div class="timeline-dot">
-                            <div class="w-4 h-4 bg-custom-accent rounded-full ring-4 ring-slate-700 shadow-lg transition-all duration-300 group-hover:scale-125"></div>
-                        </div>
-
-                        <!-- Spacer (Hidden on mobile) -->
-                        <div class="hidden md:block md:w-1/2"></div>
+            skillsGrid.innerHTML = categories.map((category, index) => `
+                <article class="reveal rounded-2xl border border-line bg-white/85 p-5 shadow-card" style="transition-delay:${index * 75}ms;">
+                    <h3 class="flex items-center gap-2 font-display text-lg font-semibold text-ink">
+                        <span class="inline-flex h-8 w-8 items-center justify-center rounded-lg bg-reefSoft text-reef">
+                            <i data-lucide="${category.icon}" class="h-4 w-4"></i>
+                        </span>
+                        ${category.title}
+                    </h3>
+                    <div class="mt-4 flex flex-wrap gap-2">
+                        ${category.list.map(skill => `<span class="chip rounded-full border border-line bg-canvas px-3 py-1 text-xs font-semibold text-ink/80">${skill}</span>`).join('')}
                     </div>
-                `;
-            }).join('');
-            
-            lucide.createIcons();
+                </article>
+            `).join('');
+        }
 
-            // --- 3. PROJECTS SECTION ---
+        function renderExperience() {
+            const experienceList = document.getElementById('experience-list');
+            experienceList.innerHTML = resumeData.experience.map((job, index) => `
+                <article class="reveal rounded-2xl border border-line bg-white/90 p-6 shadow-card" style="transition-delay:${index * 80}ms;">
+                    <div class="flex flex-wrap items-start justify-between gap-3">
+                        <div>
+                            <h3 class="font-display text-xl font-bold text-ink">${job.role}</h3>
+                            <p class="text-sm font-semibold text-reef">${job.company}</p>
+                        </div>
+                        <p class="rounded-full border border-line bg-canvas px-3 py-1 text-xs font-semibold text-ink/65">${job.dates}</p>
+                    </div>
+                    <ul class="mt-4 space-y-2 text-sm text-ink/80">
+                        ${job.highlights.map(point => `
+                            <li class="flex items-start gap-2">
+                                <i data-lucide="check-circle-2" class="mt-0.5 h-4 w-4 shrink-0 text-reef"></i>
+                                <span>${point}</span>
+                            </li>
+                        `).join('')}
+                    </ul>
+                </article>
+            `).join('');
+        }
+
+        function getFilteredProjects() {
+            if (projectState.filter === "All") {
+                return resumeData.projects;
+            }
+
+            return resumeData.projects.filter(project => project.category === projectState.filter);
+        }
+
+        function renderProjectFilters() {
+            const projectFilters = document.getElementById('project-filters');
+            const categories = ["All", ...new Set(resumeData.projects.map(project => project.category))];
+
+            projectFilters.innerHTML = categories.map(category => `
+                <button
+                    type="button"
+                    data-filter="${category}"
+                    class="filter-pill ${projectState.filter === category ? 'active' : ''}"
+                >
+                    ${category}
+                </button>
+            `).join('');
+
+            projectFilters.querySelectorAll('[data-filter]').forEach(button => {
+                button.addEventListener('click', () => {
+                    projectState.filter = button.dataset.filter;
+                    const filtered = getFilteredProjects();
+                    projectState.activeProjectId = filtered.length ? filtered[0].id : null;
+                    renderProjects();
+                });
+            });
+        }
+
+        function renderProjects() {
             const projectsList = document.getElementById('projects-list');
-            projectsList.innerHTML = resumeData.projects.map(project => `
-                <div class="mb-6 p-4 border border-slate-700 rounded-xl bg-slate-800 shadow-md transition-shadow duration-300 hover:shadow-lg">
-                    <div class="flex justify-between items-center cursor-pointer project-header" data-target="${project.id}">
-                        <h3 class="text-xl font-bold text-custom-accent">${project.name}</h3>
-                        <i data-lucide="chevron-down" class="w-5 h-5 text-custom-accent transition-transform project-icon"></i>
-                    </div>
-                    <p class="text-sm text-slate-400 mb-3">${project.dates}</p>
-                    
-                    <div id="${project.id}" class="project-content overflow-hidden max-h-0 opacity-0 transition-all duration-500 text-slate-300">
-                        <p class="mb-3 italic">${project.description}</p>
-                        <h4 class="font-semibold text-white mb-2">Impact & Technologies:</h4>
-                        <ul class="list-none space-y-2 pl-2">
-                            ${project.highlights.map(highlight => `
-                                <li class="flex items-start text-slate-300">
-                                    <i data-lucide="check-circle" class="w-4 h-4 mt-1 mr-2 flex-shrink-0 text-green-500"></i>
-                                    <span>${highlight}</span>
+            const projectSpotlight = document.getElementById('project-spotlight');
+
+            renderProjectFilters();
+            const filteredProjects = getFilteredProjects();
+
+            if (!filteredProjects.length) {
+                projectSpotlight.innerHTML = '<p class="text-sm font-semibold text-ink/70">No projects available for this filter.</p>';
+                projectsList.innerHTML = '';
+                return;
+            }
+
+            const hasActive = filteredProjects.some(project => project.id === projectState.activeProjectId);
+            if (!projectState.activeProjectId || !hasActive) {
+                projectState.activeProjectId = filteredProjects[0].id;
+            }
+
+            const activeProject = filteredProjects.find(project => project.id === projectState.activeProjectId) || filteredProjects[0];
+            const projectLink = activeProject.link
+                ? `<a href="${activeProject.link}" target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-2 rounded-xl bg-ink px-4 py-2 text-xs font-bold text-white transition hover:bg-reef">
+                        <i data-lucide="arrow-up-right" class="h-4 w-4"></i>
+                        Open Project
+                   </a>`
+                : `<span class="inline-flex items-center rounded-xl border border-line bg-canvas px-4 py-2 text-xs font-bold text-ink/65">Private Project</span>`;
+
+            projectSpotlight.innerHTML = `
+                <div class="project-shot rounded-2xl border border-line p-5">
+                    <div class="relative z-10">
+                        <div class="mb-4 flex flex-wrap items-start justify-between gap-3">
+                            <div>
+                                <p class="text-xs font-bold uppercase tracking-[0.12em] text-ink/55">${activeProject.category}</p>
+                                <h3 class="mt-1 font-display text-2xl font-bold text-ink">${activeProject.name}</h3>
+                            </div>
+                            <span class="inline-flex rounded-full border border-reef/30 bg-reefSoft px-3 py-1 text-xs font-bold text-reef">${activeProject.status}</span>
+                        </div>
+                        <div class="mb-4 flex flex-wrap items-center gap-2 text-xs font-semibold text-ink/70">
+                            <span class="inline-flex items-center gap-1 rounded-full border border-line bg-white px-3 py-1">
+                                <i data-lucide="calendar" class="h-3.5 w-3.5"></i>
+                                ${activeProject.period}
+                            </span>
+                            ${activeProject.outcomes.map(outcome => `
+                                <span class="inline-flex items-center rounded-full border border-line bg-white px-3 py-1">${outcome}</span>
+                            `).join('')}
+                        </div>
+                        <p class="text-sm leading-relaxed text-ink/80">${activeProject.summary}</p>
+                        <div class="mt-4 flex flex-wrap gap-2">
+                            ${activeProject.stack.map(tech => `<span class="rounded-full bg-emberSoft px-3 py-1 text-xs font-bold text-ember">${tech}</span>`).join('')}
+                        </div>
+                        <ul class="mt-4 space-y-2 text-sm text-ink/80">
+                            ${activeProject.points.map(point => `
+                                <li class="flex items-start gap-2">
+                                    <i data-lucide="check-circle-2" class="mt-0.5 h-4 w-4 shrink-0 text-reef"></i>
+                                    <span>${point}</span>
                                 </li>
                             `).join('')}
                         </ul>
+                        <div class="mt-5">
+                            ${projectLink}
+                        </div>
                     </div>
                 </div>
-            `).join('');
+            `;
 
-            lucide.createIcons();
+            projectsList.innerHTML = filteredProjects.map(project => {
+                const activeClass = project.id === activeProject.id ? 'active' : '';
+                const statusTone = project.status === 'Live'
+                    ? 'text-emerald-700 bg-emerald-50 border-emerald-200'
+                    : 'text-ink/75 bg-white border-line';
 
-            // Project Accordion Logic
-            document.querySelectorAll('.project-header').forEach(header => {
-                header.addEventListener('click', function() {
-                    const targetId = this.dataset.target;
-                    const content = document.getElementById(targetId);
-                    const icon = this.querySelector('.project-icon');
-                    
-                    if (content.classList.contains('max-h-0')) {
-                        content.classList.remove('max-h-0', 'opacity-0');
-                        content.classList.add('max-h-[1000px]', 'opacity-100'); 
-                        icon.classList.add('rotate-180');
-                    } else {
-                        content.classList.add('max-h-0', 'opacity-0');
-                        content.classList.remove('max-h-[1000px]', 'opacity-100');
-                        icon.classList.remove('rotate-180');
-                    }
+                return `
+                    <button type="button" data-project-id="${project.id}" class="project-list-card ${activeClass}">
+                        <div class="flex items-start justify-between gap-2">
+                            <div>
+                                <h4 class="font-display text-lg font-bold text-ink">${project.name}</h4>
+                                <p class="mt-1 text-xs font-semibold uppercase tracking-[0.1em] text-ink/55">${project.period}</p>
+                            </div>
+                            <span class="rounded-full border px-2.5 py-1 text-[11px] font-bold ${statusTone}">${project.status}</span>
+                        </div>
+                        <p class="mt-2 text-sm text-ink/75">${project.summary}</p>
+                        <div class="mt-3 flex flex-wrap gap-1.5">
+                            ${project.stack.slice(0, 3).map(tech => `<span class="rounded-full bg-canvas px-2.5 py-1 text-[11px] font-bold text-ink/70">${tech}</span>`).join('')}
+                        </div>
+                    </button>
+                `;
+            }).join('');
+
+            projectsList.querySelectorAll('[data-project-id]').forEach(button => {
+                button.addEventListener('click', () => {
+                    projectState.activeProjectId = button.dataset.projectId;
+                    renderProjects();
                 });
             });
 
+            lucide.createIcons();
+        }
+
+        function initScrollProgress() {
+            const progress = document.getElementById('scroll-progress');
+            const update = () => {
+                const scrollableHeight = document.documentElement.scrollHeight - window.innerHeight;
+                const progressValue = scrollableHeight > 0 ? (window.scrollY / scrollableHeight) * 100 : 0;
+                progress.style.width = `${progressValue}%`;
+            };
+
+            update();
+            window.addEventListener('scroll', update, { passive: true });
+            window.addEventListener('resize', update);
+        }
+
+        function initMobileMenu() {
+            const menuButton = document.getElementById('mobile-menu-button');
+            const menu = document.getElementById('mobile-menu');
+            const mobileLinks = document.querySelectorAll('.mobile-link');
+
+            menuButton.addEventListener('click', () => {
+                menu.classList.toggle('hidden');
+                const icon = menuButton.querySelector('i');
+                icon.setAttribute('data-lucide', menu.classList.contains('hidden') ? 'menu' : 'x');
+                lucide.createIcons();
+            });
+
+            mobileLinks.forEach(link => {
+                link.addEventListener('click', () => {
+                    menu.classList.add('hidden');
+                    const icon = menuButton.querySelector('i');
+                    icon.setAttribute('data-lucide', 'menu');
+                    lucide.createIcons();
+                });
+            });
+        }
+
+        function setResumeStatus(type, text) {
+            const status = document.getElementById('resume-status');
+            status.className = 'mt-4 inline-flex rounded-full border px-3 py-1 text-xs font-semibold';
+
+            if (type === 'ok') {
+                status.classList.add('border-emerald-300', 'bg-emerald-50', 'text-emerald-700');
+            } else if (type === 'warn') {
+                status.classList.add('border-amber-300', 'bg-amber-50', 'text-amber-700');
+            } else {
+                status.classList.add('border-rose-300', 'bg-rose-50', 'text-rose-700');
+            }
+
+            status.textContent = text;
+        }
+
+        function disableResumeLinks() {
+            const links = document.querySelectorAll('[data-resume-link]');
+            links.forEach(link => {
+                link.setAttribute('href', '#');
+                link.setAttribute('aria-disabled', 'true');
+                link.classList.add('pointer-events-none', 'opacity-60');
+            });
+        }
+
+        async function checkResumeLink() {
+            const links = document.querySelectorAll('[data-resume-link]');
+
+            if (!resumeData.resumeUrl || resumeData.resumeUrl.trim() === '') {
+                disableResumeLinks();
+                setResumeStatus('error', 'Resume URL missing. Set resumeData.resumeUrl in index.html.');
+                return;
+            }
+
+            links.forEach(link => {
+                link.setAttribute('href', resumeData.resumeUrl);
+                link.setAttribute('target', '_blank');
+                link.setAttribute('rel', 'noopener noreferrer');
+                link.removeAttribute('aria-disabled');
+                link.classList.remove('pointer-events-none', 'opacity-60');
+            });
+
+            if (window.location.protocol === 'file:') {
+                setResumeStatus('warn', 'Resume path set. Serve via local server to verify file availability.');
+                return;
+            }
+
+            try {
+                const response = await fetch(resumeData.resumeUrl, { method: 'HEAD', cache: 'no-store' });
+                if (response.ok) {
+                    setResumeStatus('ok', 'Resume link verified and ready.');
+                } else {
+                    disableResumeLinks();
+                    setResumeStatus('error', `Resume not found at ${resumeData.resumeUrl}.`);
+                }
+            } catch (error) {
+                setResumeStatus('warn', 'Could not verify resume automatically. Check network/server path.');
+            }
+        }
+
+        function initReveal() {
+            const elements = document.querySelectorAll('.reveal');
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('in');
+                        observer.unobserve(entry.target);
+                    }
+                });
+            }, { threshold: 0.15 });
+
+            elements.forEach(item => observer.observe(item));
+        }
+
+        document.addEventListener('DOMContentLoaded', async () => {
+            renderStats();
+            renderSkills();
+            renderExperience();
+            renderProjects();
+            initMobileMenu();
+            initReveal();
+            initScrollProgress();
+            await checkResumeLink();
+            lucide.createIcons();
         });
     </script>
 </body>
 </html>
-
