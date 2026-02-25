@@ -40,13 +40,68 @@
             color-scheme: light;
         }
         body {
-            background: radial-gradient(circle at 12% -10%, rgba(15, 118, 110, 0.28), transparent 44%),
-                        radial-gradient(circle at 90% 0, rgba(234, 88, 12, 0.18), transparent 30%),
-                        linear-gradient(180deg, #f4faf8 0%, #ecf5f3 55%, #eef4fb 100%);
+            background: #edf5f7;
             color: #122338;
+            overflow-x: hidden;
         }
         html {
             scroll-behavior: smooth;
+        }
+        .bg-layer {
+            position: absolute;
+            inset: -18%;
+            pointer-events: none;
+        }
+        .bg-aurora {
+            background:
+                radial-gradient(circle at 20% 24%, rgba(15, 118, 110, 0.42), transparent 42%),
+                radial-gradient(circle at 78% 18%, rgba(234, 88, 12, 0.36), transparent 38%),
+                radial-gradient(circle at 62% 78%, rgba(30, 64, 175, 0.26), transparent 45%);
+            filter: blur(36px);
+            animation: auroraDriftA 18s ease-in-out infinite alternate;
+        }
+        .bg-aurora-2 {
+            background:
+                conic-gradient(from 40deg at 40% 55%, rgba(6, 182, 212, 0.28), rgba(15, 118, 110, 0.12), rgba(249, 115, 22, 0.22), rgba(6, 182, 212, 0.28));
+            opacity: 0.7;
+            filter: blur(56px);
+            animation: auroraSpin 32s linear infinite;
+        }
+        .bg-vignette {
+            inset: 0;
+            background: radial-gradient(circle at center, transparent 48%, rgba(15, 23, 42, 0.08) 100%);
+        }
+        .bg-noise {
+            inset: 0;
+            opacity: 0.14;
+            background-image:
+                radial-gradient(rgba(255, 255, 255, 0.8) 0.6px, transparent 0.8px),
+                radial-gradient(rgba(15, 23, 42, 0.3) 0.6px, transparent 0.8px);
+            background-size: 3px 3px, 4px 4px;
+            background-position: 0 0, 1px 1px;
+            mix-blend-mode: soft-light;
+        }
+        @keyframes auroraDriftA {
+            0% {
+                transform: translate3d(-5%, -3%, 0) scale(1);
+            }
+            50% {
+                transform: translate3d(4%, 3%, 0) scale(1.04);
+            }
+            100% {
+                transform: translate3d(-3%, 6%, 0) scale(0.98);
+            }
+        }
+        @keyframes auroraSpin {
+            0% {
+                transform: rotate(0deg) scale(1);
+            }
+            50% {
+                transform: rotate(180deg) scale(1.06);
+            }
+            100% {
+                transform: rotate(360deg) scale(1);
+            }
         }
         .grid-surface {
             background-image: linear-gradient(to right, rgba(18, 35, 56, 0.03) 1px, transparent 1px),
@@ -149,12 +204,254 @@
             background: linear-gradient(160deg, rgba(214, 240, 236, 0.65), rgba(255, 255, 255, 0.95));
             box-shadow: 0 22px 32px -26px rgba(15, 118, 110, 0.7);
         }
+        .terminal-box {
+            border: 1px solid rgba(15, 118, 110, 0.3);
+            background: linear-gradient(150deg, rgba(18, 35, 56, 0.97), rgba(15, 118, 110, 0.82));
+            box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.06), 0 18px 28px -24px rgba(18, 35, 56, 0.8);
+        }
+        .theme-toggle-btn {
+            background: linear-gradient(135deg, #122338 0%, #0f766e 100%);
+            color: #ffffff;
+            border: 1px solid rgba(15, 118, 110, 0.35);
+            box-shadow: 0 14px 22px -18px rgba(18, 35, 56, 0.8);
+        }
+        .theme-toggle-btn:hover {
+            transform: translateY(-1px);
+            box-shadow: 0 18px 30px -20px rgba(18, 35, 56, 0.9);
+        }
+        .theme-fab {
+            position: fixed;
+            right: 1rem;
+            bottom: 1rem;
+            z-index: 70;
+            border-radius: 9999px;
+            padding: 0.7rem 0.95rem;
+        }
+        .hero-shell {
+            position: relative;
+            overflow: hidden;
+            isolation: isolate;
+        }
+        .hero-shell::before {
+            content: "";
+            position: absolute;
+            inset: -20% -30%;
+            background: linear-gradient(115deg, transparent 30%, rgba(255, 255, 255, 0.45) 50%, transparent 70%);
+            transform: translateX(-60%) rotate(6deg);
+            animation: sweep 9s ease-in-out infinite;
+            pointer-events: none;
+            z-index: 0;
+        }
+        .hero-shell > * {
+            position: relative;
+            z-index: 1;
+        }
+        @keyframes sweep {
+            0%, 100% {
+                transform: translateX(-64%) rotate(6deg);
+                opacity: 0;
+            }
+            45% {
+                transform: translateX(-8%) rotate(6deg);
+                opacity: 0.42;
+            }
+            55% {
+                transform: translateX(12%) rotate(6deg);
+                opacity: 0.22;
+            }
+        }
+        .pulse-dot {
+            position: relative;
+        }
+        .pulse-dot::after {
+            content: "";
+            position: absolute;
+            inset: -5px;
+            border-radius: 9999px;
+            border: 1px solid rgba(255, 255, 255, 0.45);
+            animation: ping 2s ease-out infinite;
+        }
+        @keyframes ping {
+            0% {
+                opacity: 0.65;
+                transform: scale(0.9);
+            }
+            100% {
+                opacity: 0;
+                transform: scale(1.5);
+            }
+        }
+        .terminal-line {
+            font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
+        }
+        .type-caret {
+            display: inline-block;
+            width: 0.5rem;
+            height: 1rem;
+            margin-left: 0.2rem;
+            background: #5eead4;
+            animation: blink 0.95s step-end infinite;
+            vertical-align: -2px;
+        }
+        @keyframes blink {
+            50% { opacity: 0; }
+        }
+        .spotlight-enter {
+            animation: spotlightIn .42s ease;
+        }
+        @keyframes spotlightIn {
+            from { opacity: 0; transform: translateY(12px) scale(0.99); }
+            to { opacity: 1; transform: translateY(0) scale(1); }
+        }
+        .shimmer-band {
+            position: absolute;
+            top: -130%;
+            bottom: -130%;
+            width: 42%;
+            transform: rotate(17deg);
+            background: linear-gradient(to right, transparent 0%, rgba(255, 255, 255, 0.26) 50%, transparent 100%);
+            animation: shimmer 5s linear infinite;
+            pointer-events: none;
+        }
+        @keyframes shimmer {
+            from { left: -45%; }
+            to { left: 125%; }
+        }
+        @media (prefers-reduced-motion: reduce) {
+            * {
+                animation-duration: 0.01ms !important;
+                animation-iteration-count: 1 !important;
+                transition-duration: 0.01ms !important;
+            }
+            html {
+                scroll-behavior: auto;
+            }
+        }
+        body,
+        header,
+        nav,
+        section,
+        article,
+        aside,
+        footer,
+        button,
+        a,
+        div,
+        span {
+            transition: background-color .3s ease, border-color .3s ease, color .3s ease, box-shadow .3s ease;
+        }
+        body.dark-theme {
+            background: #07131f;
+            color: #e8f1fb;
+        }
+        body.dark-theme .bg-aurora {
+            opacity: 0.85;
+            filter: blur(52px);
+        }
+        body.dark-theme .bg-aurora-2 {
+            opacity: 0.62;
+            mix-blend-mode: screen;
+        }
+        body.dark-theme .bg-vignette {
+            background: radial-gradient(circle at center, transparent 42%, rgba(0, 0, 0, 0.45) 100%);
+        }
+        body.dark-theme .bg-noise {
+            opacity: 0.11;
+        }
+        body.dark-theme .grid-surface {
+            background-image: linear-gradient(to right, rgba(148, 163, 184, 0.08) 1px, transparent 1px),
+                              linear-gradient(to bottom, rgba(148, 163, 184, 0.08) 1px, transparent 1px);
+            opacity: 0.55;
+        }
+        body.dark-theme [class*="bg-white"] {
+            background-color: rgba(7, 16, 28, 0.9) !important;
+        }
+        body.dark-theme [class*="bg-canvas"] {
+            background-color: rgba(14, 27, 42, 0.92) !important;
+        }
+        body.dark-theme [class*="bg-reefSoft"] {
+            background-color: rgba(20, 184, 166, 0.2) !important;
+        }
+        body.dark-theme [class*="bg-emberSoft"] {
+            background-color: rgba(249, 115, 22, 0.22) !important;
+        }
+        body.dark-theme [class*="border-line"] {
+            border-color: rgba(148, 163, 184, 0.28) !important;
+        }
+        body.dark-theme [class*="border-white/70"] {
+            border-color: rgba(148, 163, 184, 0.22) !important;
+        }
+        body.dark-theme [class*="text-ink"] {
+            color: #ecf4ff !important;
+        }
+        body.dark-theme [class*="text-ink/5"],
+        body.dark-theme [class*="text-ink/6"] {
+            color: rgba(194, 211, 232, 0.78) !important;
+        }
+        body.dark-theme [class*="text-ink/7"],
+        body.dark-theme [class*="text-ink/8"] {
+            color: rgba(224, 235, 247, 0.9) !important;
+        }
+        body.dark-theme [class*="text-reef"] {
+            color: #5eead4 !important;
+        }
+        body.dark-theme [class*="text-ember"] {
+            color: #fdba74 !important;
+        }
+        body.dark-theme [class*="bg-ink"] {
+            background-color: #0f766e !important;
+        }
+        body.dark-theme .hero-name {
+            background-image: linear-gradient(90deg, #f8fbff 0%, #bae6fd 45%, #5eead4 100%) !important;
+        }
+        body.dark-theme .filter-pill {
+            border-color: rgba(148, 163, 184, 0.35);
+            background: rgba(12, 24, 39, 0.88);
+            color: #d7e5f8;
+        }
+        body.dark-theme .filter-pill:hover {
+            border-color: #5eead4;
+            color: #5eead4;
+        }
+        body.dark-theme .filter-pill.active {
+            border-color: #5eead4;
+            background: #0f766e;
+            color: #f8feff;
+        }
+        body.dark-theme .project-list-card {
+            border-color: rgba(148, 163, 184, 0.25);
+            background: rgba(8, 19, 33, 0.88);
+        }
+        body.dark-theme .project-list-card.active {
+            border-color: rgba(94, 234, 212, 0.45);
+            background: linear-gradient(160deg, rgba(14, 46, 56, 0.86), rgba(8, 24, 36, 0.95));
+            box-shadow: 0 22px 34px -28px rgba(15, 118, 110, 0.9);
+        }
+        body.dark-theme .project-shot {
+            background: linear-gradient(145deg, rgba(14, 65, 77, 0.65), rgba(12, 24, 40, 0.8));
+        }
+        body.dark-theme .terminal-box {
+            border-color: rgba(94, 234, 212, 0.38);
+            background: linear-gradient(150deg, rgba(7, 21, 34, 0.97), rgba(12, 63, 71, 0.9));
+        }
+        body.dark-theme .theme-toggle-btn {
+            background: linear-gradient(135deg, #5eead4 0%, #22d3ee 100%);
+            color: #04131f !important;
+            border-color: rgba(94, 234, 212, 0.62);
+            box-shadow: 0 16px 28px -18px rgba(34, 211, 238, 0.9);
+        }
     </style>
 </head>
 <body class="font-sans antialiased">
-    <div class="fixed inset-0 -z-10 grid-surface"></div>
-    <div class="fixed top-16 left-[8%] -z-10 orb h-40 w-40 rounded-full bg-reef/15 blur-2xl"></div>
-    <div class="fixed right-[10%] top-24 -z-10 orb orb-delay h-36 w-36 rounded-full bg-ember/20 blur-2xl"></div>
+    <div class="pointer-events-none fixed inset-0 -z-30 overflow-hidden">
+        <div class="bg-layer bg-aurora"></div>
+        <div class="bg-layer bg-aurora-2"></div>
+        <div class="bg-layer bg-vignette"></div>
+        <div class="bg-layer bg-noise"></div>
+    </div>
+    <div class="fixed inset-0 -z-20 grid-surface"></div>
+    <div id="orb-left" class="fixed top-16 left-[8%] -z-10 orb h-44 w-44 rounded-full bg-reef/20 blur-3xl"></div>
+    <div id="orb-right" class="fixed right-[10%] top-24 -z-10 orb orb-delay h-40 w-40 rounded-full bg-ember/25 blur-3xl"></div>
     <div class="fixed inset-x-0 top-0 z-[60] h-1 bg-transparent">
         <div id="scroll-progress" class="h-full w-0 bg-gradient-to-r from-reef via-ink to-ember transition-[width] duration-150"></div>
     </div>
@@ -168,9 +465,15 @@
                 <a href="#projects" class="transition hover:text-reef">Projects</a>
                 <a href="#contact" class="transition hover:text-reef">Contact</a>
             </div>
-            <button id="mobile-menu-button" class="rounded-xl border border-line bg-white p-2 text-ink md:hidden" aria-label="Open menu">
-                <i data-lucide="menu" class="h-5 w-5"></i>
-            </button>
+            <div class="flex items-center gap-2">
+                <button data-theme-toggle type="button" class="theme-toggle-btn inline-flex items-center gap-2 rounded-xl px-3 py-2 text-xs font-bold" aria-label="Toggle theme" aria-pressed="false">
+                    <i data-theme-icon data-lucide="moon" class="h-4 w-4"></i>
+                    <span class="theme-toggle-text">Dark</span>
+                </button>
+                <button id="mobile-menu-button" class="rounded-xl border border-line bg-white p-2 text-ink md:hidden" aria-label="Open menu">
+                    <i data-lucide="menu" class="h-5 w-5"></i>
+                </button>
+            </div>
         </nav>
         <div id="mobile-menu" class="mx-4 mb-3 hidden rounded-xl border border-line bg-white p-3 md:hidden">
             <a href="#skills" class="mobile-link block rounded-lg px-3 py-2 text-sm font-semibold text-ink/85 hover:bg-reefSoft">Skills</a>
@@ -179,37 +482,45 @@
             <a href="#contact" class="mobile-link block rounded-lg px-3 py-2 text-sm font-semibold text-ink/85 hover:bg-reefSoft">Contact</a>
         </div>
     </header>
+    <button data-theme-toggle type="button" class="theme-toggle-btn theme-fab inline-flex items-center gap-2 text-xs font-bold" aria-label="Toggle theme" aria-pressed="false">
+        <i data-theme-icon data-lucide="moon" class="h-4 w-4"></i>
+        <span class="theme-toggle-text">Dark</span>
+    </button>
 
     <main class="mx-auto w-full max-w-6xl px-4 pb-16 pt-8 sm:px-6">
         <section id="home" class="scroll-mt-24 reveal">
-            <div class="grid gap-8 rounded-3xl border border-white/70 bg-white/85 p-6 shadow-card backdrop-blur sm:p-10 lg:grid-cols-5">
+            <div class="hero-shell grid gap-8 rounded-3xl border border-white/70 bg-white/85 p-6 shadow-card backdrop-blur sm:p-10 lg:grid-cols-5">
                 <div class="lg:col-span-3">
                     <p class="inline-flex items-center rounded-full border border-reef/20 bg-reefSoft px-3 py-1 text-xs font-bold uppercase tracking-[0.12em] text-reef">
                         Frontend Engineer | Angular Specialist
                     </p>
-                    <h1 class="mt-4 bg-gradient-to-r from-ink via-ink to-reef bg-clip-text font-display text-4xl font-bold leading-tight text-transparent sm:text-5xl">
+                    <h1 class="hero-name mt-4 bg-gradient-to-r from-ink via-ink to-reef bg-clip-text font-display text-4xl font-bold leading-tight text-transparent sm:text-5xl">
                         Mohd Roshan Hussain
                     </h1>
                     <p class="mt-4 text-base leading-relaxed text-ink/80 sm:text-lg">
                         I design and ship complex business platforms with clean architecture, fast frontends, and measurable performance gains.
                         My core stack is Angular + TypeScript with full-stack delivery across Node.js and MySQL.
                     </p>
+                    <div class="terminal-box mt-5 rounded-xl p-4">
+                        <p class="text-[11px] font-bold uppercase tracking-[0.16em] text-emerald-200/85"><span class="pulse-dot mr-2 inline-block h-2 w-2 rounded-full bg-emerald-200"></span>Live Dev Console</p>
+                        <p class="terminal-line mt-2 text-sm text-emerald-100">
+                            <span class="text-emerald-300">$</span>
+                            <span id="typewriter-text"></span><span class="type-caret"></span>
+                        </p>
+                    </div>
                     <div class="mt-6 flex flex-wrap gap-3">
-                        <a data-resume-link href="#" class="inline-flex items-center gap-2 rounded-xl bg-ink px-5 py-3 text-sm font-bold text-white transition hover:bg-reef">
-                            <i data-lucide="file-text" class="h-4 w-4"></i>
-                            View Resume
+                        <a href="#projects" class="inline-flex items-center gap-2 rounded-xl bg-ink px-5 py-3 text-sm font-bold text-white transition hover:bg-reef">
+                            <i data-lucide="rocket" class="h-4 w-4"></i>
+                            View Projects
                         </a>
                         <a href="mailto:mdroshan.dev@gmail.com" class="inline-flex items-center gap-2 rounded-xl border border-line bg-white px-5 py-3 text-sm font-bold text-ink transition hover:border-reef hover:text-reef">
                             <i data-lucide="mail" class="h-4 w-4"></i>
                             Hire Me
                         </a>
-                        <a data-resume-link href="#" download class="inline-flex items-center gap-2 rounded-xl border border-ember/30 bg-emberSoft px-5 py-3 text-sm font-bold text-ember transition hover:bg-ember hover:text-white">
-                            <i data-lucide="download" class="h-4 w-4"></i>
-                            Download Resume
+                        <a href="https://in.linkedin.com/in/roshan2197" target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-2 rounded-xl border border-ember/30 bg-emberSoft px-5 py-3 text-sm font-bold text-ember transition hover:bg-ember hover:text-white">
+                            <i data-lucide="linkedin" class="h-4 w-4"></i>
+                            LinkedIn
                         </a>
-                    </div>
-                    <div id="resume-status" class="mt-4 inline-flex rounded-full border border-amber-300 bg-amber-50 px-3 py-1 text-xs font-semibold text-amber-700">
-                        Resume check pending...
                     </div>
                 </div>
 
@@ -356,11 +667,10 @@
     </footer>
 
     <script>
-        const resumeData = {
+        const portfolioData = {
             name: "Mohd Roshan Hussain",
             title: "Frontend Engineer (Angular) | Full-Stack Exposure",
             summary: "Frontend Engineer with expertise in Angular and TypeScript, full-stack exposure in Node.js and MySQL, and hands-on experience building large ERP systems and dashboards while mentoring developers.",
-            resumeUrl: "./resume.pdf",
             contact: {
                 email: "mdroshan.dev@gmail.com",
                 phone: "+917093992360",
@@ -368,10 +678,10 @@
                 linkedin: "https://in.linkedin.com/in/roshan2197"
             },
             stats: [
-                { label: "ERP Functions", value: "1000+" },
-                { label: "Active Users", value: "1L+" },
-                { label: "Team Led", value: "4 Engineers" },
-                { label: "Mentored", value: "9+ Devs" }
+                { label: "ERP Functions", target: 1000, compact: true, suffix: "+" },
+                { label: "Active Users", target: 100000, compact: true, suffix: "+" },
+                { label: "Team Led", target: 4, compact: false, suffix: " Engineers" },
+                { label: "Mentored", target: 9, compact: false, suffix: "+ Devs" }
             ],
             skills: {
                 frontend: ["Angular 11-18", "TypeScript", "Tailwind CSS", "React", "Responsive Design", "Component Architecture"],
@@ -465,25 +775,204 @@
             filter: "All",
             activeProjectId: null
         };
+        let statsAnimated = false;
 
         function renderStats() {
             const statsGrid = document.getElementById('stats-grid');
-            statsGrid.innerHTML = resumeData.stats.map(stat => `
+            statsGrid.innerHTML = portfolioData.stats.map(stat => `
                 <div class="rounded-xl border border-line bg-white p-3">
                     <p class="text-[11px] font-bold uppercase tracking-[0.12em] text-ink/50">${stat.label}</p>
-                    <p class="mt-1 font-display text-lg font-bold text-ink">${stat.value}</p>
+                    <p
+                        class="stat-number mt-1 font-display text-lg font-bold text-ink"
+                        data-stat-target="${stat.target}"
+                        data-stat-suffix="${stat.suffix}"
+                        data-stat-compact="${stat.compact ? 'true' : 'false'}"
+                    >0</p>
                 </div>
             `).join('');
+        }
+
+        function formatStatValue(value, compact) {
+            if (!compact) {
+                return value.toLocaleString('en-US');
+            }
+
+            return new Intl.NumberFormat('en-US', {
+                notation: 'compact',
+                maximumFractionDigits: 1
+            }).format(value).toUpperCase();
+        }
+
+        function animateStatNumber(element) {
+            const target = Number(element.dataset.statTarget || 0);
+            const suffix = element.dataset.statSuffix || '';
+            const compact = element.dataset.statCompact === 'true';
+            const duration = 1200;
+            const startTime = performance.now();
+
+            const tick = (time) => {
+                const progress = Math.min((time - startTime) / duration, 1);
+                const eased = 1 - Math.pow(1 - progress, 3);
+                const value = Math.round(target * eased);
+                element.textContent = `${formatStatValue(value, compact)}${suffix}`;
+
+                if (progress < 1) {
+                    requestAnimationFrame(tick);
+                } else {
+                    element.textContent = `${formatStatValue(target, compact)}${suffix}`;
+                }
+            };
+
+            requestAnimationFrame(tick);
+        }
+
+        function initStatsCounter() {
+            const statsGrid = document.getElementById('stats-grid');
+            if (!statsGrid) {
+                return;
+            }
+
+            if (statsAnimated) {
+                statsGrid.querySelectorAll('.stat-number').forEach(number => {
+                    const target = Number(number.dataset.statTarget || 0);
+                    const suffix = number.dataset.statSuffix || '';
+                    const compact = number.dataset.statCompact === 'true';
+                    number.textContent = `${formatStatValue(target, compact)}${suffix}`;
+                });
+                return;
+            }
+
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (!entry.isIntersecting) {
+                        return;
+                    }
+
+                    statsGrid.querySelectorAll('.stat-number').forEach(animateStatNumber);
+                    statsAnimated = true;
+                    observer.disconnect();
+                });
+            }, { threshold: 0.35 });
+
+            observer.observe(statsGrid);
+        }
+
+        function initTypewriter() {
+            const output = document.getElementById('typewriter-text');
+            if (!output) {
+                return;
+            }
+
+            const lines = [
+                'shipping angular products --scope enterprise',
+                'optimizing frontend performance --mode production',
+                'building reusable ui systems --stack tailwind'
+            ];
+
+            let lineIndex = 0;
+            let charIndex = 0;
+            let deleting = false;
+
+            const run = () => {
+                const currentLine = lines[lineIndex];
+
+                if (deleting) {
+                    charIndex -= 1;
+                } else {
+                    charIndex += 1;
+                }
+
+                output.textContent = currentLine.slice(0, charIndex);
+
+                let timeout = deleting ? 28 : 48;
+
+                if (!deleting && charIndex === currentLine.length) {
+                    timeout = 1400;
+                    deleting = true;
+                } else if (deleting && charIndex === 0) {
+                    deleting = false;
+                    lineIndex = (lineIndex + 1) % lines.length;
+                    timeout = 420;
+                }
+
+                window.setTimeout(run, timeout);
+            };
+
+            run();
+        }
+
+        function getStoredTheme() {
+            try {
+                return localStorage.getItem('portfolio-theme');
+            } catch (error) {
+                return null;
+            }
+        }
+
+        function setStoredTheme(theme) {
+            try {
+                localStorage.setItem('portfolio-theme', theme);
+            } catch (error) {
+                // Ignore storage failures; fallback remains functional.
+            }
+        }
+
+        function applyTheme(theme) {
+            const body = document.body;
+            const toggles = document.querySelectorAll('[data-theme-toggle]');
+            const isDark = theme === 'dark';
+
+            body.classList.toggle('dark-theme', isDark);
+
+            toggles.forEach(toggle => {
+                toggle.setAttribute('aria-pressed', isDark ? 'true' : 'false');
+                toggle.setAttribute('aria-label', isDark ? 'Switch to light theme' : 'Switch to dark theme');
+
+                const icon = toggle.querySelector('[data-theme-icon]');
+                if (icon) {
+                    icon.setAttribute('data-lucide', isDark ? 'sun' : 'moon');
+                }
+
+                const label = toggle.querySelector('.theme-toggle-text');
+                if (label) {
+                    label.textContent = isDark ? 'Light' : 'Dark';
+                }
+            });
+
+            setStoredTheme(theme);
+            lucide.createIcons();
+        }
+
+        function initThemeToggle() {
+            const toggles = document.querySelectorAll('[data-theme-toggle]');
+            if (!toggles.length) {
+                return;
+            }
+
+            const storedTheme = getStoredTheme();
+            const systemPrefersDark = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches;
+            const initialTheme = (storedTheme === 'dark' || storedTheme === 'light')
+                ? storedTheme
+                : (systemPrefersDark ? 'dark' : 'light');
+
+            applyTheme(initialTheme);
+
+            toggles.forEach(toggle => {
+                toggle.addEventListener('click', () => {
+                    const nextTheme = document.body.classList.contains('dark-theme') ? 'light' : 'dark';
+                    applyTheme(nextTheme);
+                });
+            });
         }
 
         function renderSkills() {
             const skillsGrid = document.getElementById('skills-grid');
             const categories = [
-                { title: 'Frontend', icon: 'layout-template', list: resumeData.skills.frontend },
-                { title: 'Backend', icon: 'server', list: resumeData.skills.backend },
-                { title: 'Databases', icon: 'database', list: resumeData.skills.databases },
-                { title: 'Tools', icon: 'wrench', list: resumeData.skills.tools },
-                { title: 'Engineering', icon: 'sparkles', list: resumeData.skills.engineering }
+                { title: 'Frontend', icon: 'layout-template', list: portfolioData.skills.frontend },
+                { title: 'Backend', icon: 'server', list: portfolioData.skills.backend },
+                { title: 'Databases', icon: 'database', list: portfolioData.skills.databases },
+                { title: 'Tools', icon: 'wrench', list: portfolioData.skills.tools },
+                { title: 'Engineering', icon: 'sparkles', list: portfolioData.skills.engineering }
             ];
 
             skillsGrid.innerHTML = categories.map((category, index) => `
@@ -503,7 +992,7 @@
 
         function renderExperience() {
             const experienceList = document.getElementById('experience-list');
-            experienceList.innerHTML = resumeData.experience.map((job, index) => `
+            experienceList.innerHTML = portfolioData.experience.map((job, index) => `
                 <article class="reveal rounded-2xl border border-line bg-white/90 p-6 shadow-card" style="transition-delay:${index * 80}ms;">
                     <div class="flex flex-wrap items-start justify-between gap-3">
                         <div>
@@ -526,15 +1015,15 @@
 
         function getFilteredProjects() {
             if (projectState.filter === "All") {
-                return resumeData.projects;
+                return portfolioData.projects;
             }
 
-            return resumeData.projects.filter(project => project.category === projectState.filter);
+            return portfolioData.projects.filter(project => project.category === projectState.filter);
         }
 
         function renderProjectFilters() {
             const projectFilters = document.getElementById('project-filters');
-            const categories = ["All", ...new Set(resumeData.projects.map(project => project.category))];
+            const categories = ["All", ...new Set(portfolioData.projects.map(project => project.category))];
 
             projectFilters.innerHTML = categories.map(category => `
                 <button
@@ -583,7 +1072,8 @@
                 : `<span class="inline-flex items-center rounded-xl border border-line bg-canvas px-4 py-2 text-xs font-bold text-ink/65">Private Project</span>`;
 
             projectSpotlight.innerHTML = `
-                <div class="project-shot rounded-2xl border border-line p-5">
+                <div class="project-shot spotlight-enter rounded-2xl border border-line p-5">
+                    <span class="shimmer-band"></span>
                     <div class="relative z-10">
                         <div class="mb-4 flex flex-wrap items-start justify-between gap-3">
                             <div>
@@ -688,65 +1178,6 @@
             });
         }
 
-        function setResumeStatus(type, text) {
-            const status = document.getElementById('resume-status');
-            status.className = 'mt-4 inline-flex rounded-full border px-3 py-1 text-xs font-semibold';
-
-            if (type === 'ok') {
-                status.classList.add('border-emerald-300', 'bg-emerald-50', 'text-emerald-700');
-            } else if (type === 'warn') {
-                status.classList.add('border-amber-300', 'bg-amber-50', 'text-amber-700');
-            } else {
-                status.classList.add('border-rose-300', 'bg-rose-50', 'text-rose-700');
-            }
-
-            status.textContent = text;
-        }
-
-        function disableResumeLinks() {
-            const links = document.querySelectorAll('[data-resume-link]');
-            links.forEach(link => {
-                link.setAttribute('href', '#');
-                link.setAttribute('aria-disabled', 'true');
-                link.classList.add('pointer-events-none', 'opacity-60');
-            });
-        }
-
-        async function checkResumeLink() {
-            const links = document.querySelectorAll('[data-resume-link]');
-
-            if (!resumeData.resumeUrl || resumeData.resumeUrl.trim() === '') {
-                disableResumeLinks();
-                setResumeStatus('error', 'Resume URL missing. Set resumeData.resumeUrl in index.html.');
-                return;
-            }
-
-            links.forEach(link => {
-                link.setAttribute('href', resumeData.resumeUrl);
-                link.setAttribute('target', '_blank');
-                link.setAttribute('rel', 'noopener noreferrer');
-                link.removeAttribute('aria-disabled');
-                link.classList.remove('pointer-events-none', 'opacity-60');
-            });
-
-            if (window.location.protocol === 'file:') {
-                setResumeStatus('warn', 'Resume path set. Serve via local server to verify file availability.');
-                return;
-            }
-
-            try {
-                const response = await fetch(resumeData.resumeUrl, { method: 'HEAD', cache: 'no-store' });
-                if (response.ok) {
-                    setResumeStatus('ok', 'Resume link verified and ready.');
-                } else {
-                    disableResumeLinks();
-                    setResumeStatus('error', `Resume not found at ${resumeData.resumeUrl}.`);
-                }
-            } catch (error) {
-                setResumeStatus('warn', 'Could not verify resume automatically. Check network/server path.');
-            }
-        }
-
         function initReveal() {
             const elements = document.querySelectorAll('.reveal');
             const observer = new IntersectionObserver((entries) => {
@@ -761,15 +1192,17 @@
             elements.forEach(item => observer.observe(item));
         }
 
-        document.addEventListener('DOMContentLoaded', async () => {
+        document.addEventListener('DOMContentLoaded', () => {
+            initThemeToggle();
             renderStats();
+            initStatsCounter();
             renderSkills();
             renderExperience();
             renderProjects();
             initMobileMenu();
             initReveal();
             initScrollProgress();
-            await checkResumeLink();
+            initTypewriter();
             lucide.createIcons();
         });
     </script>
