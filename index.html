@@ -342,6 +342,23 @@
             z-index: -15;
             opacity: 0.6;
         }
+        .hero-highlights {
+            display: grid;
+            grid-template-columns: repeat(1, minmax(0, 1fr));
+            gap: 0.6rem;
+        }
+        @media (min-width: 640px) {
+            .hero-highlights {
+                grid-template-columns: repeat(3, minmax(0, 1fr));
+            }
+        }
+        .highlight-pill {
+            border: 1px solid #d6e0ea;
+            border-radius: 0.9rem;
+            background: rgba(255, 255, 255, 0.82);
+            padding: 0.7rem 0.8rem;
+            box-shadow: 0 14px 24px -26px rgba(18, 35, 56, 0.85);
+        }
         .hero-shell {
             position: relative;
             overflow: hidden;
@@ -586,6 +603,11 @@
             border-color: rgba(94, 234, 212, 0.35);
             background: rgba(17, 53, 61, 0.74);
         }
+        body.dark-theme .highlight-pill {
+            border-color: rgba(148, 163, 184, 0.32);
+            background: rgba(8, 20, 34, 0.82);
+            box-shadow: 0 16px 24px -24px rgba(15, 118, 110, 0.85);
+        }
     </style>
 </head>
 <body class="font-sans antialiased">
@@ -669,6 +691,20 @@
                             LinkedIn
                         </a>
                     </div>
+                    <div class="hero-highlights mt-6">
+                        <article class="highlight-pill">
+                            <p class="text-[11px] font-bold uppercase tracking-[0.1em] text-ink/55">Primary Focus</p>
+                            <p class="mt-1 text-sm font-semibold text-ink">Enterprise Angular Architecture</p>
+                        </article>
+                        <article class="highlight-pill">
+                            <p class="text-[11px] font-bold uppercase tracking-[0.1em] text-ink/55">Delivery Style</p>
+                            <p class="mt-1 text-sm font-semibold text-ink">Performance + Reliability</p>
+                        </article>
+                        <article class="highlight-pill">
+                            <p class="text-[11px] font-bold uppercase tracking-[0.1em] text-ink/55">Collaboration</p>
+                            <p class="mt-1 text-sm font-semibold text-ink">Frontend, Backend, DevOps</p>
+                        </article>
+                    </div>
                 </div>
 
                 <div class="rounded-2xl border border-line bg-canvas/90 p-6 lg:col-span-2">
@@ -687,9 +723,12 @@
         </section>
 
         <section id="skills" class="scroll-mt-24 pt-12 reveal">
-            <div class="mb-6 flex items-end justify-between">
-                <h2 class="font-display text-3xl font-bold text-ink">Core Stack</h2>
-                <p class="text-sm font-semibold text-ink/55">Modern frontend + product engineering</p>
+            <div class="mb-6 flex flex-wrap items-end justify-between gap-3">
+                <div>
+                    <h2 class="font-display text-3xl font-bold text-ink">Core Stack</h2>
+                    <p class="mt-1 text-sm font-semibold text-ink/55">Modern frontend + product engineering</p>
+                </div>
+                <p class="rounded-full border border-line bg-white/85 px-3 py-1 text-xs font-bold text-ink/70">Built for scale, speed, and maintainability</p>
             </div>
             <div id="skills-grid" class="grid gap-4 md:grid-cols-2 lg:grid-cols-3">
                 <!-- Injected -->
