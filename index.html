@@ -1,1168 +1,1627 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Mohd Roshan Hussain | Frontend Engineer Portfolio</title>
-    <meta name="description" content="Modern portfolio for Mohd Roshan Hussain, Frontend Engineer focused on Angular, TypeScript, and scalable product engineering.">
+    <meta
+      name="description"
+      content="Modern portfolio for Mohd Roshan Hussain, Frontend Engineer focused on Angular, TypeScript, and scalable product engineering." />
     <script src="https://cdn.tailwindcss.com"></script>
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&family=Space+Grotesk:wght@500;600;700&display=swap"
+      rel="stylesheet" />
     <script src="https://unpkg.com/lucide@latest/dist/umd/lucide.js"></script>
     <script>
-        tailwind.config = {
-            theme: {
-                extend: {
-                    colors: {
-                        canvas: '#ecf5f3',
-                        ink: '#122338',
-                        reef: '#0f766e',
-                        reefSoft: '#d6f0ec',
-                        ember: '#ea580c',
-                        emberSoft: '#ffeddc',
-                        line: '#d6e0ea'
-                    },
-                    fontFamily: {
-                        sans: ['Manrope', 'sans-serif'],
-                        display: ['Space Grotesk', 'sans-serif']
-                    },
-                    boxShadow: {
-                        glow: '0 20px 35px -18px rgba(15, 118, 110, 0.45)',
-                        card: '0 14px 32px -24px rgba(18, 35, 56, 0.38)'
-                    }
-                }
-            }
-        };
+      tailwind.config = {
+        theme: {
+          extend: {
+            colors: {
+              canvas: "#ecf5f3",
+              ink: "#122338",
+              reef: "#0f766e",
+              reefSoft: "#d6f0ec",
+              ember: "#ea580c",
+              emberSoft: "#ffeddc",
+              line: "#d6e0ea",
+            },
+            fontFamily: {
+              sans: ["Manrope", "sans-serif"],
+              display: ["Space Grotesk", "sans-serif"],
+            },
+            boxShadow: {
+              glow: "0 20px 35px -18px rgba(15, 118, 110, 0.45)",
+              card: "0 14px 32px -24px rgba(18, 35, 56, 0.38)",
+            },
+          },
+        },
+      };
     </script>
     <style>
-        :root {
-            color-scheme: light;
+      :root {
+        color-scheme: light;
+      }
+      body {
+        background: #edf5f7;
+        color: #122338;
+        overflow-x: hidden;
+      }
+      html {
+        scroll-behavior: smooth;
+      }
+      .bg-layer {
+        position: absolute;
+        inset: -18%;
+        pointer-events: none;
+      }
+      .bg-aurora {
+        background:
+          radial-gradient(
+            circle at 20% 24%,
+            rgba(15, 118, 110, 0.42),
+            transparent 42%
+          ),
+          radial-gradient(
+            circle at 78% 18%,
+            rgba(234, 88, 12, 0.36),
+            transparent 38%
+          ),
+          radial-gradient(
+            circle at 62% 78%,
+            rgba(30, 64, 175, 0.26),
+            transparent 45%
+          );
+        filter: blur(36px);
+        animation: auroraDriftA 18s ease-in-out infinite alternate;
+      }
+      .bg-aurora-2 {
+        background: conic-gradient(
+          from 40deg at 40% 55%,
+          rgba(6, 182, 212, 0.28),
+          rgba(15, 118, 110, 0.12),
+          rgba(249, 115, 22, 0.22),
+          rgba(6, 182, 212, 0.28)
+        );
+        opacity: 0.7;
+        filter: blur(56px);
+        animation: auroraSpin 32s linear infinite;
+      }
+      .bg-vignette {
+        inset: 0;
+        background: radial-gradient(
+          circle at center,
+          transparent 48%,
+          rgba(15, 23, 42, 0.08) 100%
+        );
+      }
+      .bg-noise {
+        inset: 0;
+        opacity: 0.14;
+        background-image:
+          radial-gradient(rgba(255, 255, 255, 0.8) 0.6px, transparent 0.8px),
+          radial-gradient(rgba(15, 23, 42, 0.3) 0.6px, transparent 0.8px);
+        background-size:
+          3px 3px,
+          4px 4px;
+        background-position:
+          0 0,
+          1px 1px;
+        mix-blend-mode: soft-light;
+      }
+      @keyframes auroraDriftA {
+        0% {
+          transform: translate3d(-5%, -3%, 0) scale(1);
         }
-        body {
-            background: #edf5f7;
-            color: #122338;
-            overflow-x: hidden;
+        50% {
+          transform: translate3d(4%, 3%, 0) scale(1.04);
+        }
+        100% {
+          transform: translate3d(-3%, 6%, 0) scale(0.98);
+        }
+      }
+      @keyframes auroraSpin {
+        0% {
+          transform: rotate(0deg) scale(1);
+        }
+        50% {
+          transform: rotate(180deg) scale(1.06);
+        }
+        100% {
+          transform: rotate(360deg) scale(1);
+        }
+      }
+      .grid-surface {
+        background-image:
+          linear-gradient(
+            to right,
+            rgba(18, 35, 56, 0.03) 1px,
+            transparent 1px
+          ),
+          linear-gradient(
+            to bottom,
+            rgba(18, 35, 56, 0.03) 1px,
+            transparent 1px
+          );
+        background-size: 34px 34px;
+      }
+      .orb {
+        animation: float 8s ease-in-out infinite;
+      }
+      .orb-delay {
+        animation-delay: 1.3s;
+      }
+      @keyframes float {
+        0%,
+        100% {
+          transform: translateY(0);
+        }
+        50% {
+          transform: translateY(-10px);
+        }
+      }
+      .reveal {
+        opacity: 0;
+        transform: translateY(24px);
+        transition:
+          opacity 0.65s ease,
+          transform 0.65s ease;
+      }
+      .reveal.in {
+        opacity: 1;
+        transform: translateY(0);
+      }
+      .chip {
+        transition:
+          transform 0.2s ease,
+          box-shadow 0.2s ease,
+          background-color 0.2s ease;
+      }
+      .chip:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 10px 20px -16px rgba(15, 118, 110, 0.95);
+        background-color: #0f766e;
+        color: white;
+      }
+      .pulse-ring {
+        position: relative;
+      }
+      .pulse-ring::after {
+        content: "";
+        position: absolute;
+        inset: -6px;
+        border-radius: 9999px;
+        border: 1px solid rgba(15, 118, 110, 0.34);
+        animation: pulse 1.9s ease-out infinite;
+      }
+      @keyframes pulse {
+        0% {
+          opacity: 0.8;
+          transform: scale(0.9);
+        }
+        100% {
+          opacity: 0;
+          transform: scale(1.35);
+        }
+      }
+      .filter-pill {
+        border: 1px solid #d6e0ea;
+        background: #ffffff;
+        color: #122338;
+        padding: 0.5rem 0.9rem;
+        border-radius: 9999px;
+        font-size: 0.75rem;
+        font-weight: 700;
+        letter-spacing: 0.02em;
+        transition: all 0.2s ease;
+      }
+      .filter-pill:hover {
+        border-color: #0f766e;
+        color: #0f766e;
+        transform: translateY(-1px);
+      }
+      .filter-pill.active {
+        border-color: #122338;
+        background: #122338;
+        color: #ffffff;
+        box-shadow: 0 8px 20px -16px rgba(18, 35, 56, 0.9);
+      }
+      .project-shot {
+        position: relative;
+        overflow: hidden;
+        background: linear-gradient(
+          145deg,
+          rgba(15, 118, 110, 0.18),
+          rgba(18, 35, 56, 0.08)
+        );
+      }
+      .project-shot::after {
+        content: "";
+        position: absolute;
+        inset: 0;
+        background: radial-gradient(
+          circle at 78% 24%,
+          rgba(234, 88, 12, 0.18),
+          transparent 42%
+        );
+        pointer-events: none;
+      }
+      .project-list-card {
+        width: 100%;
+        text-align: left;
+        border: 1px solid #d6e0ea;
+        background: rgba(255, 255, 255, 0.88);
+        border-radius: 1rem;
+        padding: 1rem;
+        transition: all 0.25s ease;
+      }
+      .project-list-card:hover {
+        transform: translateY(-2px);
+        border-color: rgba(15, 118, 110, 0.42);
+        box-shadow: 0 18px 30px -24px rgba(18, 35, 56, 0.48);
+      }
+      .project-list-card.active {
+        border-color: rgba(15, 118, 110, 0.45);
+        background: linear-gradient(
+          160deg,
+          rgba(214, 240, 236, 0.65),
+          rgba(255, 255, 255, 0.95)
+        );
+        box-shadow: 0 22px 32px -26px rgba(15, 118, 110, 0.7);
+      }
+      .terminal-box {
+        border: 1px solid rgba(15, 118, 110, 0.3);
+        background: linear-gradient(
+          150deg,
+          rgba(18, 35, 56, 0.97),
+          rgba(15, 118, 110, 0.82)
+        );
+        box-shadow:
+          inset 0 1px 0 rgba(255, 255, 255, 0.06),
+          0 18px 28px -24px rgba(18, 35, 56, 0.8);
+      }
+      .experience-shell {
+        position: relative;
+        border: 1px solid #d6e0ea;
+        border-radius: 1.5rem;
+        background: linear-gradient(
+          160deg,
+          rgba(255, 255, 255, 0.96),
+          rgba(236, 245, 243, 0.78)
+        );
+        padding: 1.25rem;
+        box-shadow: 0 22px 35px -26px rgba(18, 35, 56, 0.42);
+        overflow: hidden;
+      }
+      .experience-shell::before {
+        content: "";
+        position: absolute;
+        left: 1.25rem;
+        top: 1.2rem;
+        bottom: 1.2rem;
+        width: 3px;
+        background: linear-gradient(
+          to bottom,
+          rgba(15, 118, 110, 0.88),
+          rgba(15, 118, 110, 0.22)
+        );
+        border-radius: 9999px;
+      }
+      .experience-shell::after {
+        content: "";
+        position: absolute;
+        left: 1.05rem;
+        top: 1.4rem;
+        width: 7px;
+        height: 120px;
+        border-radius: 9999px;
+        background: linear-gradient(
+          to bottom,
+          rgba(45, 212, 191, 0.7),
+          rgba(45, 212, 191, 0)
+        );
+        filter: blur(0.4px);
+        animation: lineSweep 4.5s ease-in-out infinite;
+      }
+      .experience-card {
+        position: relative;
+        margin-left: 1.9rem;
+        border: 1px solid #d6e0ea;
+        border-radius: 1.1rem;
+        background: rgba(255, 255, 255, 0.94);
+        padding: 1.1rem;
+        transition:
+          transform 0.28s ease,
+          box-shadow 0.28s ease,
+          border-color 0.28s ease;
+        overflow: hidden;
+      }
+      .experience-card::before {
+        content: "";
+        position: absolute;
+        left: -1.72rem;
+        top: 1.18rem;
+        width: 0.84rem;
+        height: 0.84rem;
+        border-radius: 9999px;
+        border: 2px solid #ffffff;
+        background: radial-gradient(circle at 35% 30%, #5eead4, #0f766e 70%);
+        box-shadow:
+          0 0 0 5px rgba(15, 118, 110, 0.2),
+          0 0 0 11px rgba(15, 118, 110, 0.07);
+        animation: dotPulse 2.4s ease-in-out infinite;
+      }
+      .hero-highlights {
+        display: grid;
+        grid-template-columns: repeat(1, minmax(0, 1fr));
+        gap: 0.6rem;
+      }
+      @media (min-width: 640px) {
+        .hero-highlights {
+          grid-template-columns: repeat(3, minmax(0, 1fr));
+        }
+      }
+      .highlight-pill {
+        border: 1px solid #d6e0ea;
+        border-radius: 0.9rem;
+        background: rgba(255, 255, 255, 0.82);
+        padding: 0.7rem 0.8rem;
+        box-shadow: 0 14px 24px -26px rgba(18, 35, 56, 0.85);
+      }
+      .experience-card::after {
+        content: "";
+        position: absolute;
+        inset: 0;
+        background: linear-gradient(
+          110deg,
+          transparent 22%,
+          rgba(255, 255, 255, 0.5) 45%,
+          transparent 70%
+        );
+        transform: translateX(-110%);
+        transition: transform 0.65s ease;
+        pointer-events: none;
+      }
+      .experience-card:hover {
+        transform: translateY(-4px);
+        border-color: rgba(15, 118, 110, 0.45);
+        box-shadow: 0 22px 32px -24px rgba(18, 35, 56, 0.48);
+      }
+      .experience-card:hover::after {
+        transform: translateX(110%);
+      }
+      .experience-impact {
+        border: 1px solid rgba(15, 118, 110, 0.24);
+        border-radius: 9999px;
+        background: rgba(214, 240, 236, 0.55);
+        padding: 0.4rem 0.72rem;
+        letter-spacing: 0.01em;
+      }
+      @keyframes dotPulse {
+        0%,
+        100% {
+          box-shadow:
+            0 0 0 5px rgba(15, 118, 110, 0.2),
+            0 0 0 11px rgba(15, 118, 110, 0.07);
+          transform: scale(1);
+        }
+        50% {
+          box-shadow:
+            0 0 0 7px rgba(15, 118, 110, 0.16),
+            0 0 0 14px rgba(15, 118, 110, 0.05);
+          transform: scale(1.05);
+        }
+      }
+      @keyframes lineSweep {
+        0%,
+        100% {
+          transform: translateY(-8px);
+          opacity: 0.2;
+        }
+        50% {
+          transform: translateY(260px);
+          opacity: 0.75;
+        }
+      }
+      .theme-toggle-btn {
+        background: linear-gradient(135deg, #122338 0%, #0f766e 100%);
+        color: #ffffff;
+        border: 1px solid rgba(15, 118, 110, 0.35);
+        box-shadow: 0 14px 22px -18px rgba(18, 35, 56, 0.8);
+      }
+      .theme-toggle-btn:hover {
+        transform: translateY(-1px);
+        box-shadow: 0 18px 30px -20px rgba(18, 35, 56, 0.9);
+      }
+      .theme-fab {
+        position: fixed;
+        right: 1rem;
+        bottom: 1rem;
+        z-index: 70;
+        border-radius: 9999px;
+        padding: 0.7rem 0.95rem;
+      }
+      .hero-name {
+        background-size: 170% 170%;
+        animation:
+          heroGradientShift 7s ease-in-out infinite,
+          heroFloat 5.2s ease-in-out infinite;
+        filter: drop-shadow(0 14px 24px rgba(18, 35, 56, 0.18));
+        letter-spacing: -0.01em;
+      }
+      @keyframes heroGradientShift {
+        0%,
+        100% {
+          background-position: 0% 50%;
+        }
+        50% {
+          background-position: 100% 50%;
+        }
+      }
+      @keyframes heroFloat {
+        0%,
+        100% {
+          transform: translateY(0px);
+        }
+        50% {
+          transform: translateY(-4px);
+        }
+      }
+      #particles-canvas {
+        position: fixed;
+        inset: 0;
+        width: 100%;
+        height: 100%;
+        pointer-events: none;
+        z-index: -15;
+        opacity: 0.6;
+      }
+      body.dark-theme .highlight-pill {
+        border-color: rgba(148, 163, 184, 0.32);
+        background: rgba(8, 20, 34, 0.82);
+        box-shadow: 0 16px 24px -24px rgba(15, 118, 110, 0.85);
+      }
+      .hero-shell {
+        position: relative;
+        overflow: hidden;
+        isolation: isolate;
+      }
+      .hero-shell::before {
+        content: "";
+        position: absolute;
+        inset: -20% -30%;
+        background: linear-gradient(
+          115deg,
+          transparent 30%,
+          rgba(255, 255, 255, 0.45) 50%,
+          transparent 70%
+        );
+        transform: translateX(-60%) rotate(6deg);
+        animation: sweep 9s ease-in-out infinite;
+        pointer-events: none;
+        z-index: 0;
+      }
+      .hero-shell > * {
+        position: relative;
+        z-index: 1;
+      }
+      @keyframes sweep {
+        0%,
+        100% {
+          transform: translateX(-64%) rotate(6deg);
+          opacity: 0;
+        }
+        45% {
+          transform: translateX(-8%) rotate(6deg);
+          opacity: 0.42;
+        }
+        55% {
+          transform: translateX(12%) rotate(6deg);
+          opacity: 0.22;
+        }
+      }
+      .pulse-dot {
+        position: relative;
+      }
+      .pulse-dot::after {
+        content: "";
+        position: absolute;
+        inset: -5px;
+        border-radius: 9999px;
+        border: 1px solid rgba(255, 255, 255, 0.45);
+        animation: ping 2s ease-out infinite;
+      }
+      @keyframes ping {
+        0% {
+          opacity: 0.65;
+          transform: scale(0.9);
+        }
+        100% {
+          opacity: 0;
+          transform: scale(1.5);
+        }
+      }
+      .terminal-line {
+        font-family:
+          ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas,
+          "Liberation Mono", "Courier New", monospace;
+      }
+      .type-caret {
+        display: inline-block;
+        width: 0.5rem;
+        height: 1rem;
+        margin-left: 0.2rem;
+        background: #5eead4;
+        animation: blink 0.95s step-end infinite;
+        vertical-align: -2px;
+      }
+      @keyframes blink {
+        50% {
+          opacity: 0;
+        }
+      }
+      .spotlight-enter {
+        animation: spotlightIn 0.42s ease;
+      }
+      @keyframes spotlightIn {
+        from {
+          opacity: 0;
+          transform: translateY(12px) scale(0.99);
+        }
+        to {
+          opacity: 1;
+          transform: translateY(0) scale(1);
+        }
+      }
+      .shimmer-band {
+        position: absolute;
+        top: -130%;
+        bottom: -130%;
+        width: 42%;
+        transform: rotate(17deg);
+        background: linear-gradient(
+          to right,
+          transparent 0%,
+          rgba(255, 255, 255, 0.26) 50%,
+          transparent 100%
+        );
+        animation: shimmer 5s linear infinite;
+        pointer-events: none;
+      }
+      @keyframes shimmer {
+        from {
+          left: -45%;
+        }
+        to {
+          left: 125%;
+        }
+      }
+      @media (prefers-reduced-motion: reduce) {
+        * {
+          animation-duration: 0.01ms !important;
+          animation-iteration-count: 1 !important;
+          transition-duration: 0.01ms !important;
         }
         html {
-            scroll-behavior: smooth;
-        }
-        .bg-layer {
-            position: absolute;
-            inset: -18%;
-            pointer-events: none;
-        }
-        .bg-aurora {
-            background:
-                radial-gradient(circle at 20% 24%, rgba(15, 118, 110, 0.42), transparent 42%),
-                radial-gradient(circle at 78% 18%, rgba(234, 88, 12, 0.36), transparent 38%),
-                radial-gradient(circle at 62% 78%, rgba(30, 64, 175, 0.26), transparent 45%);
-            filter: blur(36px);
-            animation: auroraDriftA 18s ease-in-out infinite alternate;
-        }
-        .bg-aurora-2 {
-            background:
-                conic-gradient(from 40deg at 40% 55%, rgba(6, 182, 212, 0.28), rgba(15, 118, 110, 0.12), rgba(249, 115, 22, 0.22), rgba(6, 182, 212, 0.28));
-            opacity: 0.7;
-            filter: blur(56px);
-            animation: auroraSpin 32s linear infinite;
-        }
-        .bg-vignette {
-            inset: 0;
-            background: radial-gradient(circle at center, transparent 48%, rgba(15, 23, 42, 0.08) 100%);
-        }
-        .bg-noise {
-            inset: 0;
-            opacity: 0.14;
-            background-image:
-                radial-gradient(rgba(255, 255, 255, 0.8) 0.6px, transparent 0.8px),
-                radial-gradient(rgba(15, 23, 42, 0.3) 0.6px, transparent 0.8px);
-            background-size: 3px 3px, 4px 4px;
-            background-position: 0 0, 1px 1px;
-            mix-blend-mode: soft-light;
-        }
-        @keyframes auroraDriftA {
-            0% {
-                transform: translate3d(-5%, -3%, 0) scale(1);
-            }
-            50% {
-                transform: translate3d(4%, 3%, 0) scale(1.04);
-            }
-            100% {
-                transform: translate3d(-3%, 6%, 0) scale(0.98);
-            }
-        }
-        @keyframes auroraSpin {
-            0% {
-                transform: rotate(0deg) scale(1);
-            }
-            50% {
-                transform: rotate(180deg) scale(1.06);
-            }
-            100% {
-                transform: rotate(360deg) scale(1);
-            }
-        }
-        .grid-surface {
-            background-image: linear-gradient(to right, rgba(18, 35, 56, 0.03) 1px, transparent 1px),
-                              linear-gradient(to bottom, rgba(18, 35, 56, 0.03) 1px, transparent 1px);
-            background-size: 34px 34px;
-        }
-        .orb {
-            animation: float 8s ease-in-out infinite;
-        }
-        .orb-delay {
-            animation-delay: 1.3s;
-        }
-        @keyframes float {
-            0%, 100% { transform: translateY(0); }
-            50% { transform: translateY(-10px); }
-        }
-        .reveal {
-            opacity: 0;
-            transform: translateY(24px);
-            transition: opacity .65s ease, transform .65s ease;
-        }
-        .reveal.in {
-            opacity: 1;
-            transform: translateY(0);
-        }
-        .chip {
-            transition: transform .2s ease, box-shadow .2s ease, background-color .2s ease;
-        }
-        .chip:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 10px 20px -16px rgba(15, 118, 110, 0.95);
-            background-color: #0f766e;
-            color: white;
-        }
-        .pulse-ring {
-            position: relative;
-        }
-        .pulse-ring::after {
-            content: "";
-            position: absolute;
-            inset: -6px;
-            border-radius: 9999px;
-            border: 1px solid rgba(15, 118, 110, 0.34);
-            animation: pulse 1.9s ease-out infinite;
-        }
-        @keyframes pulse {
-            0% { opacity: 0.7; transform: scale(0.9); }
-            100% { opacity: 0; transform: scale(1.35); }
-        }
-        .filter-pill {
-            border: 1px solid #d6e0ea;
-            background: #ffffff;
-            color: #122338;
-            padding: 0.5rem 0.9rem;
-            border-radius: 9999px;
-            font-size: 0.75rem;
-            font-weight: 700;
-            letter-spacing: 0.02em;
-            transition: all .2s ease;
-        }
-        .filter-pill:hover {
-            border-color: #0f766e;
-            color: #0f766e;
-            transform: translateY(-1px);
-        }
-        .filter-pill.active {
-            border-color: #122338;
-            background: #122338;
-            color: #ffffff;
-            box-shadow: 0 8px 20px -16px rgba(18, 35, 56, 0.9);
-        }
-        .project-shot {
-            position: relative;
-            overflow: hidden;
-            background: linear-gradient(145deg, rgba(15, 118, 110, 0.18), rgba(18, 35, 56, 0.08));
-        }
-        .project-shot::after {
-            content: "";
-            position: absolute;
-            inset: 0;
-            background: radial-gradient(circle at 78% 24%, rgba(234, 88, 12, 0.18), transparent 42%);
-            pointer-events: none;
-        }
-        .project-list-card {
-            width: 100%;
-            text-align: left;
-            border: 1px solid #d6e0ea;
-            background: rgba(255, 255, 255, 0.88);
-            border-radius: 1rem;
-            padding: 1rem;
-            transition: all .25s ease;
-        }
-        .project-list-card:hover {
-            transform: translateY(-2px);
-            border-color: rgba(15, 118, 110, 0.42);
-            box-shadow: 0 18px 30px -24px rgba(18, 35, 56, 0.48);
-        }
-        .project-list-card.active {
-            border-color: rgba(15, 118, 110, 0.45);
-            background: linear-gradient(160deg, rgba(214, 240, 236, 0.65), rgba(255, 255, 255, 0.95));
-            box-shadow: 0 22px 32px -26px rgba(15, 118, 110, 0.7);
-        }
-        .terminal-box {
-            border: 1px solid rgba(15, 118, 110, 0.3);
-            background: linear-gradient(150deg, rgba(18, 35, 56, 0.97), rgba(15, 118, 110, 0.82));
-            box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.06), 0 18px 28px -24px rgba(18, 35, 56, 0.8);
-        }
-        .experience-shell {
-            position: relative;
-            border: 1px solid #d6e0ea;
-            border-radius: 1.5rem;
-            background: linear-gradient(160deg, rgba(255, 255, 255, 0.96), rgba(236, 245, 243, 0.78));
-            padding: 1.25rem;
-            box-shadow: 0 22px 35px -26px rgba(18, 35, 56, 0.42);
-            overflow: hidden;
-        }
-        .experience-shell::before {
-            content: "";
-            position: absolute;
-            left: 1.25rem;
-            top: 1.2rem;
-            bottom: 1.2rem;
-            width: 3px;
-            background: linear-gradient(to bottom, rgba(15, 118, 110, 0.88), rgba(15, 118, 110, 0.22));
-            border-radius: 9999px;
-        }
-        .experience-shell::after {
-            content: "";
-            position: absolute;
-            left: 1.05rem;
-            top: 1.4rem;
-            width: 7px;
-            height: 120px;
-            border-radius: 9999px;
-            background: linear-gradient(to bottom, rgba(45, 212, 191, 0.7), rgba(45, 212, 191, 0));
-            filter: blur(0.4px);
-            animation: lineSweep 4.5s ease-in-out infinite;
-        }
-        .experience-card {
-            position: relative;
-            margin-left: 1.9rem;
-            border: 1px solid #d6e0ea;
-            border-radius: 1.1rem;
-            background: rgba(255, 255, 255, 0.94);
-            padding: 1.1rem;
-            transition: transform .28s ease, box-shadow .28s ease, border-color .28s ease;
-            overflow: hidden;
-        }
-        .experience-card::before {
-            content: "";
-            position: absolute;
-            left: -1.72rem;
-            top: 1.18rem;
-            width: 0.84rem;
-            height: 0.84rem;
-            border-radius: 9999px;
-            border: 2px solid #ffffff;
-            background: radial-gradient(circle at 35% 30%, #5eead4, #0f766e 70%);
-            box-shadow: 0 0 0 5px rgba(15, 118, 110, 0.2), 0 0 0 11px rgba(15, 118, 110, 0.07);
-            animation: dotPulse 2.4s ease-in-out infinite;
-        }
-        .experience-card::after {
-            content: "";
-            position: absolute;
-            inset: 0;
-            background: linear-gradient(110deg, transparent 22%, rgba(255, 255, 255, 0.5) 45%, transparent 70%);
-            transform: translateX(-110%);
-            transition: transform .65s ease;
-            pointer-events: none;
-        }
-        .experience-card:hover {
-            transform: translateY(-4px);
-            border-color: rgba(15, 118, 110, 0.45);
-            box-shadow: 0 22px 32px -24px rgba(18, 35, 56, 0.48);
-        }
-        .experience-card:hover::after {
-            transform: translateX(110%);
-        }
-        .experience-impact {
-            border: 1px solid rgba(15, 118, 110, 0.24);
-            border-radius: 9999px;
-            background: rgba(214, 240, 236, 0.55);
-            padding: 0.4rem 0.72rem;
-            letter-spacing: 0.01em;
-        }
-        @keyframes dotPulse {
-            0%, 100% {
-                box-shadow: 0 0 0 5px rgba(15, 118, 110, 0.2), 0 0 0 11px rgba(15, 118, 110, 0.07);
-                transform: scale(1);
-            }
-            50% {
-                box-shadow: 0 0 0 7px rgba(15, 118, 110, 0.16), 0 0 0 14px rgba(15, 118, 110, 0.05);
-                transform: scale(1.05);
-            }
-        }
-        @keyframes lineSweep {
-            0%, 100% { transform: translateY(-8px); opacity: 0.2; }
-            50% { transform: translateY(260px); opacity: 0.75; }
-        }
-        .theme-toggle-btn {
-            background: linear-gradient(135deg, #122338 0%, #0f766e 100%);
-            color: #ffffff;
-            border: 1px solid rgba(15, 118, 110, 0.35);
-            box-shadow: 0 14px 22px -18px rgba(18, 35, 56, 0.8);
-        }
-        .theme-toggle-btn:hover {
-            transform: translateY(-1px);
-            box-shadow: 0 18px 30px -20px rgba(18, 35, 56, 0.9);
-        }
-        .theme-fab {
-            position: fixed;
-            right: 1rem;
-            bottom: 1rem;
-            z-index: 70;
-            border-radius: 9999px;
-            padding: 0.7rem 0.95rem;
-        }
-        .hero-name {
-            background-size: 170% 170%;
-            animation: heroGradientShift 7s ease-in-out infinite, heroFloat 5.2s ease-in-out infinite;
-            filter: drop-shadow(0 14px 24px rgba(18, 35, 56, 0.18));
-            letter-spacing: -0.01em;
-        }
-        @keyframes heroGradientShift {
-            0%, 100% { background-position: 0% 50%; }
-            50% { background-position: 100% 50%; }
-        }
-        @keyframes heroFloat {
-            0%, 100% { transform: translateY(0px); }
-            50% { transform: translateY(-4px); }
-        }
-        #particles-canvas {
-            position: fixed;
-            inset: 0;
-            width: 100%;
-            height: 100%;
-            pointer-events: none;
-            z-index: -15;
-            opacity: 0.6;
-        }
-        .hero-shell {
-            position: relative;
-            overflow: hidden;
-            isolation: isolate;
-        }
-        .hero-shell::before {
-            content: "";
-            position: absolute;
-            inset: -20% -30%;
-            background: linear-gradient(115deg, transparent 30%, rgba(255, 255, 255, 0.45) 50%, transparent 70%);
-            transform: translateX(-60%) rotate(6deg);
-            animation: sweep 9s ease-in-out infinite;
-            pointer-events: none;
-            z-index: 0;
-        }
-        .hero-shell > * {
-            position: relative;
-            z-index: 1;
-        }
-        @keyframes sweep {
-            0%, 100% {
-                transform: translateX(-64%) rotate(6deg);
-                opacity: 0;
-            }
-            45% {
-                transform: translateX(-8%) rotate(6deg);
-                opacity: 0.42;
-            }
-            55% {
-                transform: translateX(12%) rotate(6deg);
-                opacity: 0.22;
-            }
-        }
-        .pulse-dot {
-            position: relative;
-        }
-        .pulse-dot::after {
-            content: "";
-            position: absolute;
-            inset: -5px;
-            border-radius: 9999px;
-            border: 1px solid rgba(255, 255, 255, 0.45);
-            animation: ping 2s ease-out infinite;
-        }
-        @keyframes ping {
-            0% {
-                opacity: 0.65;
-                transform: scale(0.9);
-            }
-            100% {
-                opacity: 0;
-                transform: scale(1.5);
-            }
-        }
-        .terminal-line {
-            font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
-        }
-        .type-caret {
-            display: inline-block;
-            width: 0.5rem;
-            height: 1rem;
-            margin-left: 0.2rem;
-            background: #5eead4;
-            animation: blink 0.95s step-end infinite;
-            vertical-align: -2px;
-        }
-        @keyframes blink {
-            50% { opacity: 0; }
-        }
-        .spotlight-enter {
-            animation: spotlightIn .42s ease;
-        }
-        @keyframes spotlightIn {
-            from { opacity: 0; transform: translateY(12px) scale(0.99); }
-            to { opacity: 1; transform: translateY(0) scale(1); }
-        }
-        .shimmer-band {
-            position: absolute;
-            top: -130%;
-            bottom: -130%;
-            width: 42%;
-            transform: rotate(17deg);
-            background: linear-gradient(to right, transparent 0%, rgba(255, 255, 255, 0.26) 50%, transparent 100%);
-            animation: shimmer 5s linear infinite;
-            pointer-events: none;
-        }
-        @keyframes shimmer {
-            from { left: -45%; }
-            to { left: 125%; }
-        }
-        @media (prefers-reduced-motion: reduce) {
-            * {
-                animation-duration: 0.01ms !important;
-                animation-iteration-count: 1 !important;
-                transition-duration: 0.01ms !important;
-            }
-            html {
-                scroll-behavior: auto;
-            }
-        }
-        body,
-        header,
-        nav,
-        section,
-        article,
-        aside,
-        footer,
-        button,
-        a,
-        div,
-        span {
-            transition: background-color .3s ease, border-color .3s ease, color .3s ease, box-shadow .3s ease;
-        }
-        body.dark-theme {
-            background: #07131f;
-            color: #e8f1fb;
-        }
-        body.dark-theme .bg-aurora {
-            opacity: 0.85;
-            filter: blur(52px);
-        }
-        body.dark-theme .bg-aurora-2 {
-            opacity: 0.62;
-            mix-blend-mode: screen;
-        }
-        body.dark-theme .bg-vignette {
-            background: radial-gradient(circle at center, transparent 42%, rgba(0, 0, 0, 0.45) 100%);
-        }
-        body.dark-theme .bg-noise {
-            opacity: 0.11;
-        }
-        body.dark-theme .grid-surface {
-            background-image: linear-gradient(to right, rgba(148, 163, 184, 0.08) 1px, transparent 1px),
-                              linear-gradient(to bottom, rgba(148, 163, 184, 0.08) 1px, transparent 1px);
-            opacity: 0.55;
-        }
-        body.dark-theme [class*="bg-white"] {
-            background-color: rgba(7, 16, 28, 0.9) !important;
-        }
-        body.dark-theme [class*="bg-canvas"] {
-            background-color: rgba(14, 27, 42, 0.92) !important;
-        }
-        body.dark-theme [class*="bg-reefSoft"] {
-            background-color: rgba(20, 184, 166, 0.2) !important;
-        }
-        body.dark-theme [class*="bg-emberSoft"] {
-            background-color: rgba(249, 115, 22, 0.22) !important;
-        }
-        body.dark-theme [class*="border-line"] {
-            border-color: rgba(148, 163, 184, 0.28) !important;
-        }
-        body.dark-theme [class*="border-white/70"] {
-            border-color: rgba(148, 163, 184, 0.22) !important;
-        }
-        body.dark-theme [class*="text-ink"] {
-            color: #ecf4ff !important;
-        }
-        body.dark-theme [class*="text-ink/5"],
-        body.dark-theme [class*="text-ink/6"] {
-            color: rgba(194, 211, 232, 0.78) !important;
-        }
-        body.dark-theme [class*="text-ink/7"],
-        body.dark-theme [class*="text-ink/8"] {
-            color: rgba(224, 235, 247, 0.9) !important;
-        }
-        body.dark-theme [class*="text-reef"] {
-            color: #5eead4 !important;
-        }
-        body.dark-theme [class*="text-ember"] {
-            color: #fdba74 !important;
-        }
-        body.dark-theme [class*="bg-ink"] {
-            background-color: #0f766e !important;
-        }
-        body.dark-theme .hero-name {
-            background-image: linear-gradient(90deg, #f8fbff 0%, #bae6fd 45%, #5eead4 100%) !important;
-            filter: drop-shadow(0 16px 30px rgba(34, 211, 238, 0.24));
-        }
-        body.dark-theme #particles-canvas {
-            opacity: 0.7;
-        }
-        body.dark-theme .filter-pill {
-            border-color: rgba(148, 163, 184, 0.35);
-            background: rgba(12, 24, 39, 0.88);
-            color: #d7e5f8;
-        }
-        body.dark-theme .filter-pill:hover {
-            border-color: #5eead4;
-            color: #5eead4;
-        }
-        body.dark-theme .filter-pill.active {
-            border-color: #5eead4;
-            background: #0f766e;
-            color: #f8feff;
-        }
-        body.dark-theme .project-list-card {
-            border-color: rgba(148, 163, 184, 0.25);
-            background: rgba(8, 19, 33, 0.88);
-        }
-        body.dark-theme .project-list-card.active {
-            border-color: rgba(94, 234, 212, 0.45);
-            background: linear-gradient(160deg, rgba(14, 46, 56, 0.86), rgba(8, 24, 36, 0.95));
-            box-shadow: 0 22px 34px -28px rgba(15, 118, 110, 0.9);
-        }
-        body.dark-theme .project-shot {
-            background: linear-gradient(145deg, rgba(14, 65, 77, 0.65), rgba(12, 24, 40, 0.8));
-        }
-        body.dark-theme .terminal-box {
-            border-color: rgba(94, 234, 212, 0.38);
-            background: linear-gradient(150deg, rgba(7, 21, 34, 0.97), rgba(12, 63, 71, 0.9));
-        }
-        body.dark-theme .theme-toggle-btn {
-            background: linear-gradient(135deg, #5eead4 0%, #22d3ee 100%);
-            color: #04131f !important;
-            border-color: rgba(94, 234, 212, 0.62);
-            box-shadow: 0 16px 28px -18px rgba(34, 211, 238, 0.9);
-        }
-        body.dark-theme .experience-shell {
-            border-color: rgba(148, 163, 184, 0.32);
-            background: linear-gradient(160deg, rgba(8, 22, 36, 0.95), rgba(11, 33, 45, 0.92));
-        }
-        body.dark-theme .experience-shell::before {
-            background: linear-gradient(to bottom, rgba(94, 234, 212, 0.85), rgba(94, 234, 212, 0.2));
-        }
-        body.dark-theme .experience-shell::after {
-            background: linear-gradient(to bottom, rgba(45, 212, 191, 0.9), rgba(45, 212, 191, 0));
-        }
-        body.dark-theme .experience-card {
-            border-color: rgba(148, 163, 184, 0.3);
-            background: rgba(8, 20, 34, 0.94);
-        }
-        body.dark-theme .experience-card:hover {
-            border-color: rgba(94, 234, 212, 0.52);
-            box-shadow: 0 25px 34px -24px rgba(15, 118, 110, 0.7);
-        }
-        body.dark-theme .experience-card::before {
-            border-color: rgba(7, 16, 28, 0.95);
-            background: radial-gradient(circle at 35% 30%, #99f6e4, #14b8a6 72%);
-            box-shadow: 0 0 0 5px rgba(94, 234, 212, 0.2), 0 0 0 11px rgba(94, 234, 212, 0.08);
-        }
-        body.dark-theme .experience-impact {
-            border-color: rgba(94, 234, 212, 0.35);
-            background: rgba(17, 53, 61, 0.74);
-        }
+          scroll-behavior: auto;
+        }
+      }
+      body,
+      header,
+      nav,
+      section,
+      article,
+      aside,
+      footer,
+      button,
+      a,
+      div,
+      span {
+        transition:
+          background-color 0.3s ease,
+          border-color 0.3s ease,
+          color 0.3s ease,
+          box-shadow 0.3s ease;
+      }
+      body.dark-theme {
+        background: #07131f;
+        color: #e8f1fb;
+      }
+      body.dark-theme .bg-aurora {
+        opacity: 0.85;
+        filter: blur(52px);
+      }
+      body.dark-theme .bg-aurora-2 {
+        opacity: 0.62;
+        mix-blend-mode: screen;
+      }
+      body.dark-theme .bg-vignette {
+        background: radial-gradient(
+          circle at center,
+          transparent 42%,
+          rgba(0, 0, 0, 0.45) 100%
+        );
+      }
+      body.dark-theme .bg-noise {
+        opacity: 0.11;
+      }
+      body.dark-theme .grid-surface {
+        background-image:
+          linear-gradient(
+            to right,
+            rgba(148, 163, 184, 0.08) 1px,
+            transparent 1px
+          ),
+          linear-gradient(
+            to bottom,
+            rgba(148, 163, 184, 0.08) 1px,
+            transparent 1px
+          );
+        opacity: 0.55;
+      }
+      body.dark-theme [class*="bg-white"] {
+        background-color: rgba(7, 16, 28, 0.9) !important;
+      }
+      body.dark-theme [class*="bg-canvas"] {
+        background-color: rgba(14, 27, 42, 0.92) !important;
+      }
+      body.dark-theme [class*="bg-reefSoft"] {
+        background-color: rgba(20, 184, 166, 0.2) !important;
+      }
+      body.dark-theme [class*="bg-emberSoft"] {
+        background-color: rgba(249, 115, 22, 0.22) !important;
+      }
+      body.dark-theme [class*="border-line"] {
+        border-color: rgba(148, 163, 184, 0.28) !important;
+      }
+      body.dark-theme [class*="border-white/70"] {
+        border-color: rgba(148, 163, 184, 0.22) !important;
+      }
+      body.dark-theme [class*="text-ink"] {
+        color: #ecf4ff !important;
+      }
+      body.dark-theme [class*="text-ink/5"],
+      body.dark-theme [class*="text-ink/6"] {
+        color: rgba(194, 211, 232, 0.78) !important;
+      }
+      body.dark-theme [class*="text-ink/7"],
+      body.dark-theme [class*="text-ink/8"] {
+        color: rgba(224, 235, 247, 0.9) !important;
+      }
+      body.dark-theme [class*="text-reef"] {
+        color: #5eead4 !important;
+      }
+      body.dark-theme [class*="text-ember"] {
+        color: #fdba74 !important;
+      }
+      body.dark-theme [class*="bg-ink"] {
+        background-color: #0f766e !important;
+      }
+      body.dark-theme .hero-name {
+        background-image: linear-gradient(
+          90deg,
+          #f8fbff 0%,
+          #bae6fd 45%,
+          #5eead4 100%
+        ) !important;
+        filter: drop-shadow(0 16px 30px rgba(34, 211, 238, 0.24));
+      }
+      body.dark-theme #particles-canvas {
+        opacity: 0.8;
+      }
+      body.dark-theme .filter-pill {
+        border-color: rgba(148, 163, 184, 0.35);
+        background: rgba(12, 24, 39, 0.88);
+        color: #d7e5f8;
+      }
+      body.dark-theme .filter-pill:hover {
+        border-color: #5eead4;
+        color: #5eead4;
+      }
+      body.dark-theme .filter-pill.active {
+        border-color: #5eead4;
+        background: #0f766e;
+        color: #f8feff;
+      }
+      body.dark-theme .project-list-card {
+        border-color: rgba(148, 163, 184, 0.25);
+        background: rgba(8, 19, 33, 0.88);
+      }
+      body.dark-theme .project-list-card.active {
+        border-color: rgba(94, 234, 212, 0.45);
+        background: linear-gradient(
+          160deg,
+          rgba(14, 46, 56, 0.86),
+          rgba(8, 24, 36, 0.95)
+        );
+        box-shadow: 0 22px 34px -28px rgba(15, 118, 110, 0.9);
+      }
+      body.dark-theme .project-shot {
+        background: linear-gradient(
+          145deg,
+          rgba(14, 65, 77, 0.65),
+          rgba(12, 24, 40, 0.8)
+        );
+      }
+      body.dark-theme .terminal-box {
+        border-color: rgba(94, 234, 212, 0.38);
+        background: linear-gradient(
+          150deg,
+          rgba(7, 21, 34, 0.97),
+          rgba(12, 63, 71, 0.9)
+        );
+      }
+      body.dark-theme .theme-toggle-btn {
+        background: linear-gradient(135deg, #5eead4 0%, #22d3ee 100%);
+        color: #04131f !important;
+        border-color: rgba(94, 234, 212, 0.62);
+        box-shadow: 0 16px 28px -18px rgba(34, 211, 238, 0.9);
+      }
+      body.dark-theme .experience-shell {
+        border-color: rgba(148, 163, 184, 0.32);
+        background: linear-gradient(
+          160deg,
+          rgba(8, 22, 36, 0.95),
+          rgba(11, 33, 45, 0.92)
+        );
+      }
+      body.dark-theme .experience-shell::before {
+        background: linear-gradient(
+          to bottom,
+          rgba(94, 234, 212, 0.85),
+          rgba(94, 234, 212, 0.2)
+        );
+      }
+      body.dark-theme .experience-shell::after {
+        background: linear-gradient(
+          to bottom,
+          rgba(45, 212, 191, 0.9),
+          rgba(45, 212, 191, 0)
+        );
+      }
+      body.dark-theme .experience-card {
+        border-color: rgba(148, 163, 184, 0.3);
+        background: rgba(8, 20, 34, 0.94);
+      }
+      body.dark-theme .experience-card:hover {
+        border-color: rgba(94, 234, 212, 0.52);
+        box-shadow: 0 25px 34px -24px rgba(15, 118, 110, 0.7);
+      }
+      body.dark-theme .experience-card::before {
+        border-color: rgba(7, 16, 28, 0.95);
+        background: radial-gradient(circle at 35% 30%, #99f6e4, #14b8a6 72%);
+        box-shadow:
+          0 0 0 5px rgba(94, 234, 212, 0.2),
+          0 0 0 11px rgba(94, 234, 212, 0.08);
+      }
+      body.dark-theme .experience-impact {
+        border-color: rgba(94, 234, 212, 0.35);
+        background: rgba(17, 53, 61, 0.74);
+      }
     </style>
-</head>
-<body class="font-sans antialiased">
+  </head>
+  <body class="font-sans antialiased">
     <div class="pointer-events-none fixed inset-0 -z-30 overflow-hidden">
-        <div class="bg-layer bg-aurora"></div>
-        <div class="bg-layer bg-aurora-2"></div>
-        <div class="bg-layer bg-vignette"></div>
-        <div class="bg-layer bg-noise"></div>
+      <div class="bg-layer bg-aurora"></div>
+      <div class="bg-layer bg-aurora-2"></div>
+      <div class="bg-layer bg-vignette"></div>
+      <div class="bg-layer bg-noise"></div>
     </div>
     <div class="fixed inset-0 -z-20 grid-surface"></div>
     <canvas id="particles-canvas" aria-hidden="true"></canvas>
-    <div id="orb-left" class="fixed top-16 left-[8%] -z-10 orb h-44 w-44 rounded-full bg-reef/20 blur-3xl"></div>
-    <div id="orb-right" class="fixed right-[10%] top-24 -z-10 orb orb-delay h-40 w-40 rounded-full bg-ember/25 blur-3xl"></div>
+    <div
+      id="orb-left"
+      class="fixed top-16 left-[8%] -z-10 orb h-44 w-44 rounded-full bg-reef/20 blur-3xl"></div>
+    <div
+      id="orb-right"
+      class="fixed right-[10%] top-24 -z-10 orb orb-delay h-40 w-40 rounded-full bg-ember/25 blur-3xl"></div>
     <div class="fixed inset-x-0 top-0 z-[60] h-1 bg-transparent">
-        <div id="scroll-progress" class="h-full w-0 bg-gradient-to-r from-reef via-ink to-ember transition-[width] duration-150"></div>
+      <div
+        id="scroll-progress"
+        class="h-full w-0 bg-gradient-to-r from-reef via-ink to-ember transition-[width] duration-150"></div>
     </div>
 
-    <header class="sticky top-0 z-50 border-b border-white/70 bg-white/80 backdrop-blur-xl">
-        <nav class="mx-auto flex w-full max-w-6xl items-center justify-between px-4 py-3 sm:px-6">
-            <a href="#home" class="font-display text-xl font-bold tracking-tight text-ink">Roshan<span class="text-reef">.dev</span></a>
-            <div class="hidden items-center gap-6 text-sm font-semibold text-ink/80 md:flex">
-                <a href="#skills" class="transition hover:text-reef">Skills</a>
-                <a href="#experience" class="transition hover:text-reef">Experience</a>
-                <a href="#projects" class="transition hover:text-reef">Projects</a>
-                <a href="#contact" class="transition hover:text-reef">Contact</a>
-            </div>
-            <div class="flex items-center gap-2">
-                <button data-theme-toggle type="button" class="theme-toggle-btn inline-flex items-center gap-2 rounded-xl px-3 py-2 text-xs font-bold" aria-label="Toggle theme" aria-pressed="false">
-                    <i data-theme-icon data-lucide="moon" class="h-4 w-4"></i>
-                    <span class="theme-toggle-text">Dark</span>
-                </button>
-                <button id="mobile-menu-button" class="rounded-xl border border-line bg-white p-2 text-ink md:hidden" aria-label="Open menu">
-                    <i data-lucide="menu" class="h-5 w-5"></i>
-                </button>
-            </div>
-        </nav>
-        <div id="mobile-menu" class="mx-4 mb-3 hidden rounded-xl border border-line bg-white p-3 md:hidden">
-            <a href="#skills" class="mobile-link block rounded-lg px-3 py-2 text-sm font-semibold text-ink/85 hover:bg-reefSoft">Skills</a>
-            <a href="#experience" class="mobile-link block rounded-lg px-3 py-2 text-sm font-semibold text-ink/85 hover:bg-reefSoft">Experience</a>
-            <a href="#projects" class="mobile-link block rounded-lg px-3 py-2 text-sm font-semibold text-ink/85 hover:bg-reefSoft">Projects</a>
-            <a href="#contact" class="mobile-link block rounded-lg px-3 py-2 text-sm font-semibold text-ink/85 hover:bg-reefSoft">Contact</a>
+    <header
+      class="sticky top-0 z-50 border-b border-white/70 bg-white/80 backdrop-blur-xl">
+      <nav
+        class="mx-auto flex w-full max-w-6xl items-center justify-between px-4 py-3 sm:px-6">
+        <a
+          href="#home"
+          class="font-display text-xl font-bold tracking-tight text-ink"
+          >Roshan<span class="text-reef">.dev</span></a
+        >
+        <div
+          class="hidden items-center gap-6 text-sm font-semibold text-ink/80 md:flex">
+          <a href="#skills" class="transition hover:text-reef">Skills</a>
+          <a href="#experience" class="transition hover:text-reef"
+            >Experience</a
+          >
+          <a href="#projects" class="transition hover:text-reef">Projects</a>
+          <a href="#contact" class="transition hover:text-reef">Contact</a>
         </div>
+        <div class="flex items-center gap-2">
+          <button
+            data-theme-toggle
+            type="button"
+            class="theme-toggle-btn inline-flex items-center gap-2 rounded-xl px-3 py-2 text-xs font-bold"
+            aria-label="Toggle theme"
+            aria-pressed="false">
+            <i data-theme-icon data-lucide="moon" class="h-4 w-4"></i>
+            <span class="theme-toggle-text">Dark</span>
+          </button>
+          <button
+            id="mobile-menu-button"
+            class="rounded-xl border border-line bg-white p-2 text-ink md:hidden"
+            aria-label="Open menu">
+            <i data-lucide="menu" class="h-5 w-5"></i>
+          </button>
+        </div>
+      </nav>
+      <div
+        id="mobile-menu"
+        class="mx-4 mb-3 hidden rounded-xl border border-line bg-white p-3 md:hidden">
+        <a
+          href="#skills"
+          class="mobile-link block rounded-lg px-3 py-2 text-sm font-semibold text-ink/85 hover:bg-reefSoft"
+          >Skills</a
+        >
+        <a
+          href="#experience"
+          class="mobile-link block rounded-lg px-3 py-2 text-sm font-semibold text-ink/85 hover:bg-reefSoft"
+          >Experience</a
+        >
+        <a
+          href="#projects"
+          class="mobile-link block rounded-lg px-3 py-2 text-sm font-semibold text-ink/85 hover:bg-reefSoft"
+          >Projects</a
+        >
+        <a
+          href="#contact"
+          class="mobile-link block rounded-lg px-3 py-2 text-sm font-semibold text-ink/85 hover:bg-reefSoft"
+          >Contact</a
+        >
+      </div>
     </header>
-    <button data-theme-toggle type="button" class="theme-toggle-btn theme-fab inline-flex items-center gap-2 text-xs font-bold" aria-label="Toggle theme" aria-pressed="false">
-        <i data-theme-icon data-lucide="moon" class="h-4 w-4"></i>
-        <span class="theme-toggle-text">Dark</span>
+    <button
+      data-theme-toggle
+      type="button"
+      class="theme-toggle-btn theme-fab inline-flex items-center gap-2 text-xs font-bold"
+      aria-label="Toggle theme"
+      aria-pressed="false">
+      <i data-theme-icon data-lucide="moon" class="h-4 w-4"></i>
+      <span class="theme-toggle-text">Dark</span>
     </button>
 
     <main class="mx-auto w-full max-w-6xl px-4 pb-16 pt-8 sm:px-6">
-        <section id="home" class="scroll-mt-24 reveal">
-            <div class="hero-shell grid gap-8 rounded-3xl border border-white/70 bg-white/85 p-6 shadow-card backdrop-blur sm:p-10 lg:grid-cols-5">
-                <div class="lg:col-span-3">
-                    <p class="inline-flex items-center whitespace-nowrap rounded-full border border-reef/20 bg-reefSoft px-3 py-1 text-[10px] font-bold uppercase tracking-[0.12em] text-reef sm:text-xs">
-                        Senior Software Engineer | Angular 11-18 | RxJS/NgRx | Performance & CI/CD
-                    </p>
-                    <h1 class="hero-name mt-4 bg-gradient-to-r from-ink via-ink to-reef bg-clip-text font-display text-5xl font-bold leading-tight text-transparent sm:text-6xl lg:text-7xl">
-                        Mohd Roshan Hussain
-                    </h1>
-                    <p class="mt-4 text-base leading-relaxed text-ink/80 sm:text-lg">
-                        I architect and ship enterprise Angular applications with measurable outcomes: 35% faster load times, zero-downtime migration, and reliable delivery at scale.
-                        Core strengths include Angular v11-v18, RxJS/NgRx state management, and frontend architecture leadership.
-                    </p>
-                    <div class="terminal-box mt-5 rounded-xl p-4">
-                        <p class="text-[11px] font-bold uppercase tracking-[0.16em] text-emerald-200/85"><span class="pulse-dot mr-2 inline-block h-2 w-2 rounded-full bg-emerald-200"></span>Live Dev Console</p>
-                        <p class="terminal-line mt-2 text-sm text-emerald-100">
-                            <span class="text-emerald-300">$</span>
-                            <span id="typewriter-text"></span><span class="type-caret"></span>
-                        </p>
-                    </div>
-                    <div class="mt-6 flex flex-wrap gap-3">
-                        <a href="#projects" class="inline-flex items-center gap-2 rounded-xl bg-ink px-5 py-3 text-sm font-bold text-white transition hover:bg-reef">
-                            <i data-lucide="rocket" class="h-4 w-4"></i>
-                            View Projects
-                        </a>
-                        <a href="mailto:mdroshan.dev@gmail.com" class="inline-flex items-center gap-2 rounded-xl border border-line bg-white px-5 py-3 text-sm font-bold text-ink transition hover:border-reef hover:text-reef">
-                            <i data-lucide="mail" class="h-4 w-4"></i>
-                            Hire Me
-                        </a>
-                        <a href="https://in.linkedin.com/in/roshan2197" target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-2 rounded-xl border border-ember/30 bg-emberSoft px-5 py-3 text-sm font-bold text-ember transition hover:bg-ember hover:text-white">
-                            <i data-lucide="linkedin" class="h-4 w-4"></i>
-                            LinkedIn
-                        </a>
-                    </div>
-                </div>
+      <section id="home" class="scroll-mt-24 reveal">
+        <div
+          class="hero-shell grid gap-8 rounded-3xl border border-white/70 bg-white/85 p-6 shadow-card backdrop-blur sm:p-10 lg:grid-cols-5">
+          <div class="lg:col-span-3">
+            <p
+              class="inline-flex max-w-full flex-wrap items-center rounded-full border border-reef/20 bg-reefSoft px-3 py-1 text-[10px] font-bold uppercase leading-relaxed tracking-[0.1em] text-reef sm:text-xs">
+              Senior Software Engineer | Angular 11-18 | RxJS/NgRx | Performance
+              & CI/CD
+            </p>
+            <h1
+              class="hero-name mt-4 bg-gradient-to-r from-ink via-ink to-reef bg-clip-text font-display text-4xl font-bold leading-[1.05] text-transparent sm:text-6xl lg:text-7xl">
+              Mohd Roshan Hussain
+            </h1>
+            <p class="mt-4 text-base leading-relaxed text-ink/80 sm:text-lg">
+              I architect and ship enterprise Angular applications with
+              measurable outcomes: 35% faster load times, zero-downtime
+              migration, and reliable delivery at scale. Core strengths include
+              Angular v11-v18, RxJS/NgRx state management, and frontend
+              architecture leadership.
+            </p>
+            <div class="terminal-box mt-5 rounded-xl p-4">
+              <p
+                class="text-[11px] font-bold uppercase tracking-[0.16em] text-emerald-200/85">
+                <span
+                  class="pulse-dot mr-2 inline-block h-2 w-2 rounded-full bg-emerald-200"></span
+                >Live Dev Console
+              </p>
+              <p class="terminal-line mt-2 text-sm text-emerald-100">
+                <span class="text-emerald-300">$</span>
+                <span id="typewriter-text"></span
+                ><span class="type-caret"></span>
+              </p>
+            </div>
+            <div class="mt-6 flex flex-wrap gap-3">
+              <a
+                href="#projects"
+                class="inline-flex items-center gap-2 rounded-xl bg-ink px-5 py-3 text-sm font-bold text-white transition hover:bg-reef">
+                <i data-lucide="rocket" class="h-4 w-4"></i>
+                View Projects
+              </a>
+              <a
+                href="mailto:mdroshan.dev@gmail.com"
+                class="inline-flex items-center gap-2 rounded-xl border border-line bg-white px-5 py-3 text-sm font-bold text-ink transition hover:border-reef hover:text-reef">
+                <i data-lucide="mail" class="h-4 w-4"></i>
+                Hire Me
+              </a>
+              <a
+                href="https://in.linkedin.com/in/roshan2197"
+                target="_blank"
+                rel="noopener noreferrer"
+                class="inline-flex items-center gap-2 rounded-xl border border-ember/30 bg-emberSoft px-5 py-3 text-sm font-bold text-ember transition hover:bg-ember hover:text-white">
+                <i data-lucide="linkedin" class="h-4 w-4"></i>
+                LinkedIn
+              </a>
+            </div>
+          </div>
 
-                <div class="rounded-2xl border border-line bg-canvas/90 p-6 lg:col-span-2">
-                    <h2 class="font-display text-lg font-semibold text-ink">Impact Snapshot</h2>
-                    <div id="stats-grid" class="mt-5 grid grid-cols-2 gap-3 text-sm">
-                        <!-- Injected -->
-                    </div>
-                    <div class="mt-6 rounded-xl border border-line bg-white p-4">
-                        <p class="text-xs font-bold uppercase tracking-[0.1em] text-ink/55">Location</p>
-                        <p class="mt-1 text-sm font-semibold text-ink">Hyderabad, India</p>
-                        <p class="mt-3 text-xs font-bold uppercase tracking-[0.1em] text-ink/55">Current Role</p>
-                        <p class="mt-1 text-sm font-semibold text-ink">Senior Software Engineer at SaferTek</p>
-                    </div>
-                </div>
+          <div
+            class="rounded-2xl border border-line bg-canvas/90 p-6 lg:col-span-2">
+            <h2 class="font-display text-lg font-semibold text-ink">
+              Impact Snapshot
+            </h2>
+            <div id="stats-grid" class="mt-5 grid grid-cols-2 gap-3 text-sm">
+              <!-- Injected -->
             </div>
-        </section>
+            <div class="mt-6 rounded-xl border border-line bg-white p-4">
+              <p
+                class="text-xs font-bold uppercase tracking-[0.1em] text-ink/55">
+                Location
+              </p>
+              <p class="mt-1 text-sm font-semibold text-ink">
+                Hyderabad, India
+              </p>
+              <p
+                class="mt-3 text-xs font-bold uppercase tracking-[0.1em] text-ink/55">
+                Current Role
+              </p>
+              <p class="mt-1 text-sm font-semibold text-ink">
+                Senior Software Engineer at SaferTek
+              </p>
+            </div>
+          </div>
+        </div>
+      </section>
 
-        <section id="skills" class="scroll-mt-24 pt-12 reveal">
-            <div class="mb-6 flex items-end justify-between">
-                <h2 class="font-display text-3xl font-bold text-ink">Core Stack</h2>
-                <p class="text-sm font-semibold text-ink/55">Modern frontend + product engineering</p>
-            </div>
-            <div id="skills-grid" class="grid gap-4 md:grid-cols-2 lg:grid-cols-3">
-                <!-- Injected -->
-            </div>
-        </section>
+      <section id="skills" class="scroll-mt-24 pt-12 reveal">
+        <div class="mb-6 flex items-end justify-between">
+          <h2 class="font-display text-3xl font-bold text-ink">Core Stack</h2>
+          <p class="text-sm font-semibold text-ink/55">
+            Modern frontend + product engineering
+          </p>
+        </div>
+        <div id="skills-grid" class="grid gap-4 md:grid-cols-2 lg:grid-cols-3">
+          <!-- Injected -->
+        </div>
+      </section>
 
-        <section id="experience" class="scroll-mt-24 pt-12 reveal">
-            <div class="mb-6 flex items-end justify-between">
-                <h2 class="font-display text-3xl font-bold text-ink">Work Experience</h2>
-                <p class="text-sm font-semibold text-ink/55">Timeline + impact at a glance</p>
-            </div>
-            <div class="mb-4 grid gap-3 sm:grid-cols-3">
-                <article class="rounded-xl border border-line bg-white/80 p-3 shadow-card">
-                    <p class="text-[11px] font-bold uppercase tracking-[0.1em] text-ink/55">Experience</p>
-                    <p class="mt-1 font-display text-xl font-bold text-ink">4+ Years</p>
-                </article>
-                <article class="rounded-xl border border-line bg-white/80 p-3 shadow-card">
-                    <p class="text-[11px] font-bold uppercase tracking-[0.1em] text-ink/55">Leadership</p>
-                    <p class="mt-1 font-display text-xl font-bold text-ink">3 Internship Roles</p>
-                    <p class="mt-1 font-display text-xl font-bold text-ink">3+ Years</p>
-                </article>
-                <article class="rounded-xl border border-line bg-white/80 p-3 shadow-card">
-                    <p class="text-[11px] font-bold uppercase tracking-[0.1em] text-ink/55">Leadership</p>
-                    <p class="mt-1 font-display text-xl font-bold text-ink">4 Engineers Led</p>
-                </article>
-                <article class="rounded-xl border border-line bg-white/80 p-3 shadow-card">
-                    <p class="text-[11px] font-bold uppercase tracking-[0.1em] text-ink/55">Scale</p>
-                    <p class="mt-1 font-display text-xl font-bold text-ink">100K+ Users</p>
-                </article>
-            </div>
-            <div id="experience-list" class="experience-shell space-y-4">
-                <!-- Injected -->
-            </div>
-        </section>
+      <section id="experience" class="scroll-mt-24 pt-12 reveal">
+        <div class="mb-6 flex items-end justify-between">
+          <h2 class="font-display text-3xl font-bold text-ink">
+            Work Experience
+          </h2>
+          <p class="text-sm font-semibold text-ink/55">
+            Timeline + impact at a glance
+          </p>
+        </div>
+        <div class="mb-4 grid gap-3 sm:grid-cols-3">
+          <article
+            class="rounded-xl border border-line bg-white/80 p-3 shadow-card">
+            <p
+              class="text-[11px] font-bold uppercase tracking-[0.1em] text-ink/55">
+              Experience
+            </p>
+            <p class="mt-1 font-display text-xl font-bold text-ink">4+ Years</p>
+          </article>
+          <article
+            class="rounded-xl border border-line bg-white/80 p-3 shadow-card">
+            <p
+              class="text-[11px] font-bold uppercase tracking-[0.1em] text-ink/55">
+              Leadership
+            </p>
+            <p class="mt-1 font-display text-xl font-bold text-ink">
+              3 Internship Roles
+            </p>
+          </article>
+          <article
+            class="rounded-xl border border-line bg-white/80 p-3 shadow-card">
+            <p
+              class="text-[11px] font-bold uppercase tracking-[0.1em] text-ink/55">
+              Scale
+            </p>
+            <p class="mt-1 font-display text-xl font-bold text-ink">
+              100K+ Users
+            </p>
+          </article>
+        </div>
+        <div id="experience-list" class="experience-shell space-y-4">
+          <!-- Injected -->
+        </div>
+      </section>
 
-        <section id="projects" class="scroll-mt-24 pt-12 reveal">
-            <div class="rounded-3xl border border-line bg-white/70 p-5 shadow-card backdrop-blur sm:p-7">
-                <div class="mb-6 flex flex-wrap items-end justify-between gap-3">
-                    <h2 class="font-display text-3xl font-bold text-ink">Featured Projects</h2>
-                    <p class="text-sm font-semibold text-ink/55">Personal and product builds (work experience separated above)</p>
-                </div>
-                <div id="project-filters" class="mb-5 flex flex-wrap gap-2">
-                    <!-- Injected -->
-                </div>
-                <div class="grid gap-5 lg:grid-cols-5">
-                    <article id="project-spotlight" class="rounded-2xl border border-line bg-white/92 p-6 shadow-card lg:col-span-3">
-                        <!-- Injected -->
-                    </article>
-                    <aside id="projects-list" class="space-y-3 lg:col-span-2">
-                        <!-- Injected -->
-                    </aside>
-                </div>
-            </div>
-        </section>
+      <section id="projects" class="scroll-mt-24 pt-12 reveal">
+        <div
+          class="rounded-3xl border border-line bg-white/70 p-5 shadow-card backdrop-blur sm:p-7">
+          <div class="mb-6 flex flex-wrap items-end justify-between gap-3">
+            <h2 class="font-display text-3xl font-bold text-ink">
+              Featured Projects
+            </h2>
+            <p class="text-sm font-semibold text-ink/55">
+              Personal and product builds (work experience separated above)
+            </p>
+          </div>
+          <div id="project-filters" class="mb-5 flex flex-wrap gap-2">
+            <!-- Injected -->
+          </div>
+          <div class="grid gap-5 lg:grid-cols-5">
+            <article
+              id="project-spotlight"
+              class="rounded-2xl border border-line bg-white/92 p-6 shadow-card lg:col-span-3">
+              <!-- Injected -->
+            </article>
+            <aside id="projects-list" class="space-y-3 lg:col-span-2">
+              <!-- Injected -->
+            </aside>
+          </div>
+        </div>
+      </section>
 
-        <section id="education" class="scroll-mt-24 pt-12 reveal">
-            <div class="grid gap-5 lg:grid-cols-3">
-                <article class="rounded-2xl border border-line bg-white/85 p-6 shadow-card lg:col-span-2">
-                    <p class="text-xs font-bold uppercase tracking-[0.12em] text-ink/55">Education</p>
-                    <h3 class="mt-2 font-display text-xl font-bold text-ink">Malla Reddy Engineering College</h3>
-                    <p class="mt-1 text-sm font-semibold text-ink/75">B.Tech | Computer Science Engineering</p>
-                    <p class="mt-3 inline-flex rounded-full border border-reef/30 bg-reefSoft px-3 py-1 text-sm font-semibold text-reef">
-                        Sep 2019 - Jun 2023 | GPA: 3.5/4.0
-                    </p>
-                </article>
-                <article class="rounded-2xl border border-line bg-white/85 p-6 shadow-card">
-                    <p class="text-xs font-bold uppercase tracking-[0.12em] text-ink/55">Currently Building</p>
-                    <ul class="mt-3 space-y-2 text-sm font-medium text-ink/80">
-                        <li class="flex items-start gap-2">
-                            <span class="mt-1 h-2 w-2 rounded-full bg-reef"></span>
-                            Angular 18 architecture with reusable UI system
-                        </li>
-                        <li class="flex items-start gap-2">
-                            <span class="mt-1 h-2 w-2 rounded-full bg-ember"></span>
-                            ERP modules with role-based controls
-                        </li>
-                        <li class="flex items-start gap-2">
-                            <span class="mt-1 h-2 w-2 rounded-full bg-reef"></span>
-                            Performance-focused data loading patterns
-                        </li>
-                    </ul>
-                </article>
-            </div>
-        </section>
+      <section id="education" class="scroll-mt-24 pt-12 reveal">
+        <div class="grid gap-5 lg:grid-cols-3">
+          <article
+            class="rounded-2xl border border-line bg-white/85 p-6 shadow-card lg:col-span-2">
+            <p
+              class="text-xs font-bold uppercase tracking-[0.12em] text-ink/55">
+              Education
+            </p>
+            <h3 class="mt-2 font-display text-xl font-bold text-ink">
+              Malla Reddy Engineering College
+            </h3>
+            <p class="mt-1 text-sm font-semibold text-ink/75">
+              B.Tech | Computer Science Engineering
+            </p>
+            <p
+              class="mt-3 inline-flex rounded-full border border-reef/30 bg-reefSoft px-3 py-1 text-sm font-semibold text-reef">
+              Sep 2019 - Jun 2023 | GPA: 3.5/4.0
+            </p>
+          </article>
+          <article
+            class="rounded-2xl border border-line bg-white/85 p-6 shadow-card">
+            <p
+              class="text-xs font-bold uppercase tracking-[0.12em] text-ink/55">
+              Currently Building
+            </p>
+            <ul class="mt-3 space-y-2 text-sm font-medium text-ink/80">
+              <li class="flex items-start gap-2">
+                <span class="mt-1 h-2 w-2 rounded-full bg-reef"></span>
+                Angular 18 architecture with reusable UI system
+              </li>
+              <li class="flex items-start gap-2">
+                <span class="mt-1 h-2 w-2 rounded-full bg-ember"></span>
+                ERP modules with role-based controls
+              </li>
+              <li class="flex items-start gap-2">
+                <span class="mt-1 h-2 w-2 rounded-full bg-reef"></span>
+                Performance-focused data loading patterns
+              </li>
+            </ul>
+          </article>
+        </div>
+      </section>
 
-        <section id="contact" class="scroll-mt-24 pt-12 reveal">
-            <div class="rounded-3xl border border-line bg-white/90 p-6 shadow-card sm:p-8">
-                <div class="grid gap-6 lg:grid-cols-3">
-                    <div class="lg:col-span-2">
-                        <p class="text-xs font-bold uppercase tracking-[0.12em] text-ink/55">Let's Build</p>
-                        <h2 class="mt-2 font-display text-3xl font-bold text-ink">Open to high-impact frontend roles</h2>
-                        <p class="mt-4 text-sm leading-relaxed text-ink/80">
-                            If you are building a complex product and need a frontend engineer who can own architecture,
-                            performance, and delivery quality, I am available for conversations.
-                        </p>
-                        <div class="mt-6 flex flex-wrap gap-3">
-                            <a href="mailto:mdroshan.dev@gmail.com" class="inline-flex items-center gap-2 rounded-xl bg-reef px-5 py-3 text-sm font-bold text-white shadow-glow transition hover:bg-ink">
-                                <i data-lucide="send" class="h-4 w-4"></i>
-                                Email Me
-                            </a>
-                            <a href="https://in.linkedin.com/in/roshan2197" target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-2 rounded-xl border border-line bg-white px-5 py-3 text-sm font-bold text-ink transition hover:border-reef hover:text-reef">
-                                <i data-lucide="linkedin" class="h-4 w-4"></i>
-                                LinkedIn
-                            </a>
-                            <a href="https://github.com/roshan2197" target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-2 rounded-xl border border-line bg-white px-5 py-3 text-sm font-bold text-ink transition hover:border-reef hover:text-reef">
-                                <i data-lucide="github" class="h-4 w-4"></i>
-                                GitHub
-                            </a>
-                        </div>
-                    </div>
-                    <div class="rounded-2xl border border-reef/25 bg-reefSoft p-5">
-                        <p class="text-xs font-bold uppercase tracking-[0.12em] text-reef">Quick Contact</p>
-                        <ul class="mt-3 space-y-3 text-sm font-semibold text-ink">
-                            <li class="flex items-center gap-2">
-                                <span class="pulse-ring inline-flex h-6 w-6 items-center justify-center rounded-full bg-white text-reef">
-                                    <i data-lucide="mail" class="h-3.5 w-3.5"></i>
-                                </span>
-                                mdroshan.dev@gmail.com
-                            </li>
-<!--                             <li class="flex items-center gap-2">
-                                <span class="inline-flex h-6 w-6 items-center justify-center rounded-full bg-white text-reef">
-                                    <i data-lucide="phone" class="h-3.5 w-3.5"></i>
-                                </span>
-                                +91 70939-92360
-                            </li> -->
-                            <li class="flex items-center gap-2">
-                                <span class="inline-flex h-6 w-6 items-center justify-center rounded-full bg-white text-reef">
-                                    <i data-lucide="map-pin" class="h-3.5 w-3.5"></i>
-                                </span>
-                                Hyderabad, India
-                            </li>
-                        </ul>
-                    </div>
-                </div>
+      <section id="contact" class="scroll-mt-24 pt-12 reveal">
+        <div
+          class="rounded-3xl border border-line bg-white/90 p-6 shadow-card sm:p-8">
+          <div class="grid gap-6 lg:grid-cols-3">
+            <div class="lg:col-span-2">
+              <p
+                class="text-xs font-bold uppercase tracking-[0.12em] text-ink/55">
+                Let's Build
+              </p>
+              <h2 class="mt-2 font-display text-3xl font-bold text-ink">
+                Open to high-impact frontend roles
+              </h2>
+              <p class="mt-4 text-sm leading-relaxed text-ink/80">
+                If you are building a complex product and need a frontend
+                engineer who can own architecture, performance, and delivery
+                quality, I am available for conversations.
+              </p>
+              <div class="mt-6 flex flex-wrap gap-3">
+                <a
+                  href="mailto:mdroshan.dev@gmail.com"
+                  class="inline-flex items-center gap-2 rounded-xl bg-reef px-5 py-3 text-sm font-bold text-white shadow-glow transition hover:bg-ink">
+                  <i data-lucide="send" class="h-4 w-4"></i>
+                  Email Me
+                </a>
+                <a
+                  href="https://in.linkedin.com/in/roshan2197"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  class="inline-flex items-center gap-2 rounded-xl border border-line bg-white px-5 py-3 text-sm font-bold text-ink transition hover:border-reef hover:text-reef">
+                  <i data-lucide="linkedin" class="h-4 w-4"></i>
+                  LinkedIn
+                </a>
+                <a
+                  href="https://github.com/roshan2197"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  class="inline-flex items-center gap-2 rounded-xl border border-line bg-white px-5 py-3 text-sm font-bold text-ink transition hover:border-reef hover:text-reef">
+                  <i data-lucide="github" class="h-4 w-4"></i>
+                  GitHub
+                </a>
+              </div>
             </div>
-        </section>
+            <div class="rounded-2xl border border-reef/25 bg-reefSoft p-5">
+              <p
+                class="text-xs font-bold uppercase tracking-[0.12em] text-reef">
+                Quick Contact
+              </p>
+              <ul class="mt-3 space-y-3 text-sm font-semibold text-ink">
+                <li class="flex items-center gap-2">
+                  <span
+                    class="pulse-ring inline-flex h-6 w-6 items-center justify-center rounded-full bg-white text-reef">
+                    <i data-lucide="mail" class="h-3.5 w-3.5"></i>
+                  </span>
+                  mdroshan.dev@gmail.com
+                </li>
+                <!--<li class="flex items-center gap-2">-->
+                <!--    <span class="inline-flex h-6 w-6 items-center justify-center rounded-full bg-white text-reef">-->
+                <!--        <i data-lucide="phone" class="h-3.5 w-3.5"></i>-->
+                <!--    </span>-->
+                <!--    +91 70939-92360-->
+                <!--</li>-->
+                <li class="flex items-center gap-2">
+                  <span
+                    class="inline-flex h-6 w-6 items-center justify-center rounded-full bg-white text-reef">
+                    <i data-lucide="map-pin" class="h-3.5 w-3.5"></i>
+                  </span>
+                  Hyderabad, India
+                </li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </section>
     </main>
 
-    <footer class="border-t border-white/70 py-6 text-center text-xs font-semibold text-ink/55">
-        Crafted by Mohd Roshan Hussain
+    <footer
+      class="border-t border-white/70 py-6 text-center text-xs font-semibold text-ink/55">
+      Crafted by Mohd Roshan Hussain
     </footer>
 
     <script>
-        const portfolioData = {
-            name: "Mohd Roshan Hussain",
-            title: "Senior Software Engineer | Angular Architect (v11-v18)",
-            summary: "Architected and delivered high-performance Angular applications at enterprise scale, driving 35% faster load times and zero-downtime migration for SaaS platforms serving 100,000+ users.",
-            contact: {
-                email: "mdroshan.dev@gmail.com",
-                phone: "+91 70939-92360",
-                github: "https://github.com/roshan2197",
-                linkedin: "https://linkedin.com/in/roshan2197"
-            },
-            stats: [
-                { label: "Load Time Improved", target: 35, compact: false, suffix: "%" },
-                { label: "Active Users", target: 100000, compact: true, suffix: "+" },
-                { label: "Release Cycle Faster", target: 70, compact: false, suffix: "%" },
-                { label: "PR Turnaround Cut", target: 75, compact: false, suffix: "%" }
+      const portfolioData = {
+        name: "Mohd Roshan Hussain",
+        title: "Senior Software Engineer | Angular Architect (v11-v18)",
+        summary:
+          "Architected and delivered high-performance Angular applications at enterprise scale, driving 35% faster load times and zero-downtime migration for SaaS platforms serving 100,000+ users.",
+        contact: {
+          email: "mdroshan.dev@gmail.com",
+          phone: "+91 70939-92360",
+          github: "https://github.com/roshan2197",
+          linkedin: "https://linkedin.com/in/roshan2197",
+        },
+        stats: [
+          {
+            label: "Load Time Improved",
+            target: 35,
+            compact: false,
+            suffix: "%",
+          },
+          { label: "Active Users", target: 100000, compact: true, suffix: "+" },
+          {
+            label: "Release Cycle Faster",
+            target: 70,
+            compact: false,
+            suffix: "%",
+          },
+          {
+            label: "PR Turnaround Cut",
+            target: 75,
+            compact: false,
+            suffix: "%",
+          },
+        ],
+        skills: {
+          frontend: [
+            "Angular 11-18",
+            "TypeScript",
+            "JavaScript",
+            "RxJS",
+            "NgRx",
+            "Angular Material",
+          ],
+          backend: ["Node.js", "Express.js", "REST APIs", "OpenAPI/Swagger"],
+          databases: ["MySQL", "Schema Design", "Data Modeling"],
+          tools: [
+            "Angular CLI",
+            "Webpack",
+            "GitHub Actions",
+            "Docker",
+            "AWS EC2",
+          ],
+          engineering: [
+            "Jasmine/Karma",
+            "Cypress",
+            "CI/CD",
+            "Code Reviews",
+            "Architecture Standards",
+          ],
+        },
+        experience: [
+          {
+            role: "Senior Software Engineer",
+            company: "SaferTek",
+            dates: "Jul 2023 - Present | Hyderabad",
+            focus: "Enterprise Angular Platform Leadership",
+            impact: [
+              "100K+ users",
+              "35% faster load",
+              "99.9% uptime",
+              "70% faster releases",
             ],
-            skills: {
-                frontend: ["Angular 11-18", "TypeScript", "JavaScript", "RxJS", "NgRx", "Angular Material"],
-                backend: ["Node.js", "Express.js", "REST APIs", "OpenAPI/Swagger"],
-                databases: ["MySQL", "Schema Design", "Data Modeling"],
-                tools: ["Angular CLI", "Webpack", "GitHub Actions", "Docker", "AWS EC2"],
-                engineering: ["Jasmine/Karma", "Cypress", "CI/CD", "Code Reviews", "Architecture Standards"]
-            },
-            experience: [
-                {
-                    role: "Senior Software Engineer",
-                    company: "SaferTek",
-                    dates: "Jul 2023 - Present | Hyderabad",
-                    focus: "Enterprise Angular Platform Leadership",
-                    impact: ["100K+ users", "35% faster load", "99.9% uptime", "70% faster releases"],
-                    highlights: [
-                        "Spearheaded Angular 11 to 18 migration across a 20+ member product org with 99.9% uptime and zero critical incidents.",
-                        "Built a shared component library with 40+ reusable components, cutting duplicate UI effort by 60% and improving feature velocity by 50%.",
-                        "Designed centralized RxJS/NgRx state flows for 10+ modules, reducing redundant API calls by ~40% and improving load performance.",
-                        "Implemented lazy loading, HTTP caching, and API batching to improve initial load time by 35% in high-traffic modules.",
-                        "Enforced TypeScript and review standards for a 4-engineer team, reducing regressions by 20% and PR turnaround from 2 days to under 6 hours.",
-                        "Architected CI/CD pipelines with GitHub Actions, cutting release cycle time from 10 days to 3 days and enabling same-day hotfixes."
-                    ]
-                },
-                {
-                    role: "Frontend Developer Intern",
-                    company: "SaferTek",
-                    dates: "Aug 2022 - Jun 2023 | Hyderabad",
-                    focus: "ERP Refactoring, Scheduler Components, Team Collaboration",
-                    impact: ["15+ modules improved", "Reusable scheduler", "Better maintainability"],
-                    highlights: [
-                        "Contributed to ERP by fixing bugs, adding improvements, and refactoring code across application and internal component library.",
-                        "Guided scheduler component development and improved reusable modules used across workflows.",
-                        "Worked closely with backend teams and technical leads to align business logic and architecture decisions for cleaner code quality."
-                    ]
-                },
-                {
-                    role: "Full Stack Web Developer Intern",
-                    company: "Clinicure Healthcare Pvt. Ltd.",
-                    dates: "May 2022 - Jul 2022 | Remote",
-                    focus: "React SaaS Modules and Multi-App Deployment",
-                    impact: ["React forms + dashboards", "Sub-domain deployments", "Stability improvements"],
-                    highlights: [
-                        "Developed form and dashboard modules in a React-based multi-purpose SaaS healthcare platform across several internal applications.",
-                        "Configured and deployed multiple internal apps on sub-domains using cPanel, including environment setup and release tasks.",
-                        "Assisted debugging and performance improvements to enhance app stability and user experience."
-                    ]
-                },
-                {
-                    role: "Full Stack Web Developer Intern",
-                    company: "Sahuliyat Kashmir (NGO)",
-                    dates: "Dec 2021 - Apr 2022 | Remote",
-                    focus: "Fundraising Platform Delivery and Ownership",
-                    impact: ["Live platform", "Razorpay integration", "Admin/user dashboards"],
-                    highlights: [
-                        "Developed and launched kashmirzakat.com, a live fundraising platform supporting online transactions.",
-                        "Integrated Razorpay payments and built frontend/backend components with HTML, Bootstrap, JavaScript, jQuery, PHP, and MySQL.",
-                        "Built user/admin dashboards with privilege-based access and SEO improvements for better reach.",
-                        "Handled end-to-end development, testing, deployment, and maintenance including cPanel server setup."
-                    ]
-                }
+            highlights: [
+              "Spearheaded Angular 11 to 18 migration across a 20+ member product org with 99.9% uptime and zero critical incidents.",
+              "Built a shared component library with 40+ reusable components, cutting duplicate UI effort by 60% and improving feature velocity by 50%.",
+              "Designed centralized RxJS/NgRx state flows for 10+ modules, reducing redundant API calls by ~40% and improving load performance.",
+              "Implemented lazy loading, HTTP caching, and API batching to improve initial load time by 35% in high-traffic modules.",
+              "Enforced TypeScript and review standards for a 4-engineer team, reducing regressions by 20% and PR turnaround from 2 days to under 6 hours.",
+              "Architected CI/CD pipelines with GitHub Actions, cutting release cycle time from 10 days to 3 days and enabling same-day hotfixes.",
             ],
-            projects: [
-                {
-                    id: "school-management-erp",
-                    name: "School Management ERP",
-                    category: "Full Stack",
-                    status: "Live Production System",
-                    period: "2024 - Present",
-                    stack: ["Angular 18", "Node.js", "MySQL", "Docker"],
-                    summary: "Architected and deployed a full-stack ERP for school operations with RBAC and automated reporting.",
-                    points: [
-                        "Built role-based access across 3 privilege tiers and automated PDF reports, reducing reporting effort by 60%.",
-                        "Migrated legacy PHP monolith to Angular + Node.js with a redesigned schema and containerized deployments."
-                    ],
-                    outcomes: ["500+ student workflows", "RBAC enabled", "60% faster reporting"],
-                    link: ""
-                },
-                {
-                    id: "eye-blink-detection",
-                    name: "Eye Blink Detection",
-                    category: "Computer Vision",
-                    status: "Open Source",
-                    period: "2023",
-                    stack: ["Angular", "OpenCV", "Electron"],
-                    summary: "Real-time blink detection desktop app built for low-latency, privacy-first usage.",
-                    points: [
-                        "Achieved sub-25ms latency at 60fps and maintained 95%+ detection accuracy across varied lighting.",
-                        "Shipped as cross-platform Electron app with fully client-side processing and no server image transfer."
-                    ],
-                    outcomes: ["Sub-25ms latency", "95%+ accuracy", "Offline privacy-first app"],
-                    link: "https://github.com/roshan2197/eye-blink-detection"
-                },
-                {
-                    id: "ng-auto-position",
-                    name: "ng-auto-position",
-                    category: "Open Source",
-                    status: "Published",
-                    period: "2024",
-                    stack: ["Angular", "TypeScript", "NPM"],
-                    summary: "Viewport-aware Angular utility library for dynamic element positioning.",
-                    points: [
-                        "Published on npm with 500+ weekly downloads and 50+ GitHub stars, used in 10+ production projects.",
-                        "Designed configurable placement strategies and maintained compatibility with Angular major releases."
-                    ],
-                    outcomes: ["500+ weekly downloads", "50+ GitHub stars", "10+ production adopters"],
-                    link: "https://www.npmjs.com/package/ng-auto-position"
-                }
-            ]
-        };
-        const projectState = {
-            filter: "All",
-            activeProjectId: null
-        };
-        let statsAnimated = false;
+          },
+          {
+            role: "Frontend Developer Intern",
+            company: "SaferTek",
+            dates: "Aug 2022 - Jun 2023 | Hyderabad",
+            focus: "ERP Refactoring, Scheduler Components, Team Collaboration",
+            impact: [
+              "15+ modules improved",
+              "Reusable scheduler",
+              "Better maintainability",
+            ],
+            highlights: [
+              "Contributed to ERP by fixing bugs, adding improvements, and refactoring code across application and internal component library.",
+              "Guided scheduler component development and improved reusable modules used across workflows.",
+              "Worked closely with backend teams and technical leads to align business logic and architecture decisions for cleaner code quality.",
+            ],
+          },
+          {
+            role: "Full Stack Web Developer Intern",
+            company: "Clinicure Healthcare Pvt. Ltd.",
+            dates: "May 2022 - Jul 2022 | Remote",
+            focus: "React SaaS Modules and Multi-App Deployment",
+            impact: [
+              "React forms + dashboards",
+              "Sub-domain deployments",
+              "Stability improvements",
+            ],
+            highlights: [
+              "Developed form and dashboard modules in a React-based multi-purpose SaaS healthcare platform across several internal applications.",
+              "Configured and deployed multiple internal apps on sub-domains using cPanel, including environment setup and release tasks.",
+              "Assisted debugging and performance improvements to enhance app stability and user experience.",
+            ],
+          },
+          {
+            role: "Full Stack Web Developer Intern",
+            company: "Sahuliyat Kashmir (NGO)",
+            dates: "Dec 2021 - Apr 2022 | Remote",
+            focus: "Fundraising Platform Delivery and Ownership",
+            impact: [
+              "Live platform",
+              "Razorpay integration",
+              "Admin/user dashboards",
+            ],
+            highlights: [
+              "Developed and launched kashmirzakat.com, a live fundraising platform supporting online transactions.",
+              "Integrated Razorpay payments and built frontend/backend components with HTML, Bootstrap, JavaScript, jQuery, PHP, and MySQL.",
+              "Built user/admin dashboards with privilege-based access and SEO improvements for better reach.",
+              "Handled end-to-end development, testing, deployment, and maintenance including cPanel server setup.",
+            ],
+          },
+        ],
+        projects: [
+          {
+            id: "school-management-erp",
+            name: "School Management ERP",
+            category: "Full Stack",
+            status: "Live Production System",
+            period: "2024 - Present",
+            stack: ["Angular 18", "Node.js", "MySQL", "Docker"],
+            summary:
+              "Architected and deployed a full-stack ERP for school operations with RBAC and automated reporting.",
+            points: [
+              "Built role-based access across 3 privilege tiers and automated PDF reports, reducing reporting effort by 60%.",
+              "Migrated legacy PHP monolith to Angular + Node.js with a redesigned schema and containerized deployments.",
+            ],
+            outcomes: [
+              "500+ student workflows",
+              "RBAC enabled",
+              "60% faster reporting",
+            ],
+            link: "",
+          },
+          {
+            id: "eye-blink-detection",
+            name: "Eye Blink Detection",
+            category: "Computer Vision",
+            status: "Open Source",
+            period: "2023",
+            stack: ["Angular", "OpenCV", "Electron"],
+            summary:
+              "Real-time blink detection desktop app built for low-latency, privacy-first usage.",
+            points: [
+              "Achieved sub-25ms latency at 60fps and maintained 95%+ detection accuracy across varied lighting.",
+              "Shipped as cross-platform Electron app with fully client-side processing and no server image transfer.",
+            ],
+            outcomes: [
+              "Sub-25ms latency",
+              "95%+ accuracy",
+              "Offline privacy-first app",
+            ],
+            link: "https://github.com/roshan2197/eye-blink-detection",
+          },
+          {
+            id: "ng-auto-position",
+            name: "ng-auto-position",
+            category: "Open Source",
+            status: "Published",
+            period: "2024",
+            stack: ["Angular", "TypeScript", "NPM"],
+            summary:
+              "Viewport-aware Angular utility library for dynamic element positioning.",
+            points: [
+              "Published on npm with 500+ weekly downloads and 50+ GitHub stars, used in 10+ production projects.",
+              "Designed configurable placement strategies and maintained compatibility with Angular major releases.",
+            ],
+            outcomes: [
+              "500+ weekly downloads",
+              "50+ GitHub stars",
+              "10+ production adopters",
+            ],
+            link: "https://www.npmjs.com/package/ng-auto-position",
+          },
+        ],
+      };
+      const projectState = {
+        filter: "All",
+        activeProjectId: null,
+      };
+      let statsAnimated = false;
 
-        function renderStats() {
-            const statsGrid = document.getElementById('stats-grid');
-            statsGrid.innerHTML = portfolioData.stats.map(stat => `
+      function renderStats() {
+        const statsGrid = document.getElementById("stats-grid");
+        statsGrid.innerHTML = portfolioData.stats
+          .map(
+            (stat) => `
                 <div class="rounded-xl border border-line bg-white p-3">
                     <p class="text-[11px] font-bold uppercase tracking-[0.12em] text-ink/50">${stat.label}</p>
                     <p
                         class="stat-number mt-1 font-display text-lg font-bold text-ink"
                         data-stat-target="${stat.target}"
                         data-stat-suffix="${stat.suffix}"
-                        data-stat-compact="${stat.compact ? 'true' : 'false'}"
+                        data-stat-compact="${stat.compact ? "true" : "false"}"
                     >0</p>
                 </div>
-            `).join('');
+            `,
+          )
+          .join("");
+      }
+
+      function formatStatValue(value, compact) {
+        if (!compact) {
+          return value.toLocaleString("en-US");
         }
 
-        function formatStatValue(value, compact) {
-            if (!compact) {
-                return value.toLocaleString('en-US');
-            }
+        return new Intl.NumberFormat("en-US", {
+          notation: "compact",
+          maximumFractionDigits: 1,
+        })
+          .format(value)
+          .toUpperCase();
+      }
 
-            return new Intl.NumberFormat('en-US', {
-                notation: 'compact',
-                maximumFractionDigits: 1
-            }).format(value).toUpperCase();
-        }
+      function animateStatNumber(element) {
+        const target = Number(element.dataset.statTarget || 0);
+        const suffix = element.dataset.statSuffix || "";
+        const compact = element.dataset.statCompact === "true";
+        const duration = 1200;
+        const startTime = performance.now();
 
-        function animateStatNumber(element) {
-            const target = Number(element.dataset.statTarget || 0);
-            const suffix = element.dataset.statSuffix || '';
-            const compact = element.dataset.statCompact === 'true';
-            const duration = 1200;
-            const startTime = performance.now();
+        const tick = (time) => {
+          const progress = Math.min((time - startTime) / duration, 1);
+          const eased = 1 - Math.pow(1 - progress, 3);
+          const value = Math.round(target * eased);
+          element.textContent = `${formatStatValue(value, compact)}${suffix}`;
 
-            const tick = (time) => {
-                const progress = Math.min((time - startTime) / duration, 1);
-                const eased = 1 - Math.pow(1 - progress, 3);
-                const value = Math.round(target * eased);
-                element.textContent = `${formatStatValue(value, compact)}${suffix}`;
-
-                if (progress < 1) {
-                    requestAnimationFrame(tick);
-                } else {
-                    element.textContent = `${formatStatValue(target, compact)}${suffix}`;
-                }
-            };
-
+          if (progress < 1) {
             requestAnimationFrame(tick);
+          } else {
+            element.textContent = `${formatStatValue(target, compact)}${suffix}`;
+          }
+        };
+
+        requestAnimationFrame(tick);
+      }
+
+      function initStatsCounter() {
+        const statsGrid = document.getElementById("stats-grid");
+        if (!statsGrid) {
+          return;
         }
 
-        function initStatsCounter() {
-            const statsGrid = document.getElementById('stats-grid');
-            if (!statsGrid) {
+        if (statsAnimated) {
+          statsGrid.querySelectorAll(".stat-number").forEach((number) => {
+            const target = Number(number.dataset.statTarget || 0);
+            const suffix = number.dataset.statSuffix || "";
+            const compact = number.dataset.statCompact === "true";
+            number.textContent = `${formatStatValue(target, compact)}${suffix}`;
+          });
+          return;
+        }
+
+        const observer = new IntersectionObserver(
+          (entries) => {
+            entries.forEach((entry) => {
+              if (!entry.isIntersecting) {
                 return;
-            }
+              }
 
-            if (statsAnimated) {
-                statsGrid.querySelectorAll('.stat-number').forEach(number => {
-                    const target = Number(number.dataset.statTarget || 0);
-                    const suffix = number.dataset.statSuffix || '';
-                    const compact = number.dataset.statCompact === 'true';
-                    number.textContent = `${formatStatValue(target, compact)}${suffix}`;
-                });
-                return;
-            }
-
-            const observer = new IntersectionObserver((entries) => {
-                entries.forEach(entry => {
-                    if (!entry.isIntersecting) {
-                        return;
-                    }
-
-                    statsGrid.querySelectorAll('.stat-number').forEach(animateStatNumber);
-                    statsAnimated = true;
-                    observer.disconnect();
-                });
-            }, { threshold: 0.35 });
-
-            observer.observe(statsGrid);
-        }
-
-        function initTypewriter() {
-            const output = document.getElementById('typewriter-text');
-            if (!output) {
-                return;
-            }
-
-            const lines = [
-                'shipping angular products --scope enterprise',
-                'optimizing frontend performance --mode production',
-                'building reusable ui systems --stack tailwind'
-            ];
-
-            let lineIndex = 0;
-            let charIndex = 0;
-            let deleting = false;
-
-            const run = () => {
-                const currentLine = lines[lineIndex];
-
-                if (deleting) {
-                    charIndex -= 1;
-                } else {
-                    charIndex += 1;
-                }
-
-                output.textContent = currentLine.slice(0, charIndex);
-
-                let timeout = deleting ? 28 : 48;
-
-                if (!deleting && charIndex === currentLine.length) {
-                    timeout = 1400;
-                    deleting = true;
-                } else if (deleting && charIndex === 0) {
-                    deleting = false;
-                    lineIndex = (lineIndex + 1) % lines.length;
-                    timeout = 420;
-                }
-
-                window.setTimeout(run, timeout);
-            };
-
-            run();
-        }
-
-        function getStoredTheme() {
-            try {
-                return localStorage.getItem('portfolio-theme');
-            } catch (error) {
-                return null;
-            }
-        }
-
-        function setStoredTheme(theme) {
-            try {
-                localStorage.setItem('portfolio-theme', theme);
-            } catch (error) {
-                // Ignore storage failures; fallback remains functional.
-            }
-        }
-
-        function applyTheme(theme) {
-            const body = document.body;
-            const toggles = document.querySelectorAll('[data-theme-toggle]');
-            const isDark = theme === 'dark';
-
-            body.classList.toggle('dark-theme', isDark);
-
-            toggles.forEach(toggle => {
-                toggle.setAttribute('aria-pressed', isDark ? 'true' : 'false');
-                toggle.setAttribute('aria-label', isDark ? 'Switch to light theme' : 'Switch to dark theme');
-
-                const icon = toggle.querySelector('[data-theme-icon]');
-                if (icon) {
-                    icon.setAttribute('data-lucide', isDark ? 'sun' : 'moon');
-                }
-
-                const label = toggle.querySelector('.theme-toggle-text');
-                if (label) {
-                    label.textContent = isDark ? 'Light' : 'Dark';
-                }
+              statsGrid
+                .querySelectorAll(".stat-number")
+                .forEach(animateStatNumber);
+              statsAnimated = true;
+              observer.disconnect();
             });
+          },
+          { threshold: 0.35 },
+        );
 
-            setStoredTheme(theme);
-            lucide.createIcons();
+        observer.observe(statsGrid);
+      }
+
+      function initTypewriter() {
+        const output = document.getElementById("typewriter-text");
+        if (!output) {
+          return;
         }
 
-        function initThemeToggle() {
-            const toggles = document.querySelectorAll('[data-theme-toggle]');
-            if (!toggles.length) {
-                return;
-            }
+        const lines = [
+          "shipping angular products --scope enterprise",
+          "optimizing frontend performance --mode production",
+          "building reusable ui systems --stack tailwind",
+        ];
 
-            const storedTheme = getStoredTheme();
-            const systemPrefersDark = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches;
-            const initialTheme = (storedTheme === 'dark' || storedTheme === 'light')
-                ? storedTheme
-                : (systemPrefersDark ? 'dark' : 'light');
+        let lineIndex = 0;
+        let charIndex = 0;
+        let deleting = false;
 
-            applyTheme(initialTheme);
+        const run = () => {
+          const currentLine = lines[lineIndex];
 
-            toggles.forEach(toggle => {
-                toggle.addEventListener('click', () => {
-                    const nextTheme = document.body.classList.contains('dark-theme') ? 'light' : 'dark';
-                    applyTheme(nextTheme);
-                });
-            });
+          if (deleting) {
+            charIndex -= 1;
+          } else {
+            charIndex += 1;
+          }
+
+          output.textContent = currentLine.slice(0, charIndex);
+
+          let timeout = deleting ? 28 : 48;
+
+          if (!deleting && charIndex === currentLine.length) {
+            timeout = 1400;
+            deleting = true;
+          } else if (deleting && charIndex === 0) {
+            deleting = false;
+            lineIndex = (lineIndex + 1) % lines.length;
+            timeout = 420;
+          }
+
+          window.setTimeout(run, timeout);
+        };
+
+        run();
+      }
+
+      function getStoredTheme() {
+        try {
+          return localStorage.getItem("portfolio-theme");
+        } catch (error) {
+          return null;
+        }
+      }
+
+      function setStoredTheme(theme) {
+        try {
+          localStorage.setItem("portfolio-theme", theme);
+        } catch (error) {
+          // Ignore storage failures; fallback remains functional.
+        }
+      }
+
+      function applyTheme(theme) {
+        const body = document.body;
+        const toggles = document.querySelectorAll("[data-theme-toggle]");
+        const isDark = theme === "dark";
+
+        body.classList.toggle("dark-theme", isDark);
+
+        toggles.forEach((toggle) => {
+          toggle.setAttribute("aria-pressed", isDark ? "true" : "false");
+          toggle.setAttribute(
+            "aria-label",
+            isDark ? "Switch to light theme" : "Switch to dark theme",
+          );
+
+          const icon = toggle.querySelector("[data-theme-icon]");
+          if (icon) {
+            icon.setAttribute("data-lucide", isDark ? "sun" : "moon");
+          }
+
+          const label = toggle.querySelector(".theme-toggle-text");
+          if (label) {
+            label.textContent = isDark ? "Light" : "Dark";
+          }
+        });
+
+        setStoredTheme(theme);
+        lucide.createIcons();
+      }
+
+      function initThemeToggle() {
+        const toggles = document.querySelectorAll("[data-theme-toggle]");
+        if (!toggles.length) {
+          return;
         }
 
-        function renderSkills() {
-            const skillsGrid = document.getElementById('skills-grid');
-            const categories = [
-                { title: 'Frontend', icon: 'layout-template', list: portfolioData.skills.frontend },
-                { title: 'Backend', icon: 'server', list: portfolioData.skills.backend },
-                { title: 'Databases', icon: 'database', list: portfolioData.skills.databases },
-                { title: 'Tools', icon: 'wrench', list: portfolioData.skills.tools },
-                { title: 'Engineering', icon: 'sparkles', list: portfolioData.skills.engineering }
-            ];
+        const storedTheme = getStoredTheme();
+        const systemPrefersDark =
+          window.matchMedia &&
+          window.matchMedia("(prefers-color-scheme: dark)").matches;
+        const initialTheme =
+          storedTheme === "dark" || storedTheme === "light"
+            ? storedTheme
+            : systemPrefersDark
+              ? "dark"
+              : "light";
 
-            skillsGrid.innerHTML = categories.map((category, index) => `
+        applyTheme(initialTheme);
+
+        toggles.forEach((toggle) => {
+          toggle.addEventListener("click", () => {
+            const nextTheme = document.body.classList.contains("dark-theme")
+              ? "light"
+              : "dark";
+            applyTheme(nextTheme);
+          });
+        });
+      }
+
+      function renderSkills() {
+        const skillsGrid = document.getElementById("skills-grid");
+        const categories = [
+          {
+            title: "Frontend",
+            icon: "layout-template",
+            list: portfolioData.skills.frontend,
+          },
+          {
+            title: "Backend",
+            icon: "server",
+            list: portfolioData.skills.backend,
+          },
+          {
+            title: "Databases",
+            icon: "database",
+            list: portfolioData.skills.databases,
+          },
+          { title: "Tools", icon: "wrench", list: portfolioData.skills.tools },
+          {
+            title: "Engineering",
+            icon: "sparkles",
+            list: portfolioData.skills.engineering,
+          },
+        ];
+
+        skillsGrid.innerHTML = categories
+          .map(
+            (category, index) => `
                 <article class="reveal rounded-2xl border border-line bg-white/85 p-5 shadow-card" style="transition-delay:${index * 75}ms;">
                     <h3 class="flex items-center gap-2 font-display text-lg font-semibold text-ink">
                         <span class="inline-flex h-8 w-8 items-center justify-center rounded-lg bg-reefSoft text-reef">
@@ -1171,98 +1630,125 @@
                         ${category.title}
                     </h3>
                     <div class="mt-4 flex flex-wrap gap-2">
-                        ${category.list.map(skill => `<span class="chip rounded-full border border-line bg-canvas px-3 py-1 text-xs font-semibold text-ink/80">${skill}</span>`).join('')}
+                        ${category.list.map((skill) => `<span class="chip rounded-full border border-line bg-canvas px-3 py-1 text-xs font-semibold text-ink/80">${skill}</span>`).join("")}
                     </div>
                 </article>
-            `).join('');
-        }
+            `,
+          )
+          .join("");
+      }
 
-        function renderExperience() {
-            const experienceList = document.getElementById('experience-list');
-            experienceList.innerHTML = portfolioData.experience.map((job, index) => `
+      function renderExperience() {
+        const experienceList = document.getElementById("experience-list");
+        experienceList.innerHTML = portfolioData.experience
+          .map(
+            (job, index) => `
                 <article class="experience-card reveal" style="transition-delay:${index * 80}ms;">
                     <div class="flex flex-wrap items-start justify-between gap-3">
                         <div>
-                            <p class="text-[11px] font-bold uppercase tracking-[0.12em] text-ink/55">${job.focus || 'Role Impact'}</p>
+                            <p class="text-[11px] font-bold uppercase tracking-[0.12em] text-ink/55">${job.focus || "Role Impact"}</p>
                             <h3 class="mt-1 font-display text-xl font-bold text-ink">${job.role}</h3>
                             <p class="text-sm font-semibold text-reef">${job.company}</p>
                         </div>
                         <p class="rounded-full border border-line bg-canvas px-3 py-1 text-xs font-semibold text-ink/65">${job.dates}</p>
                     </div>
                     <div class="mt-3 flex flex-wrap gap-2">
-                        ${(job.impact || []).map(metric => `<span class="experience-impact text-xs font-bold text-ink/80">${metric}</span>`).join('')}
+                        ${(job.impact || []).map((metric) => `<span class="experience-impact text-xs font-bold text-ink/80">${metric}</span>`).join("")}
                     </div>
                     <ul class="mt-4 grid gap-2 text-sm text-ink/80 sm:grid-cols-2">
-                        ${job.highlights.map(point => `
+                        ${job.highlights
+                          .map(
+                            (point) => `
                             <li class="flex items-start gap-2">
                                 <i data-lucide="check-circle-2" class="mt-0.5 h-4 w-4 shrink-0 text-reef"></i>
                                 <span>${point}</span>
                             </li>
-                        `).join('')}
+                        `,
+                          )
+                          .join("")}
                     </ul>
                 </article>
-            `).join('');
+            `,
+          )
+          .join("");
+      }
+
+      function getFilteredProjects() {
+        if (projectState.filter === "All") {
+          return portfolioData.projects;
         }
 
-        function getFilteredProjects() {
-            if (projectState.filter === "All") {
-                return portfolioData.projects;
-            }
+        return portfolioData.projects.filter(
+          (project) => project.category === projectState.filter,
+        );
+      }
 
-            return portfolioData.projects.filter(project => project.category === projectState.filter);
-        }
+      function renderProjectFilters() {
+        const projectFilters = document.getElementById("project-filters");
+        const categories = [
+          "All",
+          ...new Set(portfolioData.projects.map((project) => project.category)),
+        ];
 
-        function renderProjectFilters() {
-            const projectFilters = document.getElementById('project-filters');
-            const categories = ["All", ...new Set(portfolioData.projects.map(project => project.category))];
-
-            projectFilters.innerHTML = categories.map(category => `
+        projectFilters.innerHTML = categories
+          .map(
+            (category) => `
                 <button
                     type="button"
                     data-filter="${category}"
-                    class="filter-pill ${projectState.filter === category ? 'active' : ''}"
+                    class="filter-pill ${projectState.filter === category ? "active" : ""}"
                 >
                     ${category}
                 </button>
-            `).join('');
+            `,
+          )
+          .join("");
 
-            projectFilters.querySelectorAll('[data-filter]').forEach(button => {
-                button.addEventListener('click', () => {
-                    projectState.filter = button.dataset.filter;
-                    const filtered = getFilteredProjects();
-                    projectState.activeProjectId = filtered.length ? filtered[0].id : null;
-                    renderProjects();
-                });
-            });
+        projectFilters.querySelectorAll("[data-filter]").forEach((button) => {
+          button.addEventListener("click", () => {
+            projectState.filter = button.dataset.filter;
+            const filtered = getFilteredProjects();
+            projectState.activeProjectId = filtered.length
+              ? filtered[0].id
+              : null;
+            renderProjects();
+          });
+        });
+      }
+
+      function renderProjects() {
+        const projectsList = document.getElementById("projects-list");
+        const projectSpotlight = document.getElementById("project-spotlight");
+
+        renderProjectFilters();
+        const filteredProjects = getFilteredProjects();
+
+        if (!filteredProjects.length) {
+          projectSpotlight.innerHTML =
+            '<p class="text-sm font-semibold text-ink/70">No projects available for this filter.</p>';
+          projectsList.innerHTML = "";
+          return;
         }
 
-        function renderProjects() {
-            const projectsList = document.getElementById('projects-list');
-            const projectSpotlight = document.getElementById('project-spotlight');
+        const hasActive = filteredProjects.some(
+          (project) => project.id === projectState.activeProjectId,
+        );
+        if (!projectState.activeProjectId || !hasActive) {
+          projectState.activeProjectId = filteredProjects[0].id;
+        }
 
-            renderProjectFilters();
-            const filteredProjects = getFilteredProjects();
-
-            if (!filteredProjects.length) {
-                projectSpotlight.innerHTML = '<p class="text-sm font-semibold text-ink/70">No projects available for this filter.</p>';
-                projectsList.innerHTML = '';
-                return;
-            }
-
-            const hasActive = filteredProjects.some(project => project.id === projectState.activeProjectId);
-            if (!projectState.activeProjectId || !hasActive) {
-                projectState.activeProjectId = filteredProjects[0].id;
-            }
-
-            const activeProject = filteredProjects.find(project => project.id === projectState.activeProjectId) || filteredProjects[0];
-            const projectLink = activeProject.link
-                ? `<a href="${activeProject.link}" target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-2 rounded-xl bg-ink px-4 py-2 text-xs font-bold text-white transition hover:bg-reef">
+        const activeProject =
+          filteredProjects.find(
+            (project) => project.id === projectState.activeProjectId,
+          ) || filteredProjects[0];
+        const projectLink = activeProject.link
+          ? `<a href="${activeProject.link}" target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-2 rounded-xl bg-ink px-4 py-2 text-xs font-bold text-white transition hover:bg-reef">
                         <i data-lucide="arrow-up-right" class="h-4 w-4"></i>
                         Open Project
                    </a>`
-                : `<span class="inline-flex items-center rounded-xl border border-line bg-canvas px-4 py-2 text-xs font-bold text-ink/65">Private Project</span>`;
+          : `<span class="inline-flex items-center rounded-xl border border-line bg-canvas px-4 py-2 text-xs font-bold text-ink/65">Private Project</span>`;
 
-            projectSpotlight.innerHTML = `
+        projectSpotlight.innerHTML = `
                 <div class="project-shot spotlight-enter rounded-2xl border border-line p-5">
                     <span class="shimmer-band"></span>
                     <div class="relative z-10">
@@ -1278,21 +1764,29 @@
                                 <i data-lucide="calendar" class="h-3.5 w-3.5"></i>
                                 ${activeProject.period}
                             </span>
-                            ${activeProject.outcomes.map(outcome => `
+                            ${activeProject.outcomes
+                              .map(
+                                (outcome) => `
                                 <span class="inline-flex items-center rounded-full border border-line bg-white px-3 py-1">${outcome}</span>
-                            `).join('')}
+                            `,
+                              )
+                              .join("")}
                         </div>
                         <p class="text-sm leading-relaxed text-ink/80">${activeProject.summary}</p>
                         <div class="mt-4 flex flex-wrap gap-2">
-                            ${activeProject.stack.map(tech => `<span class="rounded-full bg-emberSoft px-3 py-1 text-xs font-bold text-ember">${tech}</span>`).join('')}
+                            ${activeProject.stack.map((tech) => `<span class="rounded-full bg-emberSoft px-3 py-1 text-xs font-bold text-ember">${tech}</span>`).join("")}
                         </div>
                         <ul class="mt-4 space-y-2 text-sm text-ink/80">
-                            ${activeProject.points.map(point => `
+                            ${activeProject.points
+                              .map(
+                                (point) => `
                                 <li class="flex items-start gap-2">
                                     <i data-lucide="check-circle-2" class="mt-0.5 h-4 w-4 shrink-0 text-reef"></i>
                                     <span>${point}</span>
                                 </li>
-                            `).join('')}
+                            `,
+                              )
+                              .join("")}
                         </ul>
                         <div class="mt-5">
                             ${projectLink}
@@ -1301,13 +1795,15 @@
                 </div>
             `;
 
-            projectsList.innerHTML = filteredProjects.map(project => {
-                const activeClass = project.id === activeProject.id ? 'active' : '';
-                const statusTone = project.status === 'Live'
-                    ? 'text-emerald-700 bg-emerald-50 border-emerald-200'
-                    : 'text-ink/75 bg-white border-line';
+        projectsList.innerHTML = filteredProjects
+          .map((project) => {
+            const activeClass = project.id === activeProject.id ? "active" : "";
+            const statusTone =
+              project.status === "Live"
+                ? "text-emerald-700 bg-emerald-50 border-emerald-200"
+                : "text-ink/75 bg-white border-line";
 
-                return `
+            return `
                     <button type="button" data-project-id="${project.id}" class="project-list-card ${activeClass}">
                         <div class="flex items-start justify-between gap-2">
                             <div>
@@ -1318,160 +1814,184 @@
                         </div>
                         <p class="mt-2 text-sm text-ink/75">${project.summary}</p>
                         <div class="mt-3 flex flex-wrap gap-1.5">
-                            ${project.stack.slice(0, 3).map(tech => `<span class="rounded-full bg-canvas px-2.5 py-1 text-[11px] font-bold text-ink/70">${tech}</span>`).join('')}
+                            ${project.stack
+                              .slice(0, 3)
+                              .map(
+                                (tech) =>
+                                  `<span class="rounded-full bg-canvas px-2.5 py-1 text-[11px] font-bold text-ink/70">${tech}</span>`,
+                              )
+                              .join("")}
                         </div>
                     </button>
                 `;
-            }).join('');
+          })
+          .join("");
 
-            projectsList.querySelectorAll('[data-project-id]').forEach(button => {
-                button.addEventListener('click', () => {
-                    projectState.activeProjectId = button.dataset.projectId;
-                    renderProjects();
-                });
-            });
+        projectsList.querySelectorAll("[data-project-id]").forEach((button) => {
+          button.addEventListener("click", () => {
+            projectState.activeProjectId = button.dataset.projectId;
+            renderProjects();
+          });
+        });
 
+        lucide.createIcons();
+      }
+
+      function initScrollProgress() {
+        const progress = document.getElementById("scroll-progress");
+        const update = () => {
+          const scrollableHeight =
+            document.documentElement.scrollHeight - window.innerHeight;
+          const progressValue =
+            scrollableHeight > 0
+              ? (window.scrollY / scrollableHeight) * 100
+              : 0;
+          progress.style.width = `${progressValue}%`;
+        };
+
+        update();
+        window.addEventListener("scroll", update, { passive: true });
+        window.addEventListener("resize", update);
+      }
+
+      function initMobileMenu() {
+        const menuButton = document.getElementById("mobile-menu-button");
+        const menu = document.getElementById("mobile-menu");
+        const mobileLinks = document.querySelectorAll(".mobile-link");
+
+        menuButton.addEventListener("click", () => {
+          menu.classList.toggle("hidden");
+          const icon = menuButton.querySelector("i");
+          icon.setAttribute(
+            "data-lucide",
+            menu.classList.contains("hidden") ? "menu" : "x",
+          );
+          lucide.createIcons();
+        });
+
+        mobileLinks.forEach((link) => {
+          link.addEventListener("click", () => {
+            menu.classList.add("hidden");
+            const icon = menuButton.querySelector("i");
+            icon.setAttribute("data-lucide", "menu");
             lucide.createIcons();
-        }
+          });
+        });
+      }
 
-        function initScrollProgress() {
-            const progress = document.getElementById('scroll-progress');
-            const update = () => {
-                const scrollableHeight = document.documentElement.scrollHeight - window.innerHeight;
-                const progressValue = scrollableHeight > 0 ? (window.scrollY / scrollableHeight) * 100 : 0;
-                progress.style.width = `${progressValue}%`;
-            };
-
-            update();
-            window.addEventListener('scroll', update, { passive: true });
-            window.addEventListener('resize', update);
-        }
-
-        function initMobileMenu() {
-            const menuButton = document.getElementById('mobile-menu-button');
-            const menu = document.getElementById('mobile-menu');
-            const mobileLinks = document.querySelectorAll('.mobile-link');
-
-            menuButton.addEventListener('click', () => {
-                menu.classList.toggle('hidden');
-                const icon = menuButton.querySelector('i');
-                icon.setAttribute('data-lucide', menu.classList.contains('hidden') ? 'menu' : 'x');
-                lucide.createIcons();
+      function initReveal() {
+        const elements = document.querySelectorAll(".reveal");
+        const observer = new IntersectionObserver(
+          (entries) => {
+            entries.forEach((entry) => {
+              if (entry.isIntersecting) {
+                entry.target.classList.add("in");
+                observer.unobserve(entry.target);
+              }
             });
+          },
+          { threshold: 0.15 },
+        );
 
-            mobileLinks.forEach(link => {
-                link.addEventListener('click', () => {
-                    menu.classList.add('hidden');
-                    const icon = menuButton.querySelector('i');
-                    icon.setAttribute('data-lucide', 'menu');
-                    lucide.createIcons();
-                });
-            });
+        elements.forEach((item) => observer.observe(item));
+      }
+
+      function initParticles() {
+        const canvas = document.getElementById("particles-canvas");
+        if (!canvas) return;
+
+        const ctx = canvas.getContext("2d");
+        if (!ctx) return;
+
+        const prefersReducedMotion =
+          window.matchMedia &&
+          window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+        const particleCount = prefersReducedMotion ? 48 : 180;
+        const particles = [];
+
+        const resize = () => {
+          canvas.width = window.innerWidth;
+          canvas.height = window.innerHeight;
+        };
+
+        const createParticle = () => ({
+          x: Math.random() * canvas.width,
+          y: Math.random() * canvas.height,
+          radius: Math.random() * 2.1 + 0.8,
+          speedX: (Math.random() - 0.6) * 0.4,
+          speedY: (Math.random() - 0.6) * 0.4,
+          alpha: Math.random() * 0.45 + 0.15,
+        });
+
+        resize();
+        for (let i = 0; i < particleCount; i += 1) {
+          particles.push(createParticle());
         }
 
-        function initReveal() {
-            const elements = document.querySelectorAll('.reveal');
-            const observer = new IntersectionObserver((entries) => {
-                entries.forEach(entry => {
-                    if (entry.isIntersecting) {
-                        entry.target.classList.add('in');
-                        observer.unobserve(entry.target);
-                    }
-                });
-            }, { threshold: 0.15 });
+        const draw = () => {
+          ctx.clearRect(0, 0, canvas.width, canvas.height);
 
-            elements.forEach(item => observer.observe(item));
-        }
+          particles.forEach((particle, index) => {
+            particle.x += particle.speedX;
+            particle.y += particle.speedY;
 
-        function initParticles() {
-            const canvas = document.getElementById('particles-canvas');
-            if (!canvas) return;
-
-            const ctx = canvas.getContext('2d');
-            if (!ctx) return;
-
-            const prefersReducedMotion = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-            const particleCount = prefersReducedMotion ? 36 : 140;
-            const particles = [];
-
-            const resize = () => {
-                canvas.width = window.innerWidth;
-                canvas.height = window.innerHeight;
-            };
-
-            const createParticle = () => ({
-                x: Math.random() * canvas.width,
-                y: Math.random() * canvas.height,
-                radius: Math.random() * 1.7 + 0.6,
-                speedX: (Math.random() - 0.5) * 0.35,
-                speedY: (Math.random() - 0.5) * 0.35,
-                alpha: Math.random() * 0.45 + 0.15
-            });
-
-            resize();
-            for (let i = 0; i < particleCount; i += 1) {
-                particles.push(createParticle());
+            if (
+              particle.x < -10 ||
+              particle.x > canvas.width + 10 ||
+              particle.y < -10 ||
+              particle.y > canvas.height + 10
+            ) {
+              particles[index] = createParticle();
+              return;
             }
 
-            const draw = () => {
-                ctx.clearRect(0, 0, canvas.width, canvas.height);
+            ctx.beginPath();
+            ctx.fillStyle = `rgba(15, 118, 110, ${particle.alpha})`;
+            ctx.arc(particle.x, particle.y, particle.radius, 0, Math.PI * 2);
+            ctx.fill();
+          });
 
-                particles.forEach((particle, index) => {
-                    particle.x += particle.speedX;
-                    particle.y += particle.speedY;
+          for (let i = 0; i < particles.length; i += 1) {
+            for (let j = i + 1; j < particles.length; j += 1) {
+              const dx = particles[i].x - particles[j].x;
+              const dy = particles[i].y - particles[j].y;
+              const distance = Math.sqrt(dx * dx + dy * dy);
 
-                    if (particle.x < -10 || particle.x > canvas.width + 10 || particle.y < -10 || particle.y > canvas.height + 10) {
-                        particles[index] = createParticle();
-                        return;
-                    }
+              if (distance < 145) {
+                const alpha = (1 - distance / 145) * 0.16;
+                ctx.beginPath();
+                ctx.strokeStyle = `rgba(15, 118, 110, ${alpha})`;
+                ctx.lineWidth = 1;
+                ctx.moveTo(particles[i].x, particles[i].y);
+                ctx.lineTo(particles[j].x, particles[j].y);
+                ctx.stroke();
+              }
+            }
+          }
 
-                    ctx.beginPath();
-                    ctx.fillStyle = `rgba(15, 118, 110, ${particle.alpha})`;
-                    ctx.arc(particle.x, particle.y, particle.radius, 0, Math.PI * 2);
-                    ctx.fill();
-                });
+          if (!prefersReducedMotion) {
+            requestAnimationFrame(draw);
+          }
+        };
 
-                for (let i = 0; i < particles.length; i += 1) {
-                    for (let j = i + 1; j < particles.length; j += 1) {
-                        const dx = particles[i].x - particles[j].x;
-                        const dy = particles[i].y - particles[j].y;
-                        const distance = Math.sqrt(dx * dx + dy * dy);
+        draw();
+        window.addEventListener("resize", resize);
+      }
 
-                        if (distance < 145) {
-                            const alpha = (1 - distance / 145) * 0.16;
-                            ctx.beginPath();
-                            ctx.strokeStyle = `rgba(15, 118, 110, ${alpha})`;
-                            ctx.lineWidth = 1;
-                            ctx.moveTo(particles[i].x, particles[i].y);
-                            ctx.lineTo(particles[j].x, particles[j].y);
-                            ctx.stroke();
-                        }
-                    }
-                }
-
-                if (!prefersReducedMotion) {
-                    requestAnimationFrame(draw);
-                }
-            };
-
-            draw();
-            window.addEventListener('resize', resize);
-        }
-
-        document.addEventListener('DOMContentLoaded', () => {
-            initThemeToggle();
-            renderStats();
-            initStatsCounter();
-            renderSkills();
-            renderExperience();
-            renderProjects();
-            initMobileMenu();
-            initReveal();
-            initScrollProgress();
-            initTypewriter();
-            initParticles();
-            lucide.createIcons();
-        });
+      document.addEventListener("DOMContentLoaded", () => {
+        initThemeToggle();
+        renderStats();
+        initStatsCounter();
+        renderSkills();
+        renderExperience();
+        renderProjects();
+        initMobileMenu();
+        initReveal();
+        initScrollProgress();
+        initTypewriter();
+        initParticles();
+        lucide.createIcons();
+      });
     </script>
-</body>
+  </body>
 </html>
