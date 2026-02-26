@@ -638,7 +638,7 @@
         <section id="home" class="scroll-mt-24 reveal">
             <div class="hero-shell grid gap-8 rounded-3xl border border-white/70 bg-white/85 p-6 shadow-card backdrop-blur sm:p-10 lg:grid-cols-5">
                 <div class="lg:col-span-3">
-                    <p class="inline-flex items-center rounded-full border border-reef/20 bg-reefSoft px-3 py-1 text-xs font-bold uppercase tracking-[0.12em] text-reef">
+                    <p class="inline-flex items-center whitespace-nowrap rounded-full border border-reef/20 bg-reefSoft px-3 py-1 text-[10px] font-bold uppercase tracking-[0.12em] text-reef sm:text-xs">
                         Senior Software Engineer | Angular 11-18 | RxJS/NgRx | Performance & CI/CD
                     </p>
                     <h1 class="hero-name mt-4 bg-gradient-to-r from-ink via-ink to-reef bg-clip-text font-display text-5xl font-bold leading-tight text-transparent sm:text-6xl lg:text-7xl">
@@ -1360,7 +1360,7 @@
             if (!ctx) return;
 
             const prefersReducedMotion = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-            const particleCount = prefersReducedMotion ? 22 : 60;
+            const particleCount = prefersReducedMotion ? 36 : 140;
             const particles = [];
 
             const resize = () => {
@@ -1406,8 +1406,8 @@
                         const dy = particles[i].y - particles[j].y;
                         const distance = Math.sqrt(dx * dx + dy * dy);
 
-                        if (distance < 120) {
-                            const alpha = (1 - distance / 120) * 0.14;
+                        if (distance < 145) {
+                            const alpha = (1 - distance / 145) * 0.16;
                             ctx.beginPath();
                             ctx.strokeStyle = `rgba(15, 118, 110, ${alpha})`;
                             ctx.lineWidth = 1;
